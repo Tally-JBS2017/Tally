@@ -1,3 +1,17 @@
 <template name="election">
   <h2>Election page</h2>
+  <div class = "col-md-5 col-md-offset 1 bg-info">
+    address: <input type="text" class="addressInput"><br>
+    <button class="getElection"> Get Election Info!</button><br>
+    <hr>
+    <table class="bg-warning table table-bordered table-striped">
+      <tbody>
+        {{#each t in contest}}
+          <tr>
+            <td>There is a {{t.type}} election for the {{t.office}} position.</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
 </template>
