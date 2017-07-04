@@ -1,12 +1,12 @@
 <template name="profile">
   <h1>Profile page</h1>
   {{#if currentUser}}
-    <div class = "start">
+    <div class = "start"> <!--This is for resetting/creating your profile-->
       <h2>Click here to begin your profile creation or start over!</h2>
       <button class="btn btn-default btn-large js-chatsubmit" id = "new">Let's Begin!</button>
       <p></p>
     </div>
-    <div class = "name">
+    <div class = "name"><!-- shows your profile name here -->
       <h1>Your Name </h1>
       {{#each member in current_profile}}
         <h2>{{member.name}}</h2>
@@ -14,7 +14,7 @@
       <p>Change your name here:</p>
       <input type="text"  class="js-chatinput" id = "name">
       <br>
-      <br>
+      <br><!--place to change your name -->
       <button class="btn btn-default btn-large js-chatsubmit" id = "name_add">Submit</button>
       <br>
     </div>
