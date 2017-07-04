@@ -1,8 +1,8 @@
 Template.election.onCreated(function() {
   this.state = new ReactiveDict();
   this.state.setDefault({
-    contest:[],
-    t:{},
+    contest:[], //this will hold all the elections
+    t:{},//this would hold each seperate election
 
   });
   console.log("creating the template");
@@ -17,6 +17,7 @@ Template.election.helpers({
 });
 
 Template.election.events({
+  //this is
   "click .getElection": function(event,instance){
     const address = $(".addressInput").val();
 
