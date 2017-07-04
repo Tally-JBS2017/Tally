@@ -15,7 +15,7 @@ Template.register.helpers({
     var page = Template.instance().statepage.get();
   //When we get the collection and agree on a format we we swap out the manual data array for a collection grab
     var data = {
-      "MA": [{step:"What you need to Register online",stepdescrip:"register online you dummy"}],
+      "MA": [{stepname:"What you need to Register online",stepdescrip:"register online you dummy"}],
     };
     return {contentType:page, items:data[page]};
   }
