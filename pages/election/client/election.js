@@ -22,13 +22,13 @@ Template.election.events({
     const address = $(".addressInput").val();
     const electionId = 2000; //this is used to look up a specific type of election
     const ElectionAPIkey = "AIzaSyDYoZw_sdVIOmvB1yxnFvdBwNxf9hB7T1M";
+    var url =  "https://www.googleapis.com/civicinfo/v2/voterinfo?key=" + ElectionAPIkey + "&address=" +address+"&electionId=" + electionId;
     xmlhttp.onreadystatechange = function(){
       if(this.readyState == 4 && this.status == 200){
-        var url =  "https://www.googleapis.com/civicinfo/v2/voterinfo?key=" + ElectionAPIkey + "&address=" +address+"&electionId=" + electionId;
         //https://www.googleapis.com/civicinfo/v2/voterinfo?key=AIzaSyDYoZw_sdVIOmvB1yxnFvdBwNxf9hB7T1M&address=269%20South%20St.%20Waltham%20MA&electionId=2000
         var electionInfo = JSON.parse(this.responseText);
-        var type = electionInfo.contest.type.toString();
-        var office = electionInfo.contest.office.toString();
+        var type = electionInfo.contests[1].type.toString();
+        var office = electionInfo.contests[1].office.toString();
         console.log(type);
         console.log(office);
       }
