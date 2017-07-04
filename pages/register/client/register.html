@@ -1,3 +1,21 @@
 <template name="register">
   <h2>Register page</h2>
+<Label>ZIP Code</Label><input id="zipcode" maxlength="5" required="'required'" type="number" pattern="[0-9]{5}" title="Five digit zip code" />
+  <button>Find Registration info</button>
+  {{> Template.dynamic template="content" data=pageData}}
+</template>
+
+
+<template name="content">
+  <h3 class="page-header" style="text-transform: capitalize;">{{this.contentType}}</h3>
+  <table class="table table-striped table-bordered">
+    {{#each this.items}}
+    <tbody>
+    <tr>
+      <td><strong>{{step}}</strong></td>
+      <td> by {{stepdescrip}}</td>
+    </tr>
+  </tbody>
+    {{/each}}
+  </table>
 </template>
