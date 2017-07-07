@@ -10,10 +10,15 @@ Template.election.onCreated(function() {
 });
 
 Template.election.helpers({
+/*
   contest: function(){
     const instance = Template.instance();
     return instance.state.get("contest");
-  }
+  },
+*/  
+  contest() {
+    return Election.find()
+  },
 });
 
 Template.election.events({
@@ -31,6 +36,8 @@ Template.election.events({
         var office = electionInfo.contests[1].office.toString();
         console.log(type);
         console.log(office);
+        var information = {type:type, office:office}
+        Meteor.call('election.insert',information);
       }
     };
     xmlhttp.open("GET", url, true);
