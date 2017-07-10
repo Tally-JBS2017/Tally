@@ -1,6 +1,208 @@
 {
   "states":[
     {
+      "stateName":"Minnesota",
+      "abbr":"MN",
+      "eligibility":"
+      <p>Eligibility to register</p>
+      <ul>
+        <li>Be a U.S. citizen.</li>
+        <li>Be at least 18 years old.</li>
+        <li>Ba a 20 day Minnesota resident.</li>
+        <li>NOT been convicted of a disqualifying felony.</li>
+      </ul>
+      ",
+      "online":"
+      <p>Items required</p>
+      <ul>
+        <li>Valid Minnesota driver's license or identification card</li>
+        <li>You may use your Social Security number if you do not have a lisence or identification card</li>
+      </ul>
+      <p>Note that you can register in person on election day. You will need to bring an official photo id (such as your driver's lisence or U.S. Passport)</p>
+      <p>Steps</p>
+      <ol>
+        <li>Visit the state's <a href='https://mnvotes.sos.state.mn.us/VoterRegistration/VoterRegistrationMain.aspx'>
+        Electronic Voter Registration Application</a> and follow the prompts as
+        you complete the online form.</li>
+      </ol>
+      ",
+      "inPerson":"none",
+      "mail":"
+      <p>Items required</p>
+      <ul>
+        <li>Valid Nebraska driver's license or identification card</li>
+        <li>You may use your Social Security number if you do not have a lisence or identification card</li>
+      </ul>
+      <p>Note that you can register in person on election day. You will need to bring an official photo id (such as your driver's lisence or U.S. Passport)</p>
+      <p>Steps</p>
+      <ol>
+        <li>Obtain State of Minnesota Mail-In Voter Registration Form by filling out and printing an <a href='http://www.sos.state.mn.us/media/1587/voter-registration-application.pdf'>
+          online form request.</a></li>
+        <li>Complete State of Minnestota Mail-In Voter Registration Form. </li>
+        <li>Return form to your county Election Office or the state Secretary of State Office</li>
+      </ol>
+      ",
+      "url":"http://www.sos.state.mn.us/elections-voting/register-to-vote/",
+      "absentee":"
+      <p>Items required</p>
+      <ul>
+        <li>Item</li>
+      </ul>
+      <p>Steps</p>
+      <ol>
+        <li>step1</li>
+      </ol>
+      "
+    },
+    {
+      "stateName":"Mississippi",
+      "abbr":"MS",
+      "eligibility":"
+      <p>Eligibility to register</p>
+      <ul>
+        <li>Be a U.S. citizen.</li>
+        <li>Be at least 18 years old.</li>
+        <li>NOT been convicted of a disqualifying felony.</li>
+      </ul>
+      ",
+      "online":"none",
+      "inPerson":"none",
+      "mail":"
+      <p>Items required</p>
+      <ul>
+        <li>Valid Mississippi driver's license or identification card</li>
+        <li>You may use your Social Security Number if you do not have a lisence</li>
+      </ul>
+      <p>Steps</p>
+      <ol>
+        <li>Obtain State of Mississippi Mail-In Voter Registration Form by filling out and printing an <a href='http://www.sos.ms.gov/Elections-Voting/Documents/Voter_Registration.pdf'>
+          online form request.</a></li>
+        <li>Complete State of Mississippi Mail-In Voter Registration Form. </li>
+        <li>Return form to your Circuit Clerk's Office</li>
+      </ol>
+      ",
+      "url":"http://www.sos.ms.gov/Elections-Voting/Pages/Voter-Registration-Information.aspx",
+      "absentee":"
+      <p>Items required</p>
+      <ul>
+        <li>Item</li>
+      </ul>
+      <p>Steps</p>
+      <ol>
+        <li>step1</li>
+      </ol>
+      "
+    },
+    {
+      "stateName":"Missouri",
+      "abbr":"NE",
+      "eligibility":"
+      <p>Eligibility to register</p>
+      <ul>
+        <li>Be a U.S. citizen.</li>
+        <li>Be at least 17.5 years old.</li>
+        <li>Be a Missouri resident. </li>
+      </ul>
+      ",
+      "online":"none",
+      "inPerson":"
+      <p>Items required</p>
+      <ul>
+        <li>Valid Missouri driver's license</li>
+        <li>Social Security Number</li>
+      </ul>
+      <p>Steps</p>
+      <ol>
+        <li>You can receive and fill out a paper form at the following places:
+          <ul>
+            <li>County Clerk's Office</li>
+            <li>Dpartment of Motor Vehicles Office</li>
+            <li>Other state Agencies that offer state public assistance</li>
+          </ul>
+        </li>
+      </ol>
+      ",
+      "mail":"
+      <p>Items required</p>
+      <ul>
+        <li>Valid Missouri driver's license</li>
+        <li>Social Security Number</li>
+      </ul>
+      <p>Steps</p>
+      <ol>
+        <li>Obtain State of Missouri Mail-In Voter Registration Form by filling out and printing an <a href='https://www.sos.mo.gov/elections/goVoteMissouri/print'>
+          online form request.</a> Note that your form varies with each county. </li>
+        <li>Complete State of Missouri Mail-In Voter Registration Form. </li>
+        <li>Return form to your local Election authority.</li>
+      </ol>
+      ",
+      "url":"https://www.sos.mo.gov/elections/goVoteMissouri/register",
+      "absentee":"
+      <p>Items required</p>
+      <ul>
+        <li>Item</li>
+      </ul>
+      <p>Steps</p>
+      <ol>
+        <li>step1</li>
+      </ol>
+      "
+    },
+    {
+      "stateName":"Montana",
+      "abbr":"MT",
+      "eligibility":"
+      <p>Eligibility to register</p>
+      <ul>
+        <li>Be a U.S. citizen.</li>
+        <li>Be at least 18 years old.</li>
+        <li>Be a 30 day Montana Resident.</li>
+        <li>NOT been convicted of a disqualifying felony.</li>
+        <li>NOT be declared mentally incompetent by a court.</li>
+      </ul>
+      ",
+      "online":"none",
+      "inPerson":"
+      <p>Items required</p>
+      <ul>
+        <li>Valid Montana driver's license or identification card</li>
+        <li>You may use your Social Security Number if you do not have a lisence</li>
+      </ul>
+      <p>Steps</p>
+      <p>Note that you may fill out a registration form when you apply for or renew your driver's license or State of Montana ID at the office where you apply for or renew your Montana driver’s license. </p>
+      <ol>
+        <li>Visit your county election office Monday through Friday between the hours of 8 a.m. and 5 p.m. and complete a registration form</li>
+        <li>Fill out and sign a voter registration application and drop it off at your county election office, or mail it to the county election administrator.</li>
+        <li>Return form to your county Election Official</li>
+      </ol>
+      ",
+      "mail":"
+      <p>Items required</p>
+      <ul>
+        <li>Valid Montana driver's license or identification card</li>
+        <li>You may use your Social Security Number if you do not have a lisence</li>
+      </ul>
+      <p>Steps</p>
+      <ol>
+        <li>Obtain State of Montana Mail-In Voter Registration Form by filling out and printing an <a href='https://sos.mt.gov/portals/142/Elections/Forms/Voter_Registration_Application.pdf?dt=1499711079898'>
+          online form request.</a></li>
+        <li>Complete State of Montana Mail-In Voter Registration Form. </li>
+        <li>Return form to your county Election Administrator</li>
+      </ol>
+      ",
+      "url":"https://sos.mt.gov/elections/vote#370474451-how-to-register-to-vote",
+      "absentee":"
+      <p>Items required</p>
+      <ul>
+        <li>Item</li>
+      </ul>
+      <p>Steps</p>
+      <ol>
+        <li>step1</li>
+      </ol>
+      "
+    },
+    {
       "stateName":"Nebraska",
       "abbr":"NE",
       "eligibility":"
