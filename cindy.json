@@ -20,7 +20,7 @@
       </ul>
       <p>Steps</p>
       <ol>
-        <li>Visit the state's <a href=\"https://www.alabamainteractive.org/sos/voter_registration/voterRegistrationWelcome.action\">
+        <li>Visit the state's <a href='https://www.alabamainteractive.org/sos/voter_registration/voterRegistrationWelcome.action'>
         Electronic Voter Registration Application</a> and follow the prompts as
         you complete the online form.</li>
       </ol>
@@ -33,8 +33,8 @@
       <p>Steps</p>
       <ol>
         <li>Obtain State of Alabama Mail-In Voter Registration Form (Form NVRA-2) by
-          mail by filling out the <a href=\"https://www.alabamainteractive.org/sos/voter_registration/voterRegistrationWelcome.action\">
-          online form request</a>, printing it out <a href=\"http://sos.alabama.gov/sites/default/files/voter-pdfs/nvra-2.pdf\">
+          mail by filling out the <a href='https://www.alabamainteractive.org/sos/voter_registration/voterRegistrationWelcome.action'>
+          online form request</a>, printing it out <a href='http://sos.alabama.gov/sites/default/files/voter-pdfs/nvra-2.pdf'>
           here</a>, or by calling (800) 274-8683.</li>
         <li>Complete State of Alabama Mail-In Voter Registration Form (Form NVRA-2). </li>
         <li>Return form to
@@ -56,15 +56,15 @@
       <p>Steps</p>
       <ol>
         <li>Obtain State of Alabama Mail-In Voter Registration Form (Form NVRA-2) by
-          mail by filling out the <a href=\"https://www.alabamainteractive.org/sos/voter_registration/voterRegistrationWelcome.action\">
-          online form request</a>, printing it out <a href=\"http://sos.alabama.gov/sites/default/files/voter-pdfs/nvra-2.pdf\">
+          mail by filling out the <a href='https://www.alabamainteractive.org/sos/voter_registration/voterRegistrationWelcome.action'>
+          online form request</a>, printing it out <a href='http://sos.alabama.gov/sites/default/files/voter-pdfs/nvra-2.pdf'>
           here</a>, or by calling (800) 274-8683.</li>
         <li>Complete State of Alabama Mail-In Voter Registration Form (Form NVRA-2). </li>
         <li>Return form to your local AL county office of Board of Registrars</li>
       </ol>
       ",
       "url":"https://www.alabamainteractive.org/sos/voter_registration/voterRegistrationWelcome.action",
-      "absentee":"Coming soon"
+      "absentee":"Coming soon",
     },
     {
       "stateName":"Alaska",
@@ -73,20 +73,81 @@
       <p>Eligibility to register</p>
       <ul>
         <li>Be a U.S. citizen.</li>
-        <li>Be an Alabama resident.</li>
-        <li>Be at least 18 years old.</li>
-        <li>NOT been convicted of a disqualifying felony.</li>
-        <li>NOT be declared mentally incompetent by a court.</li>
+        <li>Be a resident of Alaska.</li>
+        <li>Be at least 18 years old, or within 90 days of turning 18 years old.</li>
+        <li>NOT convicted and currently serving incarceration, parole, probation for a disqualifying felony*.</li>
+        <li>NOT be registered to vote in another state.</li>
       </ul>
       ",
       "online":"
       <p>Items required</p>
       <ul>
-        <li>Valid Alabama driver's license or identification card</li>
+        <li>Valid Alaska driver's license or ID card</li>
       </ul>
       <p>Steps</p>
       <ol>
-        <li>Visit the state's <a href=\"https://www.alabamainteractive.org/sos/voter_registration/voterRegistrationWelcome.action\">
+        <li>Visit the state's <a href='https://voterregistration.alaska.gov/'>
+        Online Voter Registration System.</a> and follow the prompts as
+        you complete the online form.</li>
+      </ol>
+      ",
+      "inPerson":"
+      <p>Items required</p>
+      <ul>
+        <li>Valid Alaska driver's license or ID card</li>
+      </ul>
+      <p>Steps</p>
+      <ol>
+        <li>Register to vote or update your registration in person at a
+        <a href='http://elections.alaska.gov/Core/contactusandsitemap.php'>
+        Division of Elections Office</a>, or visit a
+        <a href='http://elections.alaska.gov/Core/wheretoregister.php'>
+        voter registration agency</a> in your area.</li>
+      </ol>
+      ",
+      "mail":"
+      <p>Items required</p>
+      <ul>
+        <li>Valid Alaska driver's license or ID card</li>
+      </ul>
+      <p>Steps</p>
+      <ol>
+        <li>Print a <a href='http://elections.alaska.gov/doc/forms/C03.pdf'>
+        paper</a> form to complete and sign. </li>
+        <li>Send your completed form by mail, fax or email attachment to a
+        <a href='http://elections.alaska.gov/Core/contactregionalelectionsoffices.php'>
+        Regional Elections Office.</li>
+        <li>Send a copy of either your current driver’s license, state ID, passport
+        or birth certificate with your paper form.</li>
+      </ol>
+      ",
+      "url":"http://elections.alaska.gov/Core/voterregistration.php",
+      "absentee":"Coming soon",
+    },
+    {
+      "stateName":"Arizona",
+      "abbr":"AZ",
+      "eligibility":"
+      <p>Eligibility to register</p>
+      <ul>
+        <li>Be a U.S. citizen.</li>
+        <li>Be a resident of the Arizona county listed on your registration.</li>
+        <li>Be at least 18 years old on or before the date of the next general election.</li>
+        <li>NOT disqualified from voting at this time due to felony conviction(s).</li>
+        <li>NOT be declared 'incompetent' by a court.</li>
+        <li>Must register to vote at least 29 days before the next election to be able to vote in it.</li>
+      </ul>
+      ",
+      "online":"
+      <p>Items required</p>
+      <ul>
+        <li>Name, as it appears on your driver's license or ID card.</li>
+        <li>Address</li>
+        <li>Social Security number.</li>
+      </ul>
+      <p>Steps</p>
+      <ol>
+        <li>Visit the state's <a href='https://servicearizona.com/voterRegistration'>
         Electronic Voter Registration Application</a> and follow the prompts as
         you complete the online form.</li>
       </ol>
@@ -94,51 +155,633 @@
       "inPerson":"
       <p>Items required</p>
       <ul>
-        <li>Valid Alabama driver's license or identification card</li>
+        <li>Proof of your U.S. citizenship, such as a photocopy of your birth certificate or
+        U.S. passport.</li>
       </ul>
       <p>Steps</p>
       <ol>
-        <li>Obtain State of Alabama Mail-In Voter Registration Form (Form NVRA-2) by
-          mail by filling out the <a href=\"https://www.alabamainteractive.org/sos/voter_registration/voterRegistrationWelcome.action\">
-          online form request</a>, printing it out <a href=\"http://sos.alabama.gov/sites/default/files/voter-pdfs/nvra-2.pdf\">
-          here</a>, or by calling (800) 274-8683.</li>
-        <li>Complete State of Alabama Mail-In Voter Registration Form (Form NVRA-2). </li>
-        <li>Return form to
-          <ul>
-            <li>your local AL county office of Board of Registrars</li>
-            <li>an AL DMV driver licensing office when you apply for or renew your driver's
-            license or ID card</li>
-            <li>any other government agency such as Medicaid agencies, Department of Human
-            Resources, County public library.</li>
-           </ul>
-          </li>
+        <li>Pick up an Arizona Voter Registration Form form at your local County Recorder, or
+        print it out <a href='https://www.azsos.gov/sites/azsos.gov/files/voter_registration_form.pdf'>
+        here</a></li>
+        <li>Complete the form.</li>
+        <li>Return the form and your proof of U.S. citizenship to your
+        <a href='https://www.azsos.gov/elections/voting-election/contact-information-county-election-officials'>
+        local County Recorder</a>.</li>
+        <li>You can also register to vote at your local AZ MVD office when you
+        apply for an Arizona driver's license or identification card.</li>
       </ol>
       ",
       "mail":"
       <p>Items required</p>
       <ul>
-        <li>Valid Alabama driver's license or identification card</li>
+      <li>Proof of your U.S. citizenship, such as a photocopy of your birth certificate or
+      U.S. passport.</li>
       </ul>
       <p>Steps</p>
       <ol>
-        <li>Obtain State of Alabama Mail-In Voter Registration Form (Form NVRA-2) by
-          mail by filling out the <a href=\"https://www.alabamainteractive.org/sos/voter_registration/voterRegistrationWelcome.action\">
-          online form request</a>, printing it out <a href=\"http://sos.alabama.gov/sites/default/files/voter-pdfs/nvra-2.pdf\">
-          here</a>, or by calling (800) 274-8683.</li>
-        <li>Complete State of Alabama Mail-In Voter Registration Form (Form NVRA-2). </li>
-        <li>Return form to your local AL county office of Board of Registrars</li>
+        <li>Print the <a href='https://www.azsos.gov/sites/azsos.gov/files/voter_registration_form.pdf'>
+        Arizona Voter Registration Form</li>
+        <li>Complete the form.</li>
+        <li>Mail the form and your proof of U.S. citizenship to your
+        <a href='https://www.azsos.gov/elections/voting-election/contact-information-county-election-officials'>
+        local County Recorder</a>.</li>
       </ol>
       ",
-      "url":"https://www.alabamainteractive.org/sos/voter_registration/voterRegistrationWelcome.action",
-      "absentee":"
+      "url":"https://servicearizona.com/webapp/evoter/selectLanguage",
+      "absentee":"Coming soon",
+    },
+    {
+      "stateName":"Arkansas",
+      "abbr":"AR",
+      "eligibility":"
+      <p>Eligibility to register</p>
+      <ul>
+        <li>Be a U.S. citizen.</li>
+        <li>Be an Arkansas resident (residing in Arkansas at least 30 days prior
+        to the first election in which you will vote).</li>
+        <li>Be age 18 or turn 18 on or before the next election.</li>
+        <li>Not be a convicted felon whose sentence has not been discharged or pardoned.</li>
+        <li>Not be presently adjudged as mentally incompetent as to your ability to vote by a court of competent jurisdiction.</li>
+      </ul>
+      ",
+      "online":"none",
+      "inPerson":"
       <p>Items required</p>
       <ul>
-        <li>Item</li>
+        <li>Valid Arkansas driver's license or identification card</li>
+      </ul>
+      <p>Steps</p>
+      <p>You can complete an in-person voter registration at:</p>
+      <ul>
+        <li>Your county clerk's office.</li>
+        <li>Any AR ODS location where you complete a paper form or have your information sent electronically.</li>
+        <li>Any public library or Arkansas State Library.</li>
+        <li>Any public assistance or disability agency.</li>
+        <li>Any military recruitment or National Guard office.</li>
+        <li>Local voter registration drives.</li>
+      </ul>
+      ",
+      "mail":"
+      <p>Items required</p>
+      <ul>
+        <li>Valid Arkansas driver's license or identification card, or</li>
+        <li>A copy of a current utility bill, bank statement, government check or paycheck that shows your name and address, or</li>
+        <li>Another government document that shows your name and address</li>
       </ul>
       <p>Steps</p>
       <ol>
-        <li>step1</li>
+        <li>Obtain  Arkansas Voter Registration Application from your local county
+        clerk's office, from the Arkansas Secretary of State, by calling the
+        Secretary of State Elections Division at (800) 247-3312, by filling out the
+        <a href='http://www.sos.arkansas.gov/elections/Pages/request-app-through-mail.aspx'>
+        online form request</a>, printing it out <a href='http://www.sos.arkansas.gov/elections/Documents/Voter_Reg_Ap_6-11.pdf'>
+        here</a>.</li>
+        <li>Complete the form</li>
+        <li>Mail in the form on the address provided in the paper application.</li>
       </ol>
-      "
+      ",
+      "url":"http://www.sos.arkansas.gov/elections/Pages/voterRegistration.aspx",
+      "absentee":"Coming soon",
+    },
+    {
+      "stateName":"California",
+      "abbr":"CA",
+      "eligibility":"
+      <p>Eligibility to register</p>
+      <ul>
+        <li>Be a U.S. citizen.</li>
+        <li>A California resident.</li>
+        <li>18 years old or older on Election Day.</li>
+        <li>Not currently in prison or on parole for a felony conviction. Note that
+        Some citizens serving certain legal sentences can vote, and those with felony
+        convictions who've had their civil rights restored can vote.</li>
+        <li>Not found to be mentally incompetent by a court.</li>
+      </ul>
+      ",
+      "online":"
+      <p>Items required</p>
+      <ul>
+        <li>Your California driver license or California identification card number</li>
+        <li>The last four digits of your social security number</li>
+        <li>Your date of birth</li>
+      </ul>
+      <p>Steps</p>
+      <ol>
+        <li>Visit the<a href='http://registertovote.ca.gov/'>
+         California Online Voter Registration</a> and follow the prompts as
+        you complete the online form.</li>
+      </ol>
+      ",
+      "inPerson":"none",
+      "mail":"
+      <p>Items required</p>
+      <ul>
+        <li>California driver's license or identification card number </li>
+        <li>Last 4 digits of your social security number</li>
+      </ul>
+      <p>Steps</p>
+      <ol>
+        <li>Obtain National Mail Voter Registration Form by printing it
+        <a href='https://www.eac.gov/voters/national-mail-voter-registration-form/'>
+        here</a>, pick a registration form up at your local DMV office or county
+        elections office, or request one by calling the voter hotline at (800) 345-8683.</li>
+        <li>Complete the form.</li>
+        <li>Mail the form to the address provided on the application.</li>
+      </ol>
+      ",
+      "url":"http://registertovote.ca.gov/",
+      "absentee":"Coming soon",
+    },
+    {
+      "stateName":"Colorado",
+      "abbr":"CO",
+      "eligibility":"
+      <p>Eligibility to register</p>
+      <ul>
+        <li>Be a U.S. citizen.</li>
+        <li>A Colorado resident who has lived in the state for at least 22 days
+        before the election in which you plan to vote.</li>
+        <li>At least 18 years old by the date of the next election.</li>
+        <li>NOT currently serving a sentence of confinement, detention, or parole for a felony conviction.</li>
+      </ul>
+      ",
+      "online":"
+      <p>Items required</p>
+      <ul>
+        <li>A valid Colorado driver's license, or</li>
+        <li>A Colorado ID card issued by the DMV.</li>
+      </ul>
+      <p>Steps</p>
+      <ol>
+        <li>Visit the state's <a href='https://www.sos.state.co.us/voter-classic/pages/pub/olvr/verifyNewVoter.xhtml'>
+        Electronic Voter Registration Application</a> and follow the prompts as
+        you complete the online form.</li>
+      </ol>
+      ",
+      "inPerson":"
+      <p>Items required</p>
+      <ul>
+        <li>Valid Colorado driver's license or identification card</li>
+      </ul>
+      <p>Steps</p>
+      <p>You can complete an in-person voter registration at:</p>
+      <ul>
+        <li>Your county clerk's office.</li>
+        <li>A Colorado DMV office when you apply for or renew your driver's license.</li>
+        <li>Public assistance offices.</li>
+        <li>Military recruitment offices.</li>
+        <li>Voter service and polling centers.</li>
+      </ul>
+      ",
+      "mail":"
+      <p>Items required</p>
+      <ul>
+        <li>Valid Colorado driver's license or identification card</li>
+      </ul>
+      <p>Steps</p>
+      <ol>
+        <li>Print the Colorado Voter Registration Form* (Form 100)
+        <a href='http://www.sos.state.co.us/pubs/elections/vote/VoterRegFormEnglish.pdf'>
+        here</a>, or pick up this form directly from your county clerk's office.</li>
+        <li>Complete the form.</li>
+        <li>Return form to your <a href='http://www.sos.state.co.us/pubs/elections/Resources/CountyElectionOffices.html'>
+        county clerk's office</a></li>
+      </ol>
+      ",
+      "url":"https://www.sos.state.co.us/voter-classic/pages/pub/olvr/verifyNewVoter.xhtml",
+      "absentee":"Coming soon",
+    },
+    {
+      "stateName":"Connecticut",
+      "abbr":"CT",
+      "eligibility":"
+      <p>Eligibility to register</p>
+      <ul>
+        <li>Be a U.S. citizen.</li>
+        <li>A resident of Connecticut.</li>
+        <li>At least 17 years old to register, and must be 18 years old on or before Election Day.</li>
+        <li>NOT be imprisoned or on parole. Voting rights are automatically restored
+        upon the release of incarceration and, if applicable, parole.</li>
+      </ul>
+      ",
+      "online":"
+      <p>Items required</p>
+      <ul>
+        <li>Valid CT driver's license, permit, or photo ID card, and a signature on file with the DMV.</li>
+      </ul>
+      <p>Steps</p>
+      <ol>
+        <li>Visit the state's <a href='https://voterregistration.ct.gov/OLVR/registerDetails.do'>
+        Online Voter Registration System</a> and follow the prompts as
+        you complete the online form.</li>
+      </ol>
+      ",
+      "inPerson":"
+      <p>Items required</p>
+      <ul>
+        <li>Valid CT driver's license, permit, or photo ID card</li>
+      </ul>
+      <p>Steps</p>
+      <ol>
+        <li>Obtain State of Connecticut Mail-In Voter Registration (Form ED-671 S)
+        <a href='http://www.sots.ct.gov/sots/lib/sots/electionservices/electforms/electforms/voter_reg_card_english_2015.pdf'>
+        here</a></li>
+        <li>Complete the form.</li>
+        <li>Return form to your local town hall or voter registration office. Locations found
+        <a href='http://www.ct.gov/sots/LIB/sots/ElectionServices/lists/ROVOfficeAddresses.pdf'>
+        here</a></li>
+      </ol>
+      ",
+      "mail":"
+      <p>Items required</p>
+      <ul>
+        <li>Valid CT driver's license, permit, or photo ID card</li>
+      </ul>
+      <p>Steps</p>
+      <ol>
+      <li>Obtain State of Connecticut Mail-In Voter Registration (Form ED-671 S)
+      <a href='http://www.sots.ct.gov/sots/lib/sots/electionservices/electforms/electforms/voter_reg_card_english_2015.pdf'>
+      here</a></li>
+      <li>Complete the form.</li>
+      <li>Mail form to your local town hall or voter registration office. Address found
+      <a href='http://www.ct.gov/sots/LIB/sots/ElectionServices/lists/ROVOfficeAddresses.pdf'>
+      here</a></li>
+      </ol>
+      ",
+      "url":"https://voterregistration.ct.gov/OLVR/welcome.do",
+      "absentee":"Coming soon",
+    },
+    {
+      "stateName":"Delaware",
+      "abbr":"DE",
+      "eligibility":"
+      <p>Eligibility to register</p>
+      <ul>
+        <li>Be a U.S. citizen.</li>
+        <li>You're a Delaware citizen.</li>
+        <li>You're at least 18 years old.</li>
+        <li>You have not been deemed mentally incompetent.</li>
+        <li>You have not committed a disqualifying felony.</li>
+        <li>If applicable, you are no longer incarcerated, on parole, or on probation.</li>
+      </ul>
+      ",
+      "online":"none",
+      "inPerson":"
+      <p>Items required</p>
+      <ul>
+        <li>Valid Delaware driver's license or photo ID card</li>
+        <li>Proof of residency via current utility bill, bank statement, or government paystub.</li>
+      </ul>
+      <p>Steps</p>
+      <p>You can complete an in-person voter registration at:</p>
+      <ul>
+        <li>your <a href='http://elections.delaware.gov/locations.shtml'>local</a>
+        Department of Elections</li>
+        <li>Your local Delaware DMV office if you're applying, renewing, or
+        updating your DE driver's license or state ID card.</li>
+        <li>Department of Health and Social Services.</li>
+        <li>Department of Labor.</li>
+      </ul>
+      ",
+      "mail":"
+      <p>Items required</p>
+      <ul>
+        <li>Delaware driver's license or ID number.</li>
+        <li>If you have neither, provide your Social Security number.</li>
+      </ul>
+      <p>Steps</p>
+      <ol>
+        <li>Visit the state's <a href='https://ivote.de.gov/voterlogin.aspx'>
+        Online Voter Registration System</a> to complete a voter registration form online</li>
+        <li>Print, sign, and mail the application to the address provided.</li>
+        <li>If you have never registered before, you must provide copies of proof
+        of photo identification OR proof of residency that shows your name and
+        address with your application; otherwise, you must provide them the first
+        time you vote in a Federal election.</li>
+      </ol>
+      ",
+      "url":"https://ivote.de.gov/default.aspx",
+      "absentee":"Coming soon",
+    },
+    {
+      "stateName":"Florida",
+      "abbr":"FL",
+      "eligibility":"
+      <p>Eligibility to register</p>
+      <ul>
+        <li>Be a U.S. citizen.</li>
+        <li>Be a Florida resident.</li>
+        <li>Be at least 18 years old. You can pre-register to vote at 16 years
+        old, but you'll need to wait until you're 18 years old to vote.</li>
+        <li>Have never been legally judged ineligible to vote, for either mental
+        incapacitation or crime.</li>
+        <li>Have not been convicted of a felony and had your civil rights restored.</li>
+        <li>Must register at least 29 days before an election to be able to vote.</li>
+      </ul>
+      ",
+      "online":"none",
+      "inPerson":"
+      <p>Items required</p>
+      <ul>
+        <li>Valid Florida Driver License or Florida identification Card Number</li>
+      </ul>
+      <p>Steps</p>
+      <ol>
+        <li>Print Florida Voter Registration Application (Form DS-DE 39)
+        <a href='http://dos.myflorida.com/media/693757/dsde39.pdf'>
+        here</a></li>
+        <li>Complete the form.</li>
+        <li>Return form to the following:
+          <ul>
+            <li>your <a href='http://dos.myflorida.com/media/695008/soe-contact-information.pdf'>
+            local county Supervisor of Elections</a></li>
+            <li>A FLHSMV driver's license office.</li>
+            <li>A voter registration agency.</li>
+            <li>An armed forces recruitment office. </li>
+            <li>Any public library.</li?
+          </ul>
+         </li>
+      </ol>
+      ",
+      "mail":"
+      <p>Items required</p>
+      <ul>
+        <li>Valid Florida Driver License or Florida identification Card Number</li>
+      </ul>
+      <p>Steps</p>
+      <ol>
+        <li>Print Florida Voter Registration Application (Form DS-DE 39)
+        <a href='http://dos.myflorida.com/media/693757/dsde39.pdf'>
+        here</a></li>
+        <li>Complete the form.</li>
+        <li>Mail form to your local county Supervisor of Elections. Addresses found
+        <a href='http://dos.myflorida.com/media/695008/soe-contact-information.pdf'>
+        here</a></li>
+      </ol>
+      ",
+      "url":"http://www.dmvflorida.org/voter-registration.shtml",
+      "absentee":"Coming soon",
+    },
+    {
+      "stateName":"Georgia",
+      "abbr":"GA",
+      "eligibility":"
+      <p>Eligibility to register</p>
+      <ul>
+        <li>Be a U.S. citizen.</li>
+        <li>Legal resident of a Georgia county.</li>
+        <li>At least 17 1/2 years old. You must be 18 years old before or on Election Day.</li>
+        <li>Have not been deemed by a judge to be mentally incompetent.</li>
+        <li>Not incarcerated, on parole or on probation for a felony conviction.</li>
+      </ul>
+      ",
+      "online":"
+      <p>Items required</p>
+      <ul>
+        <li>Valid Georgia driver's license or ID card.</li>
+      </ul>
+      <p>Steps</p>
+      <ol>
+        <li>Visit the state's <a href='https://registertovote.sos.ga.gov/GAOLVR/welcome.do#no-back-button'>
+        Online Voter Registration System</a> and follow the prompts as
+        you complete the online form.</li>
+      </ol>
+      ",
+      "inPerson":"
+      <p>Items required</p>
+      <ul>
+        <li>Valid Georgia driver's license or ID card.</li>
+      </ul>
+      <p>Steps</p>
+      <ol>
+        <li>Go to the Georgia Department of Driver Services (DDS) when you apply
+        for your GA driver's license or renew your GA driver's license.</li>
+      </ol>
+      ",
+      "mail":"
+      <p>Items required</p>
+      <ul>
+        <li>Valid Georgia driver's license or ID card.</li>
+      </ul>
+      <p>Steps</p>
+      <ol>
+        <li>Obtain the State of Georgia Application for Voter Registration from
+          <ul>
+            <li>Downloading the form <a href='http://sos.ga.gov/admin/files/Voter_Registration_Application_8-10.pdf'>
+            here</a></li>
+            <li>Your county board of registrar's office, or</li>
+            <li>The public library, or</li>
+            <li>Public assistance offices, or</li>
+            <li>Colleges and universities, or</li>
+            <li>Other government offices, or</li>
+          </ul>
+        </li>
+        <li>Complete the form.</li>
+        <li>Mail the application to the address on the form.</li>
+      </ol>
+      ",
+      "url":"https://registertovote.sos.ga.gov/GAOLVR/welcometoga.do#no-back-button",
+      "absentee":"Coming soon",
+    },
+    {
+      "stateName":"Hawaii",
+      "abbr":"HI",
+      "eligibility":"
+      <p>Eligibility to register</p>
+      <ul>
+        <li>Be a U.S. citizen.</li>
+        <li>A Hawaii resident</li>
+        <li>You're at least 18 years old, or will be at the time of election.
+        You can pre-register at 16 years old, but you can't actually vote until
+        you turn 18 years old.</li>
+        <li>NOT be currently incarcerated</li>
+        <li>If you are a felon, your sentence must have been suspended,
+        regardless of whether you're placed on probation, or you've been paroled
+        after completing their imprisonment.</li>
+      </ul>
+      ",
+      "online":"
+      <p>Items required</p>
+      <ul>
+        <li>Your current Hawaii Driver's License or Hawaii State ID card</li>
+        <li>Your Social Security Number</li>
+      </ul>
+      <p>Steps</p>
+      <ol>
+        <li>Visit the state's <a href='https://olvr.hawaii.gov/'>
+        Online Voter Registration System</a> and follow the prompts as
+        you complete the online form.</li>
+      </ol>
+      ",
+      "inPerson":"
+      <p>Items required</p>
+      <ul>
+        <li>Proof of photo identification such as your Hawaii driver's license or ID card, or</li>
+        <li>Document that show both your name and address such as current utility bill,
+        current bank statement, current government or other paycheck.</li>
+      </ul>
+      <p>Steps</p>
+      <ol>
+        <li>Obtain the Voter Registration and Permanent Absentee Form from
+          <ul>
+            <li>Downloading the form <a href='https://olvr.hawaii.gov/'>
+            here</a></li>
+            <li>Public libraries, or</li>
+            <li>City halls, or</li>
+            <li>Phone directories, or</li>
+            <li>U.S. post offices, or</li>
+            <li>University of Hawaii systems, or</li>
+            <li>Register in person at any city or county clerks office or at the Office of Elections location</li>
+          </ul>
+        </li>
+        <li>Complete the form.</li>
+        <li>Return it to the county elections offices listed on the application.</li>
+      </ol>
+      ",
+      "mail":"
+      <p>Items required</p>
+      <ul>
+        <li>Proof of photo identification such as your Hawaii driver's license or ID card, or</li>
+        <li>Document that show both your name and address such as current utility bill,
+        current bank statement, current government or other paycheck.</li>
+      </ul>
+      <p>Steps</p>
+      <ol>
+        <li>Obtain the Voter Registration and Permanent Absentee Form from
+          <ul>
+            <li>Downloading the form <a href='https://olvr.hawaii.gov/'>
+            here</a></li>
+            <li>Public libraries, or</li>
+            <li>City halls, or</li>
+            <li>Phone directories, or</li>
+            <li>U.S. post offices, or</li>
+            <li>University of Hawaii systems</li>
+          </ul>
+        </li>
+        <li>Complete the form.</li>
+        <li>Mail it to the county elections offices listed on the application.</li>
+      </ol>
+      ",
+      "url":"https://olvr.hawaii.gov/Default.aspx",
+      "absentee":"Coming soon",
+    },
+    {
+      "stateName":"Idaho",
+      "abbr":"ID",
+      "eligibility":"
+      <p>Eligibility to register</p>
+      <ul>
+        <li>Be a U.S. citizen.</li>
+        <li>Have resided in Idaho and in the county for thirty (30) days prior to the day of election</li>
+        <li>Be at least 18 years old</li>
+        <li>You have not been convicted of a felony and have had your civil rights restored.</li>
+      </ul>
+      ",
+      "online":"none",
+      "inPerson":"
+      <p>Items required</p>
+      <ul>
+        <li>A copy of a current and valid photo identification or a copy of a
+        current utility bill, bank statement, government check, paycheck or government document that
+        shows your name and address must be submitted with this form or shown at the polls prior to voting</li>
+      </ul>
+      <p>Steps</p>
+      <ol>
+        <li>You can register at the polls on Election Day if you bring proof of ID and Idaho residency, or</li>
+        <li>Obtain Idaho Voter Registration Form (Form ERM-1)
+        <a href='http://www.idahovotes.gov/VoterReg/voter_registration.pdf'>
+        here</a></li>
+        <li>Complete the form.</li>
+        <li>Return form to the applicable county election office listed on the application.</li>
+      </ol>
+      ",
+      "mail":"
+      <p>Items required</p>
+      <ul>
+        <li>A copy of a current and valid photo identification or a copy of a
+        current utility bill, bank statement, government check, paycheck or government document that
+        shows your name and address must be submitted with this form or shown at the polls prior to voting</li>
+      </ul>
+      <p>Steps</p>
+      <ol>
+        <li>Obtain Idaho Voter Registration Form (Form ERM-1)
+        <a href='http://www.idahovotes.gov/VoterReg/voter_registration.pdf'>
+        here</a></li>
+        <li>Complete the form.</li>
+        <li>Mail form to the applicable county election office listed on the application.</li>
+      </ol>
+      ",
+      "url":"http://www.idahovotes.gov/voter_info.shtml",
+      "absentee":"Coming soon",
+    },
+    {
+      "stateName":"Illinois",
+      "abbr":"IL",
+      "eligibility":"
+      <p>Eligibility to register</p>
+      <ul>
+        <li>Be a U.S. citizen.</li>
+        <li>You must be 17 years old on or before the date of the Primary Election and turn 18 on or before the date of the General Election.</li>
+        <li>You must live in your election precinct at least 30 days prior to Election Day.</li>
+        <li>Not be convicted and in jail.</li>
+        <li>Not claim the right to vote anywhere else.</li>
+      </ul>
+      ",
+      "online":"
+      <p>Items required</p>
+      <ul>
+        <li>Your Illinois Drivers License or Illinois State ID number.</li>
+        <li>Date the license or ID was issued.</li>
+        <li>The last four digits of your social security number.</li>
+        <liYour birth date.</li>
+      </ul>
+      <p>Steps</p>
+      <ol>
+        <li>Visit the state's <a href='https://ova.elections.il.gov/Step0.aspx'>
+        Online Voter Registration System</a> and follow the prompts as
+        you complete the online form.</li>
+      </ol>
+      ",
+      "inPerson":"
+      <p>Items required</p>
+      <ul>
+        <li>Valid Illinois Drivers License or Illinois State ID number and 2
+        documents proving identification. 1 document must show your current address, or</li>
+        <li>The last 4 digits of your SSN and a valid photo identification, and a
+        copy of a document proving your residential address </li>
+      </ul>
+      <p>Steps</p>
+      <p>You can register to vote in person at:</p>
+      <ul>
+        <li>Board of Election Commissioner's Office.</li>
+        <li>County Clerk's Office</li>
+        <li>City and Village Offices.</li>
+        <li>Military Recruitment Offices.</li>
+        <li>Township Offices.</li>
+        <li>Schools</li>
+        <li>Public Libraries.</li>
+      </ul>
+      ",
+      "mail":"
+      <p>Items required</p>
+      <ul>
+        <li>Valid Illinois Drivers License or Illinois State ID number and 2
+        documents proving identification. 1 document must show your current address, or</li>
+        <li>The last 4 digits of your SSN and a valid photo identification, and a
+        copy of a document proving your residential address </li>
+      </ul>
+      <p>Steps</p>
+      <ol>
+      <li>Obtain Illinois Voter Registration Application (Form SBE R-19)
+      <a href='http://www.elections.il.gov/Downloads/VotingInformation/PDF/R-19.pdf'>
+      here</a></li>
+      <li>Complete the form.</li>
+      <li>Mail form to your local election authority. Address found
+      <a href='http://www.elections.il.gov/ElectionAuthorities/ElecAuthorityList.aspx'>
+      here</a></li>
+      </ol>
+      ",
+      "url":"https://www.elections.il.gov/votinginformation/register.aspx",
+      "absentee":"Coming soon",
     },
     ]}
