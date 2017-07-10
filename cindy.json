@@ -1,0 +1,58 @@
+{
+  "states":[
+    {
+      "stateName":"Alabama",
+      "abbr":"AL",
+      "eligibility":"
+      <p>Eligibility to register</p>
+      <ul>
+        <li>Be a U.S. citizen.</li>
+        <li>Be an Alabama resident.</li>
+        <li>Be at least 18 years old.</li>
+        <li>NOT been convicted of a disqualifying felony.</li>
+        <li>NOT be declared mentally incompetent by a court.</li>
+      </ul>
+      ",
+      "online":"
+      <p>Items required</p>
+      <ul>
+        <li>Item</li>
+      </ul>
+      <p>Steps</p>
+      <ol>
+        <li>step1</li>
+      </ol>
+      ",
+      "inPerson":"
+      <p>Items required</p>
+      <ul>
+        <li>Item</li>
+      </ul>
+      <p>Steps</p>
+      <ol>
+        <li>step1</li>
+      </ol>
+      ",
+      "mail":"
+      <p>Items required</p>
+      <ul>
+        <li>Item</li>
+      </ul>
+      <p>Steps</p>
+      <ol>
+        <li>step1</li>
+      </ol>
+      ",
+      "url":"",
+      "absentee":"
+      <p>Items required</p>
+      <ul>
+        <li>Item</li>
+      </ul>
+      <p>Steps</p>
+      <ol>
+        <li>step1</li>
+      </ol>
+      "
+    },
+    ]}
