@@ -1,0 +1,21 @@
+{
+  "states":[
+    {
+      "stateName":"Alabama",
+      "abbr":"AL",
+      "eligibility":"
+      <ul>
+        <li>Be a U.S. citizen.</li>
+        <li>Be an Alabama resident.</li>
+        <li>Be at least 18 years old.</li>
+        <li>NOT been convicted of a disqualifying felony.</li>
+        <li>NOT be declared "mentally incompetent" by a court.</li>
+      </ul>
+      ",
+      "online":"",
+      "person":"",
+      "mail":"",
+      "url":"",
+      "absentee":""
+    },
+    ]}
