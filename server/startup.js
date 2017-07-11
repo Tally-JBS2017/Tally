@@ -1,6 +1,10 @@
 Meteor.startup(function(){
-// this is very insecure, but helpful for development
-//	Meteor.publish('userList', function (){
-//  return Meteor.users.find({});
-
+// code to run on server at startup
+Assets.getText('register.json', function(err, data) {
+  var content = EJSON.parse(data);
+  for(state in content){
+    console.log('inserting', state);
+    Cities.insert(state);
+  }
+});
 });

@@ -14,10 +14,20 @@ Template.register.helpers({
   pageData: function() {
     var page = Template.instance().statepage.get();
   //When we get the collection and agree on a format we we swap out the manual data array for a collection grab
-    var data = {
-      "MA": [{stepname:"What you need to Register online",stepdescrip:"register online you dummy"}],
-    };
-    return {contentType:page, items:data[page]};
+
+    // var stateReq = new XMLHttpRequest();
+    // stateReq.onreadystatechange = function(){
+    //   if(this.readyState == 4 && this.status ==200){
+    //     var stateData = JSON.parse(this.responseText);
+    //   }
+    // };
+    // stateReq.open("GET","registerobjform.json",true);
+    // stateReq.send();
+     var stateData = Meteor.call('stateinfo')
+    console.dir(StateData);
+    var data = stateData.MA.eligibility;
+
+    return {contentType:page, items:data};
   }
 
 });
