@@ -1,6 +1,6 @@
 <template name="election">
   <h2>Election page</h2>
-  <div class = "col-md-5 col-md-offset 1 bg-info">
+  <div class = " col-md-5 col-md-offset 1 bg-info" id = content>
     address: <input type="text" class="streetNumber form-control" placeholder = "Street and number"><br>
     City: <input type="text" class="city form-control"><br>
     State: <input type="text" class="state form-control" placeholder = "Example: NY"><br>
@@ -14,7 +14,7 @@
       <tbody>
         {{#each t in contest}}
           <tr>
-            <td>On {{t.date}}, there will be a election in the state of {{t.state}} for {{t.seat}}</td>
+            <td>On {{t.date}}, there will be a {{t.type}} in the state of {{t.apistate}} for {{t.seat}}</td>
           </tr>
         {{/each}}
       </tbody>
