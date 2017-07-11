@@ -10,24 +10,24 @@ Template.profile.events({
     console.log('changing name')
     const name = instance.$('#name').val();
     instance.$('#name').val("");
-    Meteor.call('profiles.name.update', Meteor.userId(), name)
+    Meteor.call('profiles.name.update', name)
   },
   'click #address_add' : function (e, instance) {//this updates the name field
     console.log('changing address')
     const address = instance.$('#address').val();
     instance.$('#address').val("");
-    Meteor.call('profiles.address.update', Meteor.userId(), address)
+    Meteor.call('profiles.address.update', address)
   },
   'click #state_add' : function (e, instance) {//this updates the name field
     console.log('changing state')
     const state = instance.$('#state').val();
     instance.$('#state').val("");
-    Meteor.call('profiles.state.update', Meteor.userId(), state)
+    Meteor.call('profiles.state.update', state)
   },
   'click #zip_add' : function (e, instance) {//this updates the name field
     console.log('changing zip code')
     const zip = instance.$('#zip').val();
     instance.$('#zip').val("");
-    Meteor.call('profiles.zip.update', Meteor.userId(), zip)
+    Meteor.call('profiles.zip.update', zip)
   }
 })
