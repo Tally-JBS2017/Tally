@@ -6,6 +6,30 @@
 <body>
   <h1>Welcome to Tally!</h1>
   A voting app -- and better.
+
+  <div class="row">
+    <div class="col-xs-6 col-md-3">
+      <a href="{{pathFor 'register'}}" class="thumbnail">
+        <h2>Register to Vote</h2>
+      </a>
+    </div>
+
+    <div class="col-xs-6 col-md-3">
+      <a href="{{pathFor 'election'}}" class="thumbnail">
+        <h2>Vote for Upcoming Election</h2>
+      </a>
+    </div>
+    <div class="col-xs-6 col-md-3">
+      <a href="{{pathFor 'informMe'}}" class="thumbnail">
+        <h2>Inform Me About Politics</h2>
+      </a>
+    </div>
+    <div class="col-xs-6 col-md-3">
+      <a href="{{pathFor 'profile'}}" class="thumbnail">
+        <h2>My Profile</h2>
+      </a>
+    </div>
+  </div>
   <h2>Creators</h2>
   <ul>
     <li>Steven Chen</li>
