@@ -17,5 +17,17 @@ Template.profile.events({
     const address = instance.$('#address').val();
     instance.$('#address').val("");
     Meteor.call('profiles.address.update', Meteor.userId(), address)
+  },
+  'click #state_add' : function (e, instance) {//this updates the name field
+    console.log('changing state')
+    const state = instance.$('#state').val();
+    instance.$('#state').val("");
+    Meteor.call('profiles.state.update', Meteor.userId(), state)
+  },
+  'click #zip_add' : function (e, instance) {//this updates the name field
+    console.log('changing zip code')
+    const zip = instance.$('#zip').val();
+    instance.$('#zip').val("");
+    Meteor.call('profiles.zip.update', Meteor.userId(), zip)
   }
 })
