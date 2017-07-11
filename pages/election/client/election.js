@@ -50,11 +50,11 @@ Template.election.events({
         for(i=1; i<electionInfo.results.length; i++){
           var seat= electionInfo.results[i].election_notes.toString();
           var date= electionInfo.results[i].election_date.toString();
-          var state= electionInfo.results[i].election_state.toString();
+          var apistate= electionInfo.results[i].election_state.toString();
+          var type= electionInfo.results[i].election_type_full.toString();
+          console.log(type);
 
-
-
-        var information = {seat,date,state}
+        var information = {seat,date,apistate,type}
         Meteor.call('election.insert',information);
         }
       }
