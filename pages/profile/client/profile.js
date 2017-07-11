@@ -17,9 +17,9 @@ Template.profile.events({
     Meteor.call('profiles.address.update', address)
   },
   'click #state_add' : function (e, instance) {//this updates the name field
-    const state = instance.$('#state').val();
-    instance.$('#state').val("");
-    Meteor.call('profiles.state.update', state)
+    //const state = instance.$('#state').val();
+    //instance.$('#state').val("");
+    //Meteor.call('profiles.state.update', state)
   },
   'click #zip_add' : function (e, instance) {//this updates the name field
     const zip = instance.$('#zip').val();
