@@ -5,7 +5,7 @@ Template.profile.helpers({
 Template.profile.events({
   'click #new' : function (e, instance) {//this activates when you press the reset button
     var to_be_inserted = {name:'Default', owner: Meteor.userId()};
-    Meteor.call('profiles.insert', Meteor.userId(), to_be_inserted);
+    Meteor.call('profiles.insert', to_be_inserted);
   },
   'click #name_add' : function (e, instance) {//this updates the name field
     const name = instance.$('#name').val();
@@ -15,8 +15,7 @@ Template.profile.events({
   'click #address_add' : function (e, instance) {//this updates the name field
     const address = instance.$('#address').val();
     instance.$('#address').val("");
-
-    Meteor.call('profiles.address.update', Meteor.userId(), address)
+    Meteor.call('profiles.address.update', address)
   },
   'click #state_add' : function (event, instance){
     console.log('changing state');
