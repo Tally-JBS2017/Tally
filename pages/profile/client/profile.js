@@ -8,20 +8,20 @@ Template.profile.events({
     Meteor.call('profiles.insert', Meteor.userId(), to_be_inserted);
   },
   'click #name_add' : function (e, instance) {//this updates the name field
-    console.log('changing name')
     const name = instance.$('#name').val();
     instance.$('#name').val("");
-    Meteor.call('profiles.name.update', Meteor.userId(), name)
+    Meteor.call('profiles.name.update', name)
   },
   'click #address_add' : function (e, instance) {//this updates the name field
-    console.log('changing address')
     const address = instance.$('#address').val();
     instance.$('#address').val("");
+
     Meteor.call('profiles.address.update', Meteor.userId(), address)
   },
   'click #state_add' : function (event, instance){
     console.log('changing state');
     const state = instance.$('#state').val();
+    Meteor.call('profiles.state.update',state)
     instance.$('#state').val("");
 
     Meteor.call('election.clear');
@@ -54,5 +54,14 @@ Template.profile.events({
     };
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
-  }
+  },
+  'click #zip_add' : function (e, instance) {//this updates the name field
+    const zip = instance.$('#zip').val();
+    instance.$('#zip').val("");
+    if(!isNaN(zip) & zip.length == 5){
+        Meteor.call('profiles.zip.update', zip)
+    }else{
+      alert("This zip code is not a valid input. ")
+    }
+  },
 })
