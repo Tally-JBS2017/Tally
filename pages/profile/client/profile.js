@@ -11,5 +11,11 @@ Template.profile.events({
     const name = instance.$('#name').val();
     instance.$('#name').val("");
     Meteor.call('profiles.name.update', Meteor.userId(), name)
+  },
+  'click #address_add' : function (e, instance) {//this updates the name field
+    console.log('changing address')
+    const address = instance.$('#address').val();
+    instance.$('#address').val("");
+    Meteor.call('profiles.address.update', Meteor.userId(), address)
   }
 })

@@ -7,7 +7,7 @@
       <p></p>
     </div>
     <div class = "name"><!-- shows your profile name here -->
-      <h1>Your Name </h1>
+      <h1>Your Name: </h1>
       {{#each member in current_profile}}
         <h2>{{member.name}}</h2>
       {{/each}}
@@ -16,6 +16,42 @@
       <br>
       <br><!--place to change your name -->
       <button class="btn btn-default btn-large js-chatsubmit" id = "name_add">Submit</button>
+      <br>
+    </div>
+    <div class = "address"><!-- shows your profile name here -->
+      <h1>Your Adress: </h1>
+      {{#each member in current_profile}}
+        <h2>{{member.address}}</h2>
+      {{/each}}
+      <p>Change your address here:</p>
+      <input type="text"  class="js-chatinput" id = "address">
+      <br>
+      <br><!--place to change your name -->
+      <button class="btn btn-default btn-large js-chatsubmit" id = "address_add">Submit</button>
+      <br>
+    </div>
+    <div class = "state"><!-- shows your profile name here -->
+      <h1>Your State: </h1>
+      {{#each member in current_profile}}
+        <h2>{{member.state}}</h2>
+      {{/each}}
+      <p>Change your state here:</p>
+      <input type="text"  class="js-chatinput" id = "state">
+      <br>
+      <br><!--place to change your name -->
+      <button class="btn btn-default btn-large js-chatsubmit" id = "state_add">Submit</button>
+      <br>
+    </div>
+    <div class = "zip"><!-- shows your profile name here -->
+      <h1>Your Zip Code: </h1>
+      {{#each member in current_profile}}
+        <h2>{{member.zip}}</h2>
+      {{/each}}
+      <p>Change your zip code here:</p>
+      <input type="text"  class="js-chatinput" id = "zip">
+      <br>
+      <br><!--place to change your name -->
+      <button class="btn btn-default btn-large js-chatsubmit" id = "zip_add">Submit</button>
       <br>
     </div>
     <p></p>
