@@ -13,17 +13,25 @@
     <span class="glyphicon glyphicon-stop" aria-hidden="true"></span> Stop
   </button>
     {{/if}}
-
   </div>
 </template>
 
 
 <template name="content">
-  <h3 class="page-header" style="text-transform: capitalize;">{{this.contentType}}</h3>
+  <h3 class="page-header" style="text-transform: capitalize;">{{this.items.stateName}}</h3>
   <table class="table table-striped table-bordered">
     <tbody>
     <tr>
-      <td>{{this.items.toString}}</td>
+      <td>Eligibility to register</td><td>{{{this.items.eligibility.toString}}}</td>
+    </tr>
+    <tr>
+      <td>To register online</td><td>{{{this.items.online.toString}}}</td>
+    </tr>
+    <tr>
+      <td>To register in person</td><td>{{{this.items.inPerson.toString}}}</td>
+    </tr>
+    <tr>
+      <td>To register by mail</td><td>{{{this.items.mail.toString}}}</td>
     </tr>
   </tbody>
   </table>
