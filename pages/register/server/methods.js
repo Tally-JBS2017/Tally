@@ -5,7 +5,7 @@ Meteor.methods({
         return HTTP.call("POST", "https://api.api.ai/v1/query/",
             {
                 headers: {
-                    "Authorization": "Bearer" + Meteor.settings.APIAI_key, //API.ai token here (from API.ai account)
+                    "Authorization": "Bearer" + "70d122e9ce4b472eaacadadacec74086", //API.ai token here (from API.ai account)
                     "Content-Type": "application/json; charset=utf-8"
                 },
                 data: {
