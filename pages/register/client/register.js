@@ -2,6 +2,8 @@ import { ReactiveVar } from 'meteor/reactive-var';
 
 Template.register.onCreated(function registerOnCreated() {
   this.statepage= new ReactiveVar("");
+  Meteor.subscribe("Statereginfo");
+  console.log(Statereginfo.toString());
 });
 
 Template.register.helpers({
@@ -23,9 +25,9 @@ Template.register.helpers({
     // };
     // stateReq.open("GET","registerobjform.json",true);
     // stateReq.send();
-     var stateData = Meteor.call('stateinfo')
+    var stateData = Statereginfo.findOne();
     console.dir(StateData);
-    var data = stateData.MA.eligibility;
+    var data = stateData.eligibility;
 
     return {contentType:page, items:data};
   }
