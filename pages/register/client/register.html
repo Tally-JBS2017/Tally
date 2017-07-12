@@ -4,7 +4,16 @@
 <button id=regisInfo>Find Registration info</button>
   {{> Template.dynamic template="content" data=pageData}}
   <div>
-  <button id="speakButton">Speak</button>
+    {{#if ifInactive}}
+    <button id="recordAudioButton"><span class="glyphicon glyphicon-play" aria-hidden="true"></span> Speak
+    </button>
+    {{/if}}
+    {{#if ifSpeaking}}
+    <button id="stopRecordAudioButton">
+    <span class="glyphicon glyphicon-stop" aria-hidden="true"></span> Stop
+  </button>
+    {{/if}}
+
   </div>
 </template>
 
