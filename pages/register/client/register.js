@@ -3,6 +3,12 @@ import { ReactiveVar } from 'meteor/reactive-var';
 Template.register.onCreated(function registerOnCreated() {
   this.statepage= new ReactiveVar("");
   this.recognition= new ReactiveVar("");
+  this.voiceDict = new ReactiveDict();
+  //set the status of the recording
+  //inactive - user is not speaking or the recognition has ended
+  //speaking - user is speaking
+  //waiting - wait for the result from Google Speech API
+  this.voiceDict.set("recording_status", "inactive");
 })
 
 Template.register.helpers({
@@ -20,9 +26,19 @@ Template.register.helpers({
     };
     return {contentType:page, items:data[page]};
   },
+  ifInactive: function(){
+    const voiceDict = Template.instance().voiceDict
+    return voiceDict.get("recording_status") == "inactive";
+  },
+
+  ifSpeaking: function(){
+    const voiceDict = Template.instance().voiceDict
+    return voiceDict.get("recording_status") == "speaking";
+  },
 })
 
 Template.register.events({
+
   'click #regisInfo'(elt,instance){
     const zip =instance.$("#zipcode").val();
 
@@ -50,7 +66,7 @@ Template.register.events({
     Template.instance().statepage.set(state);
     //console.log("active variable:"+Template.instance().statepage.get());
   },
-  'click #speakButton'(elt,instance){
+  'click #recordAudioButton'(elt,instance){
     var recognition = new webkitSpeechRecognition();
      recognition.onresult = function(event){
        const text = event.results[0][0].transcript;
@@ -59,7 +75,6 @@ Template.register.events({
            window.alert(err);
            return;
          }
-
          console.log(result);
          console.log(result.data.result.metadata.intentName);
          //console.log(result.data.result.speech);
@@ -68,7 +83,14 @@ Template.register.events({
        })
      };
      recognition.start();
+     Template.instance().recognition = recognition;
+     Template.instance().voiceDict.set("recording_status", "speaking");
   },
+
+  'click #stopRecordAudioButton'(elt,instance){
+    Template.instance().recognition.stop();
+    Template.instance().voiceDict.set("recording_status", "inactive");
+  }
 
 
 })
