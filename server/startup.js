@@ -1,12 +1,6 @@
 Meteor.startup(function(){
 // code to run on server at startup
-
-  // var content = JSON.parse(Assets.getText('register.json'));
-  // for(state in content){
-  //   console.log('inserting', state);
-  //   Statereginfo.insert(state);
-  // }
-
+  //The following code populates Statereginfo with all the info we collected.
   Statereginfo.remove({});
   var fs = Npm.require('fs');
   fs.readFile('../../../../../server/register.json', 'utf8', Meteor.bindEnvironment(function (err, data) {

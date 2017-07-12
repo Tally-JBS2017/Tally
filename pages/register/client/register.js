@@ -2,9 +2,14 @@ import { ReactiveVar } from 'meteor/reactive-var';
 
 Template.register.onCreated(function registerOnCreated() {
   this.statepage= new ReactiveVar("");
+<<<<<<< HEAD
   Meteor.subscribe("Statereginfo");
   console.log(Statereginfo.toString());
 });
+=======
+  this.recognition= new ReactiveVar("");
+})
+>>>>>>> master
 
 Template.register.helpers({
   //this function's purpose is to allow the dynamic template to grab the right template name.
@@ -16,6 +21,7 @@ Template.register.helpers({
   pageData: function() {
     var page = Template.instance().statepage.get();
   //When we get the collection and agree on a format we we swap out the manual data array for a collection grab
+<<<<<<< HEAD
 
     // var stateReq = new XMLHttpRequest();
     // stateReq.onreadystatechange = function(){
@@ -33,9 +39,17 @@ Template.register.helpers({
   }
 
 });
+=======
+    var data = {
+      "MA": [{stepname:"What you need to Register online",stepdescrip:"register online you dummy"}],
+    };
+    return {contentType:page, items:data[page]};
+  },
+})
+>>>>>>> master
 
 Template.register.events({
-  'click button'(elt,instance){
+  'click #regisInfo'(elt,instance){
     const zip =instance.$("#zipcode").val();
 
     /*
@@ -61,5 +75,26 @@ Template.register.events({
     This allows blaze to populate the dynamic template with the correct info */
     Template.instance().statepage.set(state);
     //console.log("active variable:"+Template.instance().statepage.get());
-  }
-});
+  },
+  'click #speakButton'(elt,instance){
+    var recognition = new webkitSpeechRecognition();
+     recognition.onresult = function(event){
+       const text = event.results[0][0].transcript;
+       Meteor.call("sendJSONtoAPI_ai", text, { returnStubValue: true }, function(err, result){
+         if(err){
+           window.alert(err);
+           return;
+         }
+
+         console.log(result);
+         console.log(result.data.result.metadata.intentName);
+         //console.log(result.data.result.speech);
+         var msg = new SpeechSynthesisUtterance(result.data.result.speech);
+         window.speechSynthesis.speak(msg);
+       })
+     };
+     recognition.start();
+  },
+
+
+})
