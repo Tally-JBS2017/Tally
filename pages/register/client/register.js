@@ -55,8 +55,8 @@ Template.register.events({
               var locinfo = JSON.parse(this.responseText);
               var state = locinfo.state.toString();
               var city = locinfo.city.toString();
-              console.log(state);
-              console.log(city);
+              //console.log(state);
+              //console.log(city);
               callback(reactvar, state);
           }
       };
