@@ -9,7 +9,7 @@
     <div class = "name"><!-- shows your profile name here -->
       <h1>Your Name: </h1>
       {{#each member in current_profile}}
-        <h2>{{member.name}}</h2>
+        <h2 id="userInput">{{member.name}}</h2>
       {{/each}}
       <p>Change your name here:</p>
       <input type="text"  class="js-chatinput" id = "name">
@@ -21,7 +21,7 @@
     <div class = "address"><!-- shows your profile name here -->
       <h1>Your Address: </h1>
       {{#each member in current_profile}}
-        <h2>{{member.address}}</h2>
+        <h2 id="userInput">{{member.address}}</h2>
       {{/each}}
       <p>Change your address here:</p>
       <input type="text"  class="js-chatinput" id = "address">
@@ -33,7 +33,7 @@
     <div class = "state"><!-- shows your profile name here -->
       <h1>Your State: </h1>
       {{#each member in current_profile}}
-        <h2>{{member.state}}</h2>
+        <h2 id="userInput">{{member.state}}</h2>
       {{/each}}
       <p>Change your state here:</p>
       <!--<input type="text"  class="js-chatinput" id = "state">
@@ -98,7 +98,7 @@
     <div class = "zip"><!-- shows your profile name here -->
       <h1>Your Zip Code: </h1>
       {{#each member in current_profile}}
-        <h2>{{member.zip}}</h2>
+        <h2 id="userInput">{{member.zip}}</h2>
       {{/each}}
       <p>Change your zip code here:</p>
       <input type="text"  class="js-chatinput" id = "zip">

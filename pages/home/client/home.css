@@ -1,5 +1,9 @@
 /* CSS declarations go here */
 a{
   text-decoration: none;
-  
+}
+
+.home{
+  color: #ECEFF1;
+
 }
