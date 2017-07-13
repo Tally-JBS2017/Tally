@@ -1,9 +1,37 @@
 /* CSS declarations go here */
 a{
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 .home{
   color: #ECEFF1;
+}
 
+.page{
+  position:absolute;
+}
+
+.flex {
+    width: 1000px;
+    height: 200px;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.flex > div {
+    flex: 1 1 auto;
+    width: 30px;
+    transition: width 0.7s ease-out;
+
+}
+
+.flex > div > img {
+    width: 100%;
+    height: 300px;
+}
+
+
+.flex > div:hover {
+    width: 200px;
 }
