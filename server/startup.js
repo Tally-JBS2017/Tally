@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-Meteor.startup(function(){
-
-});
-=======
 Meteor.startup(function(){
 // code to run on server at startup
   //The following code populates Statereginfo with all the info we collected.
@@ -19,4 +14,3 @@ Meteor.startup(function(){
     console.log(Statereginfo.findOne().stateName);
   }));
 });
->>>>>>> 491e0cebe0c6cc24f8f2a8775864d7435c262785
