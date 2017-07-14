@@ -3,7 +3,7 @@ Meteor.publish('Statereginfo',function(){
 })
 
 Meteor.publish('profiles',function(){
-  return profiles.find();
+  return Profiles.find();
 })
 
 
