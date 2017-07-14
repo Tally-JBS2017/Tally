@@ -1,9 +1,10 @@
-//window.onload = function () {
-//  var to_be_inserted = {name:'Default', owner: Meteor.userId()};
-//  Meteor.call('profiles.insert', to_be_inserted);
-//}
 Template.profile.onCreated(function(){
   Meteor.subscribe('profiles');
+  if(Profiles.findOne({owner:Meteor.userId()}) == null){
+    var to_be_inserted = {name:'Default', owner: Meteor.userId()};
+    Meteor.call('profiles.insert', to_be_inserted);
+    // console.log("Statepage = "+this.statepage);
+  }
 });
 Template.profile.helpers({
   current_profile() {return Profiles.find({owner: Meteor.userId()})},
