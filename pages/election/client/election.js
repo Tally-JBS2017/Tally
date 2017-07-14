@@ -35,7 +35,7 @@ Template.election.events({
     const fullDate = month + " " + day + " " + year;
     //this is for the user inputs
     const state = $(".state").val();
-  
+
 
     const ElectionAPIkey = "aINkNgEHYqnSUX9TT7TEuSQus167GNvHRAdSjLpx";
 
@@ -79,8 +79,8 @@ Template.election.events({
     */
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
-    if(Meteor.call('election.count') == 0){
-      document.getElementById("ifnothing").innerHTML = "Sorry there are no elections at you state";
+    if( Election.find().count() == 0){ //this tells the user if their are elections in their state.
+      document.getElementById("ifnothing").innerHTML = "Sorry, their are no elections at your state";
     }
   },
 })
