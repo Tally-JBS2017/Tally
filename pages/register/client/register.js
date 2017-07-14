@@ -17,7 +17,7 @@ Template.register.onCreated(function registerOnCreated() {
   // console.log(Profiles.findOne({owner:Meteor.userId()}));
   if(Profiles.findOne({owner:Meteor.userId()}) != null){
     this.statepage = Profiles.findOne({owner:Meteor.userId()}).state;
-    // console.log("Statepage = "+this.statepage);
+    console.log("Statepage = "+this.statepage);
   }
   this.recognition= new ReactiveVar("");
   this.voiceDict = new ReactiveDict();
@@ -42,8 +42,9 @@ Template.register.helpers({
   // This fuction is what is used to populate the static-template with dynamic data.
   // For now it's using an array but we late we can pull the array from collections.
   pageData: function() {
-    var page = Template.instance().statepage.get();
-    // var page = Template.instance().statepage;
+    // var page = Template.instance().statepage.get();
+    var page = Template.instance().statepage;
+    console.log(page);
     //When we get the collection and agree on a format we we swap out the manual data array for a collection grab
     var data = Statereginfo.findOne({abbr:page});
     console.log("Page data is pulled from "+data);
@@ -97,7 +98,7 @@ Template.register.events({
   },
   'click #recordAudioButton'(elt,instance){
     var recognition = new webkitSpeechRecognition();
-    var page = Template.instance().statepage.get();
+    var page = Template.instance().statepage;
 
     var voice_data = Regis_voice_info.findOne({abbr:page}).online;
     console.log(voice_data);

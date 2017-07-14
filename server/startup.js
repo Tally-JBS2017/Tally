@@ -21,7 +21,7 @@ Meteor.startup(function(){
     registerVoiceData = JSON.parse(data);
     for(i = 0; i< registerVoiceData.states.length; i++){
       console.log('inserting '+ registerVoiceData.states[i].abbr);
-      
+
       Regis_voice_info.insert(registerVoiceData.states[i]);
     }
   }));
