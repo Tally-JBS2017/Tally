@@ -31,11 +31,11 @@ Template.register.helpers({
   // This fuction is what is used to populate the static-template with dynamic data.
   // For now it's using an array but we late we can pull the array from collections.
   pageData: function() {
-    // var page = Template.instance().statepage.get();
-    var page = Template.instance().statepage;
+    var page = Template.instance().statepage.get();
+    // var page = Template.instance().statepage;
     //When we get the collection and agree on a format we we swap out the manual data array for a collection grab
     var data = Statereginfo.findOne({abbr:page});
-    console.log(data);
+    console.log("Page data is pulled from "+data);
     return {contentType:page, items:data};
   },
 
