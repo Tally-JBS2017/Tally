@@ -34,15 +34,12 @@ Template.election.events({
     const day = d.getDay()+1;
     const fullDate = month + " " + day + " " + year;
     //this is for the user inputs
-    const streetNumber = $(".streetNumber").val();//this is for the street and number
-    const city = $(".city").val();
     const state = $(".state").val();
-    const zipCode = $(".zipCode").val();
-    const address = streetNumber + " " + city + " " + state
+  
 
     const ElectionAPIkey = "aINkNgEHYqnSUX9TT7TEuSQus167GNvHRAdSjLpx";
 
-    var url = "https://api.open.fec.gov/v1/election-dates/?min_election_date=" + fullDate + "&sort=election_date&page=1&api_key=aINkNgEHYqnSUX9TT7TEuSQus167GNvHRAdSjLpx&per_page=20"
+    var url = "https://api.open.fec.gov/v1/election-dates/?min_election_date=" + fullDate +"&election_state=" + state + "&sort=election_date&page=1&api_key=aINkNgEHYqnSUX9TT7TEuSQus167GNvHRAdSjLpx&per_page=20"
 
     xmlhttp.onreadystatechange = function(){
       if(this.readyState == 4 && this.status == 200){
