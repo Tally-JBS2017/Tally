@@ -1,21 +1,38 @@
 <template name="register">
 <h2>Register page</h2>
 <Label>ZIP Code</Label><input id="zipcode" maxlength="5" required="'required'" type="number" pattern="[0-9]{5}" title="Five digit zip code" />
-<button>Find Registration info</button>
+<button id=regisInfo>Find Registration info</button>
   {{> Template.dynamic template="content" data=pageData}}
+  <div>
+    {{#if ifInactive}}
+    <button id="recordAudioButton"><span class="glyphicon glyphicon-play" aria-hidden="true"></span> Speak
+    </button>
+    {{/if}}
+    {{#if ifSpeaking}}
+    <button id="stopRecordAudioButton">
+    <span class="glyphicon glyphicon-stop" aria-hidden="true"></span> Stop
+  </button>
+    {{/if}}
+  </div>
 </template>
 
 
 <template name="content">
-  <h3 class="page-header" style="text-transform: capitalize;">{{this.contentType}}</h3>
+  <h3 class="page-header" style="text-transform: capitalize;">{{this.items.stateName}}</h3>
   <table class="table table-striped table-bordered">
-    {{#each this.items}}
     <tbody>
     <tr>
-      <td><strong>{{stepname}}</strong></td>
-      <td>{{stepdescrip}}</td>
+      <td>Eligibility to register</td><td>{{{this.items.eligibility.toString}}}</td>
+    </tr>
+    <tr>
+      <td>To register online</td><td>{{{this.items.online.toString}}}</td>
+    </tr>
+    <tr>
+      <td>To register in person</td><td>{{{this.items.inPerson.toString}}}</td>
+    </tr>
+    <tr>
+      <td>To register by mail</td><td>{{{this.items.mail.toString}}}</td>
     </tr>
   </tbody>
-    {{/each}}
   </table>
 </template>

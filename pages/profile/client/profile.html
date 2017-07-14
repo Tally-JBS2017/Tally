@@ -9,7 +9,7 @@
     <div class = "name"><!-- shows your profile name here -->
       <h1>Your Name: </h1>
       {{#each member in current_profile}}
-        <h2>{{member.name}}</h2>
+        <h2 id="userInput">{{member.name}}</h2>
       {{/each}}
       <p>Change your name here:</p>
       <input type="text"  class="js-chatinput" id = "name">
@@ -21,10 +21,10 @@
     <div class = "address"><!-- shows your profile name here -->
       <h1>Your Address: </h1>
       {{#each member in current_profile}}
-        <h2>{{member.address}}</h2>
+        <h2 id="userInput">{{member.address}}</h2>
       {{/each}}
       <p>Change your address here:</p>
-      <input type="text"  class="js-chatinput" id = "address">
+      <input type="text"  class="js-chatinput" id = "address" placeholder = "Street and number">
       <br>
       <br>
       <button class="btn btn-default btn-large js-chatsubmit" id = "address_add">Submit</button>
@@ -33,7 +33,7 @@
     <div class = "state"><!-- shows your profile name here -->
       <h1>Your State: </h1>
       {{#each member in current_profile}}
-        <h2>{{member.state}}</h2>
+        <h2 id="userInput">{{member.state}}</h2>
       {{/each}}
       <p>Change your state here:</p>
       <!--<input type="text"  class="js-chatinput" id = "state">
@@ -41,6 +41,7 @@
       <br>-->
 
       <select id = "state">
+        <option disabled selected value> -- select an option -- </option>
         <option value="AL">Alabama</option>
         <option value="AK">Alaska</option>
         <option value="AZ">Arizona</option>
@@ -98,7 +99,7 @@
     <div class = "zip"><!-- shows your profile name here -->
       <h1>Your Zip Code: </h1>
       {{#each member in current_profile}}
-        <h2>{{member.zip}}</h2>
+        <h2 id="userInput">{{member.zip}}</h2>
       {{/each}}
       <p>Change your zip code here:</p>
       <input type="text"  class="js-chatinput" id = "zip">
@@ -107,6 +108,8 @@
       <button class="btn btn-default btn-large js-chatsubmit" id = "zip_add">Submit</button>
       <br>
     </div>
+    <br>
+    <button class="btn btn-primary btn-large js-chatsubmit" id = "submit_all">Submit All</button>
     <p></p>
   {{else}}
     <h2>You must log in to see your profile. </h2>

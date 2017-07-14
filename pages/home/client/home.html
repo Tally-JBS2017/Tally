@@ -3,11 +3,34 @@
   <title>tallyJBS2017</title>
 </head>
 
-<body>
+<body class="home">
   <h1>Welcome to Tally!</h1>
   A voting app -- and better.
 
-  <div class="row">
+  <div class="flex">
+        <div>
+          <a href="{{pathFor 'register'}}" class="thumbnail">
+            <img src="images/register.jpg">
+          </a>
+        </div>
+        <div>
+          <a href="{{pathFor 'election'}}" class="thumbnail">
+            <img src="images/election.jpg">
+          </a>
+        </div>
+        <div>
+          <a href="{{pathFor 'informMe'}}" class="thumbnail">
+            <img src="images/informMe.jpg">
+          </a>
+        </div>
+        <div>
+          <a href="{{pathFor 'profile'}}" class="thumbnail">
+            <img src="images/profile.jpg">
+          </a>
+        </div>
+  </div>
+
+  <!-- <div class="row">
     <div class="col-xs-6 col-md-3">
       <a href="{{pathFor 'register'}}" class="thumbnail">
         <h2>Register to Vote</h2>
@@ -29,7 +52,8 @@
         <h2>My Profile</h2>
       </a>
     </div>
-  </div>
+  </div> -->
+  <div>
   <h2>Creators</h2>
   <ul>
     <li>Steven Chen</li>
@@ -43,5 +67,6 @@
     as assist them in registering to vote. The PGA wants to promote voter
     participation by giving clients the tools they need to make their voting
     decisions and to strip away the headache for registering to vote, and voting.</p>
+  </div>
 </body>
 </template>
