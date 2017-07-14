@@ -1,13 +1,14 @@
 Template.election.onCreated(function() {
-  this.state = new ReactiveDict();
-  this.state.setDefault({
-    contest:[], //this will hold all the elections
-    t:{},//this would hold each seperate election
-
-  });
-
-  console.log("creating the template");
-  console.dir(this.state);
+  Meteor.subscribe('election');
+  // this.state = new ReactiveDict();
+  // this.state.setDefault({
+  //   contest:[], //this will hold all the elections
+  //   t:{},//this would hold each seperate election
+  //
+  // });
+  //
+  // console.log("creating the template");
+  // console.dir(this.state);
 });
 
 Template.election.helpers({
