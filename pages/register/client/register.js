@@ -1,7 +1,14 @@
 import { ReactiveVar } from 'meteor/reactive-var';
 
 Template.register.onCreated(function registerOnCreated() {
+  Meteor.subscribe("Statereginfo");
+  Meteor.subscribe("profiles");
   this.statepage= new ReactiveVar("");
+  console.log(Profiles.findOne({owner:Meteor.userId()}));
+  if(Profiles.findOne({owner:Meteor.userId()}) != null){
+    this.statepage = Profiles.findOne({owner:Meteor.userId()}).state;
+    console.log("Statepage = "+this.statepage);
+  }
   this.recognition= new ReactiveVar("");
   this.voiceDict = new ReactiveDict();
   //set the status of the recording
@@ -9,7 +16,6 @@ Template.register.onCreated(function registerOnCreated() {
   //speaking - user is speaking
   //waiting - wait for the result from Google Speech API
   this.voiceDict.set("recording_status", "inactive");
-  Meteor.subscribe("Statereginfo");
 })
 
 Template.register.helpers({
@@ -20,7 +26,8 @@ Template.register.helpers({
   // This fuction is what is used to populate the static-template with dynamic data.
   // For now it's using an array but we late we can pull the array from collections.
   pageData: function() {
-    var page = Template.instance().statepage.get();
+    // var page = Template.instance().statepage.get();
+    var page = Template.instance().statepage;
     //When we get the collection and agree on a format we we swap out the manual data array for a collection grab
     var data = Statereginfo.findOne({abbr:page});
     console.log(data);
