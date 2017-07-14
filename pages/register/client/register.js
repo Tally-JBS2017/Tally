@@ -10,6 +10,7 @@ Template.register.onCreated(function registerOnCreated() {
   //waiting - wait for the result from Google Speech API
   this.voiceDict.set("recording_status", "inactive");
   Meteor.subscribe("Statereginfo");
+  Meteor.subscribe("regis_voice_info");
 })
 
 Template.register.helpers({
@@ -23,6 +24,7 @@ Template.register.helpers({
     var page = Template.instance().statepage.get();
     //When we get the collection and agree on a format we we swap out the manual data array for a collection grab
     var data = Statereginfo.findOne({abbr:page});
+
     console.log(data);
     return {contentType:page, items:data};
   },
@@ -75,6 +77,10 @@ Template.register.events({
   },
   'click #recordAudioButton'(elt,instance){
     var recognition = new webkitSpeechRecognition();
+    var page = Template.instance().statepage.get();
+    
+    var voice_data = Regis_voice_info.findOne({abbr:page}).online;
+    console.log(voice_data);
      recognition.onresult = function(event){
        const text = event.results[0][0].transcript;
        Meteor.call("sendJSONtoAPI_ai", text, { returnStubValue: true }, function(err, result){
@@ -82,11 +88,15 @@ Template.register.events({
            window.alert(err);
            return;
          }
-         console.log(result);
-         console.log(result.data.result.metadata.intentName);
-         //console.log(result.data.result.speech);
-         var msg = new SpeechSynthesisUtterance(result.data.result.speech);
-         window.speechSynthesis.speak(msg);
+         if(result.data.result.metadata.intentName == "register_online"){
+           responsiveVoice.speak(voice_data);
+         } else{
+           console.log(result);
+           console.log(result.data.result.metadata.intentName);
+           //console.log(result.data.result.speech);
+           var msg = new SpeechSynthesisUtterance(result.data.result.speech);
+           window.speechSynthesis.speak(msg);
+         }
        })
      };
      recognition.start();
