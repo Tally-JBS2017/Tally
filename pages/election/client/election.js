@@ -81,6 +81,8 @@ Template.election.events({
     */
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
-
+    if(Meteor.call('election.count') == 0){
+      document.getElementById("ifnothing").innerHTML = "Sorry there are no elections at you state";
+    }
   },
 })
