@@ -13,4 +13,16 @@ Meteor.startup(function(){
     }
     console.log(Statereginfo.findOne().stateName);
   }));
+
+  //This code adds the json file with no html tags about how to vote for each state to a collection.
+  Regis_voice_info.remove({});
+  var fs = Npm.require('fs');
+  fs.readFile('../../../../../server/register_voice.json', 'utf8', Meteor.bindEnvironment(function (err, data){
+    registerVoiceData = JSON.parse(data);
+    for(i = 0; i< registerVoiceData.states.length; i++){
+      console.log('inserting '+ registerVoiceData.states[i].abbr);
+      
+      Regis_voice_info.insert(registerVoiceData.states[i]);
+    }
+  }));
 });
