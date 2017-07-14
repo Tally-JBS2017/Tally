@@ -14,9 +14,7 @@ Template.informMe.events({
 
     var xmlhttp = new XMLHttpRequest();
     const input = $(".search").val();
-
     const state = instance.$('#state').val();
-
     const position = instance.$('#position').val();
 
 
