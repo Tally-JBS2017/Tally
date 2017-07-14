@@ -15,6 +15,15 @@ Template.profile.events({
     instance.$('#name').val("");
     Meteor.call('profiles.name.update', name)
   },
+  'click #age_add' : function (e, instance) {//this updates the name field
+    const age = instance.$('#age').val();
+    instance.$('#age').val("");
+    if(!isNaN(age)){
+        Meteor.call('profiles.age.update', age)
+    }else{
+      alert("This age is not a valid input. ")
+    }
+  },
   'click #address_add' : function (e, instance) {//this updates the name field
     const address = instance.$('#address').val();
     instance.$('#address').val("");
