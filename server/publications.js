@@ -11,6 +11,10 @@ Meteor.publish('election',function(){
   return Election.find();
 })
 
+
 Meteor.publish('regis_voice_info', function(){
   return Regis_voice_info.find();
+
+Meteor.publish('politicians',function(){
+  return Politicians.find();
 })
