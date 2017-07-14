@@ -10,3 +10,7 @@ Meteor.publish('profiles',function(){
 Meteor.publish('election',function(){
   return Election.find();
 })
+
+Meteor.publish('politicians',function(){
+  return Politicians.find();
+})

@@ -1,16 +1,21 @@
+Template.informMe.onCreated(function(){
+  Meteor.subscribe('politicians');
+  Meteor.call('politicians.clear');
+})
+
 Template.informMe.helpers({
   informed(){
-    Politicians.find()
+    return Politicians.find()
   }
 })
 
 Template.informMe.events({
   "click .searchbar": function(event,instance){
+
     var xmlhttp = new XMLHttpRequest();
     const input = $(".search").val();
 
     const state = instance.$('#state').val();
-
 
     const position = instance.$('#position').val();
 
@@ -27,16 +32,23 @@ Template.informMe.events({
           div.removeChild(div.firstChild);
         }
         for(i=1; i<electionInfo.results.length; i++){
-          id = electionInfo.results[i].id.toString(); //this is getting the politican id
           name = electionInfo.results[i].name.toString(); //this gets name of politician
           console.log(name);
-          console.log(id);
-
-          var src = 'https://theunitedstates.io/images/congress/225x275/' + id + '.jpg';//we are getting pictures from this github page
-          var img = document.createElement('img');
-          img.src = src;
           if(input.toUpperCase()==name.toUpperCase()){
+            id = electionInfo.results[i].id.toString(); //this is getting the politican id
+            console.log(id);
+            var src = 'https://theunitedstates.io/images/congress/225x275/' + id + '.jpg';//we are getting pictures from this github page
+            var img = document.createElement('img');
+            img.src = src;
             div.appendChild(img);
+            var role = electionInfo.results[i].role.toString();
+            console.log(role);
+            var party = electionInfo.results[i].party.toString();
+            console.log(party);
+            var nextElection = electionInfo.results[i].next_election.toString();
+            console.log(nextElection);
+            var information = {name,role,party,nextElection};
+            Meteor.call('politicians.insert',information);
             i = electionInfo.results.length;
           }
         }

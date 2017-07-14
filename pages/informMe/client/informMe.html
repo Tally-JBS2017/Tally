@@ -64,6 +64,14 @@
     <option value = "senate">Senate</option>
   </select>
   <br>
-  <div id="picture"></div>
+  <div id="picture"></div><br>
+  <p>
+    {{#each t in informed}}
+    Name: {{t.name}}<br>
+    role: {{t.role}}<br>
+    party: {{t.party}}<br>
+    next election year: {{t.nextElection}}<br>
+    {{/each}}
+  </p>
 
 </template>
