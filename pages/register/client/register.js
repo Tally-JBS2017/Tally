@@ -1,7 +1,16 @@
 import { ReactiveVar } from 'meteor/reactive-var';
 
 Template.register.onCreated(function registerOnCreated() {
+  //set loading status to be true
   Meteor.subscribe("Statereginfo");
+  //Meteor.subscribe("Statereginfo", abbr,  function(err, result){
+  //  if(err){
+  //    return;
+  //  }
+
+    //set loading status to be false
+
+  //});
   Meteor.subscribe("profiles");
   this.statepage= new ReactiveVar("");
   console.log(Profiles.findOne({owner:Meteor.userId()}));
