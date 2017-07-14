@@ -4,10 +4,11 @@ Template.register.onCreated(function registerOnCreated() {
   Meteor.subscribe("Statereginfo");
   Meteor.subscribe("profiles");
   this.statepage= new ReactiveVar("");
-  console.log(Profiles.findOne({owner:Meteor.userId()}));
+  this.howtoreg= new ReactiveVar("");
+  // console.log(Profiles.findOne({owner:Meteor.userId()}));
   if(Profiles.findOne({owner:Meteor.userId()}) != null){
     this.statepage = Profiles.findOne({owner:Meteor.userId()}).state;
-    console.log("Statepage = "+this.statepage);
+    // console.log("Statepage = "+this.statepage);
   }
   this.recognition= new ReactiveVar("");
   this.voiceDict = new ReactiveDict();
@@ -20,9 +21,13 @@ Template.register.onCreated(function registerOnCreated() {
 
 Template.register.helpers({
   //this function's purpose is to allow the dynamic template to grab the right template name.
-  page: function() {
+    page: function() {
       return Template.instance().statepage.get();
     },
+
+    regstyle: function() {
+        return Template.instance().howtoreg.get();
+      },
   // This fuction is what is used to populate the static-template with dynamic data.
   // For now it's using an array but we late we can pull the array from collections.
   pageData: function() {
@@ -50,7 +55,6 @@ Template.register.events({
   'click #regisInfo'(elt,instance){
     const zip =instance.$("#zipcode").val();
     getState(zip, Template.instance().statepage, returnState);
-
     //This is the code to grab the city and state from the users zipcode. Would love to store the info somehow.
     function getState(zip, reactvar, callback){
       var state = ""
@@ -104,6 +108,16 @@ Template.register.events({
   'click #stopRecordAudioButton'(elt,instance){
     Template.instance().recognition.stop();
     Template.instance().voiceDict.set("recording_status", "inactive");
+  },
+
+  'click #online'(elt,instance){
+    Template.instance().howtoreg.set("online");
+  },
+  'click #person'(elt,instance){
+    Template.instance().howtoreg.set("person");
+  },
+  'click #mail'(elt,instance){
+    Template.instance().howtoreg.set("mail");
   }
 
 
