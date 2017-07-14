@@ -19,7 +19,7 @@
       <br>
     </div>
     <div class = "age"><!-- shows your profile name here -->
-      <h1>Your Zip Code: </h1>
+      <h1>Your Age: </h1>
       {{#each member in current_profile}}
         <h2 id="userInput">{{member.age}}</h2>
       {{/each}}
@@ -53,7 +53,7 @@
       <br>-->
 
       <select id = "state">
-        <option disabled selected value> -- select an option -- </option>
+        <option value = ""> -- select an option -- </option>
         <option value="AL">Alabama</option>
         <option value="AK">Alaska</option>
         <option value="AZ">Arizona</option>

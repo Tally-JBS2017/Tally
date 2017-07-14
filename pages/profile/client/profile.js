@@ -1,3 +1,7 @@
+//window.onload = function () {
+//  var to_be_inserted = {name:'Default', owner: Meteor.userId()};
+//  Meteor.call('profiles.insert', to_be_inserted);
+//}
 Template.profile.onCreated(function(){
   Meteor.subscribe('profiles');
 });
@@ -75,24 +79,38 @@ Template.profile.events({
     }
   },
   'click #submit_all' : function (e, instance) {//this updates the name field
-    const name = instance.$('#name').val();
-    instance.$('#name').val("");
-    const address = instance.$('#address').val();
-    instance.$('#address').val("");
-    const zip = instance.$('#zip').val();
-    const state = instance.$('#state').val();
-    instance.$('#state').val("");
-    instance.$('#zip').val("");
-    if(!isNaN(zip) & zip.length == 5){
-        Meteor.call('profiles.zip.update', zip)
-        Meteor.call('profiles.name.update', name)
-        Meteor.call('profiles.address.update', address)
-        Meteor.call('profiles.state.update', state)
-
-    }else{
-      alert("This zip code is not a valid input. ")
+    console.log(!(instance.$('#name').val() == ""));
+    if(!(instance.$('#name').val() == "")){
+      const name = instance.$('#name').val();
+      Meteor.call('profiles.name.update', name)
+      instance.$('#name').val("");
     }
+    if(!(instance.$('#age').val() == "")){
 
+      const age = instance.$('#age').val();
+      Meteor.call('profiles.age.update', age)
+      instance.$('#age').val("");
+    }
+    if(!(instance.$('#address').val() == "")){
+      const address = instance.$('#address').val();
+      Meteor.call('profiles.address.update', address)
+      instance.$('#address').val("");
+    }
+    if(!(instance.$('#state').val() == "")){
+      const state = instance.$('#state').val();
+      Meteor.call('profiles.state.update', state)
+      instance.$('#state').val("");
+    }
+    if(!(instance.$('#zip').val() == "")){
+      const zip = instance.$('#zip').val();
+      instance.$('#zip').val("");
+      if(!isNaN(zip) & zip.length == 5){
+          Meteor.call('profiles.zip.update', zip)
+      }
+      else{
+        alert("This zip code is not a valid input. ");
+      }
+    }
     Meteor.call('election.clear');
     var xmlhttp = new XMLHttpRequest();
     //setting up the date for today so the api knows what date to start from
@@ -106,7 +124,6 @@ Template.profile.events({
     var url = "https://api.open.fec.gov/v1/election-dates/?min_election_date=" + fullDate + "&election_state=" + state + "&sort=election_date&page=1&api_key=aINkNgEHYqnSUX9TT7TEuSQus167GNvHRAdSjLpx&per_page=20"
 
     xmlhttp.onreadystatechange = function(){
-      console.log('here');
       if(this.readyState == 4 && this.status == 200){
         var electionInfo = JSON.parse(this.responseText);
         //var theState = electionInfo.contest[1].district.name.toString();
