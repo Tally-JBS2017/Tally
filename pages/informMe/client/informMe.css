@@ -1,0 +1,13 @@
+input[type=text] {
+ width: 100%;
+}
+
+/* When the input field gets focus, change its width to 100% */
+
+
+.wrapper{
+  width: 80%;
+  display:inline-flex;
+  padding:5px;
+  margin:10px;
+}
