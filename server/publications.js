@@ -8,5 +8,5 @@ Meteor.publish('profiles',function(){
 
 
 Meteor.publish('election',function(){
-  return election.find();
+  return Election.find();
 })
