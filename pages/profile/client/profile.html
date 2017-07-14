@@ -24,7 +24,7 @@
         <h2 id="userInput">{{member.address}}</h2>
       {{/each}}
       <p>Change your address here:</p>
-      <input type="text"  class="js-chatinput" id = "address">
+      <input type="text"  class="js-chatinput" id = "address" placeholder = "Street and number">
       <br>
       <br>
       <button class="btn btn-default btn-large js-chatsubmit" id = "address_add">Submit</button>
@@ -41,6 +41,7 @@
       <br>-->
 
       <select id = "state">
+        <option disabled selected value> -- select an option -- </option>
         <option value="AL">Alabama</option>
         <option value="AK">Alaska</option>
         <option value="AZ">Arizona</option>
