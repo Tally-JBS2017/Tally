@@ -1,7 +1,16 @@
 import { ReactiveVar } from 'meteor/reactive-var';
 
 Template.register.onCreated(function registerOnCreated() {
+  //set loading status to be true
   Meteor.subscribe("Statereginfo");
+  //Meteor.subscribe("Statereginfo", abbr,  function(err, result){
+  //  if(err){
+  //    return;
+  //  }
+
+    //set loading status to be false
+
+  //});
   Meteor.subscribe("profiles");
   this.statepage= new ReactiveVar("");
   this.howtoreg= new ReactiveVar("");
@@ -17,6 +26,8 @@ Template.register.onCreated(function registerOnCreated() {
   //speaking - user is speaking
   //waiting - wait for the result from Google Speech API
   this.voiceDict.set("recording_status", "inactive");
+  Meteor.subscribe("Statereginfo");
+  Meteor.subscribe("regis_voice_info");
 })
 
 Template.register.helpers({
@@ -31,11 +42,11 @@ Template.register.helpers({
   // This fuction is what is used to populate the static-template with dynamic data.
   // For now it's using an array but we late we can pull the array from collections.
   pageData: function() {
-    // var page = Template.instance().statepage.get();
-    var page = Template.instance().statepage;
+    var page = Template.instance().statepage.get();
+    // var page = Template.instance().statepage;
     //When we get the collection and agree on a format we we swap out the manual data array for a collection grab
     var data = Statereginfo.findOne({abbr:page});
-    console.log(data);
+    console.log("Page data is pulled from "+data);
     return {contentType:page, items:data};
   },
 
@@ -86,6 +97,10 @@ Template.register.events({
   },
   'click #recordAudioButton'(elt,instance){
     var recognition = new webkitSpeechRecognition();
+    var page = Template.instance().statepage.get();
+
+    var voice_data = Regis_voice_info.findOne({abbr:page}).online;
+    console.log(voice_data);
      recognition.onresult = function(event){
        const text = event.results[0][0].transcript;
        Meteor.call("sendJSONtoAPI_ai", text, { returnStubValue: true }, function(err, result){
@@ -93,11 +108,15 @@ Template.register.events({
            window.alert(err);
            return;
          }
-         console.log(result);
-         console.log(result.data.result.metadata.intentName);
-         //console.log(result.data.result.speech);
-         var msg = new SpeechSynthesisUtterance(result.data.result.speech);
-         window.speechSynthesis.speak(msg);
+         if(result.data.result.metadata.intentName == "register_online"){
+           responsiveVoice.speak(voice_data);
+         } else{
+           console.log(result);
+           console.log(result.data.result.metadata.intentName);
+           //console.log(result.data.result.speech);
+           var msg = new SpeechSynthesisUtterance(result.data.result.speech);
+           window.speechSynthesis.speak(msg);
+         }
        })
      };
      recognition.start();
