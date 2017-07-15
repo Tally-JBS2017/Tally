@@ -1,117 +1,147 @@
 <template name="profile">
-  <h1>Profile page</h1>
-  {{#if currentUser}}
-    <div class = "start"> <!--This is for resetting/creating your profile-->
-      <h2>Click here to begin your profile creation or start over!</h2>
-      <button class="btn btn-default btn-large js-chatsubmit" id = "new">Let's Begin!</button>
-      <p></p>
-    </div>
-    <div class = "name"><!-- shows your profile name here -->
-      <h1>Your Name: </h1>
-      {{#each member in current_profile}}
-        <h2 id="userInput">{{member.name}}</h2>
-      {{/each}}
-      <p>Change your name here:</p>
-      <input type="text"  class="js-chatinput" id = "name">
-      <br>
-      <br><!--place to change your name -->
-      <button class="btn btn-default btn-large js-chatsubmit" id = "name_add">Submit</button>
-      <br>
-    </div>
-    <div class = "address"><!-- shows your profile name here -->
-      <h1>Your Address: </h1>
-      {{#each member in current_profile}}
-        <h2 id="userInput">{{member.address}}</h2>
-      {{/each}}
-      <p>Change your address here:</p>
-      <input type="text"  class="js-chatinput" id = "address" placeholder = "Street and number">
-      <br>
-      <br>
-      <button class="btn btn-default btn-large js-chatsubmit" id = "address_add">Submit</button>
-      <br>
-    </div>
-    <div class = "state"><!-- shows your profile name here -->
-      <h1>Your State: </h1>
-      {{#each member in current_profile}}
-        <h2 id="userInput">{{member.state}}</h2>
-      {{/each}}
-      <p>Change your state here:</p>
-      <!--<input type="text"  class="js-chatinput" id = "state">
-      <br>
-      <br>-->
+  <body class="subpage">
+    <div id="page-wrapper">
 
-      <select id = "state">
-        <option disabled selected value> -- select an option -- </option>
-        <option value="AL">Alabama</option>
-        <option value="AK">Alaska</option>
-        <option value="AZ">Arizona</option>
-        <option value="AR">Arkansas</option>
-        <option value="CA">California</option>
-        <option value="CO">Colorado</option>
-        <option value="CT">Connecticut</option>
-        <option value="DE">Delaware</option>
-        <option value="FL">Florida</option>
-        <option value="GA">Georgia</option>
-        <option value="HI">Hawaii</option>
-        <option value="ID">Idaho</option>
-        <option value="IL">Illinois</option>
-        <option value="IN">Indiana</option>
-        <option value="IA">Iowa</option>
-        <option value="KS">Kansas</option>
-        <option value="KY">Kentucky</option>
-        <option value="LA">Louisiana</option>
-        <option value="ME">Maine</option>
-        <option value="MD">Maryland</option>
-        <option value="MA">Massachusetts</option>
-        <option value="MI">Michigan</option>
-        <option value="MN">Minnesota</option>
-        <option value="MS">Mississippi</option>
-        <option value="MO">Missouri</option>
-        <option value="MT">Montana</option>
-        <option value="NE">Nebraska</option>
-        <option value="NV">Nevada</option>
-        <option value="NH">New Hampshire</option>
-        <option value="NJ">New Jersey</option>
-        <option value="NM">New Mexico</option>
-        <option value="NY">New York</option>
-        <option value="NC">North Carolina</option>
-        <option value="ND">North Dakota</option>
-        <option value="OH">Ohio</option>
-        <option value="OK">Oklahoma</option>
-        <option value="OR">Oregon</option>
-        <option value="PA">Pennsylvania</option>
-        <option value="RI">Rhode Island</option>
-        <option value="SC">South Carolina</option>
-        <option value="SD">South Dakota</option>
-        <option value="TN">Tennessee</option>
-        <option value="TX">Texas</option>
-        <option value="UT">Utah</option>
-        <option value="VT">Vermont</option>
-        <option value="VA">Virginia</option>
-        <option value="WA">Washington</option>
-        <option value="WV">West Virginia</option>
-        <option value="WI">Wisconsin</option>
-        <option value="WY">Wyoming</option>
-      </select>
-      <button class="btn btn-default btn-large js-chatsubmit" id = "state_add">Submit</button>
-      <br>
+      <!-- Content -->
+        <div id="content-wrapper">
+          <div id="content">
+            <div class="container">
+              <div class="row">
+                <div class="12u">
+
+                  <!-- Main Content -->
+                    <section>
+                      <header>
+                        <h2>Your Profile</h2>
+                        <h3>Short description of this page.</h3>
+                      </header>
+                      <p>
+                        {{#if currentUser}}
+                          <div class = "start"> <!--This is for resetting/creating your profile-->
+                            <h2>Click here to begin your profile creation or start over!</h2>
+                            <button class="btn btn-default btn-large js-chatsubmit" id = "new">Let's Begin!</button>
+                            <p></p>
+                          </div>
+                          <div class = "name"><!-- shows your profile name here -->
+                            <h1>Your Name: </h1>
+                            {{#each member in current_profile}}
+                              <h2 id="userInput">{{member.name}}</h2>
+                            {{/each}}
+                            <p>Change your name here:</p>
+                            <input type="text"  class="js-chatinput" id = "name">
+                            <br>
+                            <br><!--place to change your name -->
+                            <button class="btn btn-default btn-large js-chatsubmit" id = "name_add">Submit</button>
+                            <br>
+                          </div>
+                          <div class = "address"><!-- shows your profile name here -->
+                            <h1>Your Address: </h1>
+                            {{#each member in current_profile}}
+                              <h2 id="userInput">{{member.address}}</h2>
+                            {{/each}}
+                            <p>Change your address here:</p>
+                            <input type="text"  class="js-chatinput" id = "address" placeholder = "Street and number">
+                            <br>
+                            <br>
+                            <button class="btn btn-default btn-large js-chatsubmit" id = "address_add">Submit</button>
+                            <br>
+                          </div>
+                          <div class = "state"><!-- shows your profile name here -->
+                            <h1>Your State: </h1>
+                            {{#each member in current_profile}}
+                              <h2 id="userInput">{{member.state}}</h2>
+                            {{/each}}
+                            <p>Change your state here:</p>
+                            <!--<input type="text"  class="js-chatinput" id = "state">
+                            <br>
+                            <br>-->
+
+                            <select id = "state">
+                              <option disabled selected value> -- select an option -- </option>
+                              <option value="AL">Alabama</option>
+                              <option value="AK">Alaska</option>
+                              <option value="AZ">Arizona</option>
+                              <option value="AR">Arkansas</option>
+                              <option value="CA">California</option>
+                              <option value="CO">Colorado</option>
+                              <option value="CT">Connecticut</option>
+                              <option value="DE">Delaware</option>
+                              <option value="FL">Florida</option>
+                              <option value="GA">Georgia</option>
+                              <option value="HI">Hawaii</option>
+                              <option value="ID">Idaho</option>
+                              <option value="IL">Illinois</option>
+                              <option value="IN">Indiana</option>
+                              <option value="IA">Iowa</option>
+                              <option value="KS">Kansas</option>
+                              <option value="KY">Kentucky</option>
+                              <option value="LA">Louisiana</option>
+                              <option value="ME">Maine</option>
+                              <option value="MD">Maryland</option>
+                              <option value="MA">Massachusetts</option>
+                              <option value="MI">Michigan</option>
+                              <option value="MN">Minnesota</option>
+                              <option value="MS">Mississippi</option>
+                              <option value="MO">Missouri</option>
+                              <option value="MT">Montana</option>
+                              <option value="NE">Nebraska</option>
+                              <option value="NV">Nevada</option>
+                              <option value="NH">New Hampshire</option>
+                              <option value="NJ">New Jersey</option>
+                              <option value="NM">New Mexico</option>
+                              <option value="NY">New York</option>
+                              <option value="NC">North Carolina</option>
+                              <option value="ND">North Dakota</option>
+                              <option value="OH">Ohio</option>
+                              <option value="OK">Oklahoma</option>
+                              <option value="OR">Oregon</option>
+                              <option value="PA">Pennsylvania</option>
+                              <option value="RI">Rhode Island</option>
+                              <option value="SC">South Carolina</option>
+                              <option value="SD">South Dakota</option>
+                              <option value="TN">Tennessee</option>
+                              <option value="TX">Texas</option>
+                              <option value="UT">Utah</option>
+                              <option value="VT">Vermont</option>
+                              <option value="VA">Virginia</option>
+                              <option value="WA">Washington</option>
+                              <option value="WV">West Virginia</option>
+                              <option value="WI">Wisconsin</option>
+                              <option value="WY">Wyoming</option>
+                            </select>
+                            <button class="btn btn-default btn-large js-chatsubmit" id = "state_add">Submit</button>
+                            <br>
+                          </div>
+                          <div class = "zip"><!-- shows your profile name here -->
+                            <h1>Your Zip Code: </h1>
+                            {{#each member in current_profile}}
+                              <h2 id="userInput">{{member.zip}}</h2>
+                            {{/each}}
+                            <p>Change your zip code here:</p>
+                            <input type="text"  class="js-chatinput" id = "zip">
+                            <br>
+                            <br>
+                            <button class="btn btn-default btn-large js-chatsubmit" id = "zip_add">Submit</button>
+                            <br>
+                          </div>
+                          <br>
+                          <button class="btn btn-primary btn-large js-chatsubmit" id = "submit_all">Submit All</button>
+                          <p></p>
+                        {{else}}
+                          <h2>You must log in to see your profile. </h2>
+                        {{/if}}
+                      </p>
+                    </section>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <!-- Copyright -->
+        <div id="copyright">
+          &copy; Untitled. All rights reserved. | Design: <a href="http://html5up.net">HTML5 UP</a>
+        </div>
     </div>
-    <div class = "zip"><!-- shows your profile name here -->
-      <h1>Your Zip Code: </h1>
-      {{#each member in current_profile}}
-        <h2 id="userInput">{{member.zip}}</h2>
-      {{/each}}
-      <p>Change your zip code here:</p>
-      <input type="text"  class="js-chatinput" id = "zip">
-      <br>
-      <br>
-      <button class="btn btn-default btn-large js-chatsubmit" id = "zip_add">Submit</button>
-      <br>
-    </div>
-    <br>
-    <button class="btn btn-primary btn-large js-chatsubmit" id = "submit_all">Submit All</button>
-    <p></p>
-  {{else}}
-    <h2>You must log in to see your profile. </h2>
-  {{/if}}
+  </body>
 </template>

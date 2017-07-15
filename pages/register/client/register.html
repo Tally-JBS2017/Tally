@@ -1,19 +1,50 @@
 <template name="register">
-<h2>Register page</h2>
-<Label>ZIP Code</Label><input id="zipcode" maxlength="5" required="'required'" type="number" pattern="[0-9]{5}" title="Five digit zip code" />
-<button id=regisInfo>Find Registration info</button>
-  {{> Template.dynamic template="content" data=pageData}}
-  <div>
-    {{#if ifInactive}}
-    <button id="recordAudioButton"><span class="glyphicon glyphicon-play" aria-hidden="true"></span> Speak
-    </button>
-    {{/if}}
-    {{#if ifSpeaking}}
-    <button id="stopRecordAudioButton">
-    <span class="glyphicon glyphicon-stop" aria-hidden="true"></span> Stop
-  </button>
-    {{/if}}
-  </div>
+  <body class="subpage">
+    <div id="page-wrapper">
+
+      <!-- Content -->
+        <div id="content-wrapper">
+          <div id="content">
+            <div class="container">
+              <div class="row">
+                <div class="12u">
+
+                  <!-- Main Content -->
+                    <section>
+                      <header>
+                        <h2>Register here</h2>
+                        <h3>Short description of this page.</h3>
+                      </header>
+                      <p>
+                        <Label>ZIP Code</Label><input id="zipcode" maxlength="5" required="'required'" type="number" pattern="[0-9]{5}" title="Five digit zip code" />
+                        <button id=regisInfo>Find Registration info</button>
+                          {{> Template.dynamic template="content" data=pageData}}
+                          <div>
+                            {{#if ifInactive}}
+                            <button id="recordAudioButton"><span class="glyphicon glyphicon-play" aria-hidden="true"></span> Speak
+                            </button>
+                            {{/if}}
+                            {{#if ifSpeaking}}
+                            <button id="stopRecordAudioButton">
+                            <span class="glyphicon glyphicon-stop" aria-hidden="true"></span> Stop
+                          </button>
+                            {{/if}}
+                          </div>
+                      </p>
+                    </section>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <!-- Copyright -->
+        <div id="copyright">
+          &copy; Untitled. All rights reserved. | Design: <a href="http://html5up.net">HTML5 UP</a>
+        </div>
+    </div>
+  </body>
+
 </template>
 
 

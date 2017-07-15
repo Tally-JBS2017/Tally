@@ -1,24 +1,55 @@
 <template name="election">
-  <h2>Election page</h2>
-  <!-- <div class = " col-md-offset 1 col-md-5  bg-info" id = content> -->
-  <div class="container">
-    address: <input type="text" class="streetNumber form-control" placeholder = "Street and number"><br>
-    City: <input type="text" class="city form-control"><br>
-    State: <input type="text" class="state form-control" placeholder = "Example: NY"><br>
-    Zip code: <input type="text" class="zipCode form-control"><br>
-    <button class="getElection"> Get Election Info!</button><br>
-    <hr>
+  <body class="subpage">
+    <div id="page-wrapper">
 
-    <h3>Elections happening near you</h3>
-    <table class="bg-warning table table-bordered table-striped">
-    <!--this shows the elections in your area -->
-      <tbody>
-        {{#each t in contest}}
-          <tr>
-            <td>On {{t.date}}, there will be a {{t.type}} in the state of {{t.apistate}} for {{t.seat}}</td>
-          </tr>
-        {{/each}}
-      </tbody>
-    </table>
-  </div>
+      <!-- Content -->
+        <div id="content-wrapper">
+          <div id="content">
+            <div class="container">
+              <div class="row">
+                <div class="12u">
+
+                  <!-- Main Content -->
+                    <section>
+                      <header>
+                        <h2>Find Upcoming Elections Here</h2>
+                        <h3>Short description of this page.</h3>
+                      </header>
+                      <p>
+                        <!-- <div class = " col-md-offset 1 col-md-5  bg-info" id = content> -->
+                        <div class="container">
+                          address: <input type="text" class="streetNumber form-control" placeholder = "Street and number"><br>
+                          City: <input type="text" class="city form-control"><br>
+                          State: <input type="text" class="state form-control" placeholder = "Example: NY"><br>
+                          Zip code: <input type="text" class="zipCode form-control"><br>
+                          <button class="getElection"> Get Election Info!</button><br>
+                          <hr>
+
+                          <h3>Elections happening near you</h3>
+                          <table class="bg-warning table table-bordered table-striped">
+                          <!--this shows the elections in your area -->
+                            <tbody>
+                              {{#each t in contest}}
+                                <tr>
+                                  <td>On {{t.date}}, there will be a {{t.type}} in the state of {{t.apistate}} for {{t.seat}}</td>
+                                </tr>
+                              {{/each}}
+                            </tbody>
+                          </table>
+                        </div>
+                      </p>
+                    </section>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <!-- Copyright -->
+        <div id="copyright">
+          &copy; Untitled. All rights reserved. | Design: <a href="http://html5up.net">HTML5 UP</a>
+        </div>
+    </div>
+  </body>
+
 </template>
