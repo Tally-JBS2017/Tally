@@ -1,15 +1,24 @@
 <template name="layout">
-  <header class="navbar">
-    <div class="topnav">
-      <a href="{{pathFor 'home'}}">Home</a>
-      <a href="{{pathFor 'register'}}">Register</a>
-      <a href="{{pathFor 'election'}}">Election</a>
-      <a href="{{pathFor 'informMe'}}">Inform Me</a>
-      <a href="{{pathFor 'profile'}}">Profile</a>
-      {{>loginButtons}}
+  <div id="header-wrapper">
+  <header id="header" class="container">
+    <div class="row">
+      <div class="12u">
+
+        <!-- Logo -->
+          <h1><a href="{{pathFor 'home'}}" id="logo">Tally</a></h1>
+
+        <!-- Nav -->
+          <nav id="nav">
+            <a href="{{pathFor 'register'}}">Register</a>
+            <a href="{{pathFor 'election'}}">Election</a>
+            <a href="{{pathFor 'informMe'}}">Inform Me</a>
+            <a href="{{pathFor 'profile'}}">Profile</a>
+            {{>loginButtons}}
+          </nav>
+
+      </div>
     </div>
   </header>
-
-
+</div>
   {{> yield}}
 </template>
