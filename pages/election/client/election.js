@@ -80,7 +80,7 @@ Template.election.events({
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
     if( Election.find().count() == 0){ //this tells the user if their are elections in their state.
-      document.getElementById("ifnothing").innerHTML = "Sorry, their are no elections at your state";
+      document.getElementById("ifnothing").innerHTML = "Sorry, their are no elections at this state";
     }
   },
 })
