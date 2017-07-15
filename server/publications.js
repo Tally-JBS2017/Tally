@@ -21,3 +21,7 @@ Meteor.publish('regis_voice_info', function(){
 Meteor.publish('politicians',function(){
   return Politicians.find();
 })
+
+Meteor.publish('bills',function(){
+  return Bills.find();
+})
