@@ -29,5 +29,6 @@ Meteor.startup(function(){
         Regis_voice_info.insert(registerVoiceData.states[i]);
       }
     }))};
+    //callbacked function because there two different collections were interuptting eachother.
     htmlStates(nonhtmlStates);
 });
