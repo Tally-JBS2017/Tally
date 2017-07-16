@@ -17,7 +17,8 @@ Template.register.onCreated(function registerOnCreated() {
   // console.log(Profiles.findOne({owner:Meteor.userId()}));
   if(Profiles.findOne({owner:Meteor.userId()}) != null){
     this.statepage = Profiles.findOne({owner:Meteor.userId()}).state;
-    // console.log("Statepage = "+this.statepage);
+  //   Meteor.subscribe("Statereginfo", Template.instance().statepage);
+    console.log("Statepage = "+this.statepage);
   }
   this.recognition= new ReactiveVar("");
   this.voiceDict = new ReactiveDict();
@@ -32,21 +33,28 @@ Template.register.onCreated(function registerOnCreated() {
 
 Template.register.helpers({
   //this function's purpose is to allow the dynamic template to grab the right template name.
-    page: function() {
-      return Template.instance().statepage.get();
-    },
+  page: function() {
+    return Template.instance().statepage.get();
+    // return Template.instance().statepage;
 
-    regstyle: function() {
-        return Template.instance().howtoreg.get();
-      },
+  },
+
+  regstyle: function() {
+      return Template.instance().howtoreg.get();
+      // return Template.instance().howtoreg;
+
+    },
   // This fuction is what is used to populate the static-template with dynamic data.
   // For now it's using an array but we late we can pull the array from collections.
   pageData: function() {
-    var page = Template.instance().statepage.get();
+    // var page = Template.instance().statepage.get();
+    var page = Template.instance().statepage;
+    console.log(page+" is where we are getting data for");
+
     // var page = Template.instance().statepage;
     //When we get the collection and agree on a format we we swap out the manual data array for a collection grab
     var data = Statereginfo.findOne({abbr:page});
-    console.log("Page data is pulled from "+data);
+    console.log("Page data is pulled from "+data.toString());
     return {contentType:page, items:data};
   },
 
@@ -77,23 +85,23 @@ Template.register.events({
               var locinfo = JSON.parse(this.responseText);
               var state = locinfo.state.toString();
               var city = locinfo.city.toString();
-              //console.log(state);
-              //console.log(city);
+              console.log("Zipcode is from this state: "+state);
+              console.log("Zipcode is from this city: "+city);
               callback(reactvar, state);
           }
       };
       xmlhttp.send();
     }
     function returnState(reactvar, data){
-      reactvar.set(data);
+      // Meteor.subscribe("Statereginfo", reactvar);
+      return reactvar.set(data);
     }
-
     //this state variable is just so we don't spam the API
     // var state= "MA";
     // console.log(state);
     /*sets the current instance's statepage reactive variable to users state.
     This allows blaze to populate the dynamic template with the correct info */
-    console.log("active variable:"+Template.instance().statepage.get());
+    console.log("active variable:"+Template.instance().statepage);
   },
   'click #recordAudioButton'(elt,instance){
     var recognition = new webkitSpeechRecognition();

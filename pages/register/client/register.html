@@ -18,7 +18,9 @@
                       <p>
                         <Label>ZIP Code</Label><input id="zipcode" maxlength="5" required="'required'" type="number" pattern="[0-9]{5}" title="Five digit zip code" />
                         <button id=regisInfo>Find Registration info</button>
-                          {{> Template.dynamic template="content" data=pageData}}
+                        <button id=online>Register Online</button><button id=person>Register in person</button><button id=mail>Register by mail</button>
+                        {{> Template.dynamic template="eligibility" data=pageData}}
+                        {{> Template.dynamic template=regstyle data=pageData}}
                           <div>
                             {{#if ifInactive}}
                             <button id="recordAudioButton"><span class="glyphicon glyphicon-play" aria-hidden="true"></span> Speak
@@ -37,10 +39,6 @@
               </div>
             </div>
           </div>
-        </div>
-      <!-- Copyright -->
-        <div id="copyright">
-          &copy; Untitled. All rights reserved. | Design: <a href="http://html5up.net">HTML5 UP</a>
         </div>
     </div>
   </body>

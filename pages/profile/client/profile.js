@@ -38,6 +38,7 @@ Template.profile.events({
     const state = instance.$('#state').val();
     instance.$('#state').val("");
     Meteor.call('profiles.state.update',state)
+    console.log(state+" is being added to your profile");
 
     Meteor.call('election.clear');
     var xmlhttp = new XMLHttpRequest();
