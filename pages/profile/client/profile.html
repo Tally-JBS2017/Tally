@@ -26,32 +26,35 @@
                             {{#each member in current_profile}}
                               <h2 id="userInput">{{member.name}}</h2>
                             {{/each}}
-                            <p>Change your name here:</p>
-                            <input type="text"  class="js-chatinput" id = "name">
+                            <input type="text"  class="js-chatinput" id = "name" placeholder="Change your name here">
                             <br>
-                            <br><!--place to change your name -->
+                            <!--
+                            <br>
                             <button class="btn btn-default btn-large js-chatsubmit" id = "name_add">Submit</button>
                             <br>
+                            -->
                           </div>
                           <div class = "address"><!-- shows your profile name here -->
                             <h1>Your Address: </h1>
                             {{#each member in current_profile}}
                               <h2 id="userInput">{{member.address}}</h2>
                             {{/each}}
-                            <p>Change your address here:</p>
-                            <input type="text"  class="js-chatinput" id = "address" placeholder = "Street and number">
+                            <input type="text"  class="js-chatinput" id = "address" placeholder = "Put your address street and number">
                             <br>
+                            <!--
                             <br>
                             <button class="btn btn-default btn-large js-chatsubmit" id = "address_add">Submit</button>
                             <br>
+                            -->
                           </div>
                           <div class = "state"><!-- shows your profile name here -->
                             <h1>Your State: </h1>
                             {{#each member in current_profile}}
                               <h2 id="userInput">{{member.state}}</h2>
                             {{/each}}
+                            <!--
                             <p>Change your state here:</p>
-                            <!--<input type="text"  class="js-chatinput" id = "state">
+                            <input type="text"  class="js-chatinput" id = "state">
                             <br>
                             <br>-->
 
@@ -108,7 +111,9 @@
                               <option value="WI">Wisconsin</option>
                               <option value="WY">Wyoming</option>
                             </select>
+                            <!--
                             <button class="btn btn-default btn-large js-chatsubmit" id = "state_add">Submit</button>
+                            -->
                             <br>
                           </div>
                           <div class = "zip"><!-- shows your profile name here -->
@@ -116,12 +121,13 @@
                             {{#each member in current_profile}}
                               <h2 id="userInput">{{member.zip}}</h2>
                             {{/each}}
-                            <p>Change your zip code here:</p>
-                            <input type="text"  class="js-chatinput" id = "zip">
+                            <input type="text"  class="js-chatinput" id = "zip" placeholder="Change your zip code">
                             <br>
+                            <!--
                             <br>
                             <button class="btn btn-default btn-large js-chatsubmit" id = "zip_add">Submit</button>
                             <br>
+                            -->
                           </div>
                           <br>
                           <button class="btn btn-primary btn-large js-chatsubmit" id = "submit_all">Submit All</button>
@@ -131,15 +137,10 @@
                         {{/if}}
                       </p>
                     </section>
-
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      <!-- Copyright -->
-        <div id="copyright">
-          &copy; Untitled. All rights reserved. | Design: <a href="http://html5up.net">HTML5 UP</a>
         </div>
     </div>
   </body>
