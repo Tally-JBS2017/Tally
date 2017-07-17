@@ -56,6 +56,7 @@ Meteor.methods({
 
   "sendJSONtoAPI_ai": function(text){
       //validation for the option
+
       return HTTP.call("POST", "https://api.api.ai/v1/query/",
           {
               headers: {
