@@ -25,8 +25,9 @@ Meteor.startup(function(){
       registerVoiceData = JSON.parse(data);
       for(i = 0; i< registerVoiceData.states.length; i++){
         console.log('inserting '+ registerVoiceData.states[i].abbr+" into Regis_voice_info");
-
         Regis_voice_info.insert(registerVoiceData.states[i]);
+        // console.log(registerVoiceData.findOne({stateName:"Alaska"}).stateName);
+
       }
     }))};
     //callbacked function because there two different collections were interuptting eachother.

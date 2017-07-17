@@ -12,13 +12,15 @@ Template.register.onCreated(function registerOnCreated() {
 
   //});
   Meteor.subscribe("profiles");
-  this.statepage= new ReactiveVar("");
+  // this.statepage= new ReactiveVar("");
+  Session.set("statepage","");
   this.howtoreg= new ReactiveVar("");
   // console.log(Profiles.findOne({owner:Meteor.userId()}));
   if(Profiles.findOne({owner:Meteor.userId()}) != null){
-    this.statepage = Profiles.findOne({owner:Meteor.userId()}).state;
-  //   Meteor.subscribe("Statereginfo", Template.instance().statepage);
-    console.log("Statepage = "+this.statepage);
+    // this.statepage = Profiles.findOne({owner:Meteor.userId()}).state;
+    Session.set("statepage",Profiles.findOne({owner:Meteor.userId()}).state);
+    //   Meteor.subscribe("Statereginfo", Template.instance().statepage);
+    // console.log("Statepage = "+this.statepage);
   }
   this.recognition= new ReactiveVar("");
   this.voiceDict = new ReactiveDict();
@@ -34,7 +36,8 @@ Template.register.onCreated(function registerOnCreated() {
 Template.register.helpers({
   //this function's purpose is to allow the dynamic template to grab the right template name.
   page: function() {
-    return Template.instance().statepage.get();
+    return Session.get("statepage");
+
     // return Template.instance().statepage;
 
   },
@@ -48,7 +51,8 @@ Template.register.helpers({
   // For now it's using an array but we late we can pull the array from collections.
   pageData: function() {
     // var page = Template.instance().statepage.get();
-    var page = Template.instance().statepage;
+    // var page = Template.instance().statepage;
+    var page = Session.get("statepage")
     console.log(page+" is where we are getting data for");
 
     // var page = Template.instance().statepage;
@@ -73,9 +77,9 @@ Template.register.events({
 
   'click #regisInfo'(elt,instance){
     const zip =instance.$("#zipcode").val();
-    getState(zip, Template.instance().statepage, returnState);
+    getState(zip, returnState);
     //This is the code to grab the city and state from the users zipcode. Would love to store the info somehow.
-    function getState(zip, reactvar, callback){
+    function getState(zip, callback){
       var state = ""
       var xmlhttp = new XMLHttpRequest();
       var url ='https://www.zipcodeapi.com/rest/js-blSPbA8GVwAcmTeVD6OiUmqwLP18G74SsWIDwRksnVEKOSFsYtLTPcpA2rJJyNB1/info.json/'+zip.toString()+'/degrees'
@@ -87,25 +91,25 @@ Template.register.events({
               var city = locinfo.city.toString();
               console.log("Zipcode is from this state: "+state);
               console.log("Zipcode is from this city: "+city);
-              callback(reactvar, state);
+              callback(state);
           }
       };
       xmlhttp.send();
     }
-    function returnState(reactvar, data){
+    function returnState(data){
       // Meteor.subscribe("Statereginfo", reactvar);
-      return reactvar.set(data);
+      Session.set("statepage",data);
     }
     //this state variable is just so we don't spam the API
     // var state= "MA";
     // console.log(state);
     /*sets the current instance's statepage reactive variable to users state.
     This allows blaze to populate the dynamic template with the correct info */
-    console.log("active variable:"+Template.instance().statepage);
+    console.log("active variable: "+Session.get("statepage"));
   },
   'click #recordAudioButton'(elt,instance){
     var recognition = new webkitSpeechRecognition();
-    var page = Template.instance().statepage.get();
+    var page = Session.get("statepage");
 
     var voice_data = Regis_voice_info.findOne({abbr:page}).online;
     console.log(voice_data);
