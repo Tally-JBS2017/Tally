@@ -1,0 +1,70 @@
+body{
+  background: linear-gradient(to right, #3D3D3D , #F0F0F0);
+}
+.container{
+  background: gray;
+}
+.navbar{
+  background: black;
+}
+h1, h2, p, li{
+  padding: 5px;
+  color: white;
+}
+.likes li{
+  font-size: 200%;
+}
+.jumbotron h1, .jumbotron p{
+  padding: 5px;
+  color: white;
+  text-align: center;
+}
+img{
+  min-width: 280px;
+}
+a{
+  color: black;
+}
+a:hover{
+    color: white;
+    text-decoration: underline;
+}
+.start{
+  margin: 4px;
+  padding: 5px;
+  border: 1px solid #000000;
+  border-radius: 7pt;
+}
+.name, .picture, .likes, .start, .jumbotron{
+  background: #000000;
+  margin: 4px;
+  padding: 5px;
+  padding-left: 10px;
+  border: 1px solid #000000;
+  border-radius: 7pt;
+}
+.picture{
+  display: flex;
+  flex-flow: row;
+}
+.picture_only{
+  float: right;
+  margin: 25px 25px 25px 25px;
+  clear:both;
+  flex: 10%
+}
+@media all and (max-width: 610px) {
+
+  .picture {
+    flex-direction: column;
+    display: block;
+    margin: 0 auto;
+  }
+  .picture_only{
+    flex: 1 0 100%;
+    float:none;
+    clear:none;
+    margin: 0;
+    padding-left: 10px;
+  }
+}
