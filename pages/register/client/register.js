@@ -1,23 +1,13 @@
 import { ReactiveVar } from 'meteor/reactive-var';
 
 Template.register.onCreated(function registerOnCreated() {
-  //set loading status to be true
   Meteor.subscribe("Statereginfo");
-  //Meteor.subscribe("Statereginfo", abbr,  function(err, result){
-  //  if(err){
-  //    return;
-  //  }
-    //set loading status to be false
-  //});
   Meteor.subscribe("profiles");
-  // this.statepage= new ReactiveVar("");
   this.howtoreg= new ReactiveVar("");
   // console.log(Profiles.findOne({owner:Meteor.userId()}));
   if((Profiles.findOne({owner:Meteor.userId()}) != null) && (Session.get("statepage") == undefined)){
-    // this.statepage = Profiles.findOne({owner:Meteor.userId()}).state;
     Session.set("statepage",Profiles.findOne({owner:Meteor.userId()}).state);
     Meteor.subscribe("Statereginfo",{abbr:Session.get("statepage")});
-    //   Meteor.subscribe("Statereginfo", Template.instance().statepage);
     // console.log("Statepage = "+this.statepage);
   }
   this.recognition= new ReactiveVar("");
