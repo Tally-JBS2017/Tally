@@ -93,8 +93,8 @@ Template.register.events({
   'click #recordAudioButton'(elt,instance){
     var recognition = new webkitSpeechRecognition();
     var page = Session.get("statepage");
-    var voice_data = new SpeechSynthesisUtterance(Regis_voice_info.findOne({abbr:page}).online);
-    // var voice_data = Regis_voice_info.findOne({abbr:page}).online;
+    // var voice_data = new SpeechSynthesisUtterance(Regis_voice_info.findOne({abbr:page}).online);
+    var voice_data = Regis_voice_info.findOne({abbr:page}).online;
     console.log(voice_data);
      recognition.onresult = function(event){
        const text = event.results[0][0].transcript;
@@ -105,8 +105,8 @@ Template.register.events({
          }
          console.log(result.data.result.metadata.intentName);
          if(result.data.result.metadata.intentName == "register_online"){
-           window.speechSynthesis.speak(voice_data);
-          //  responsiveVoice.speak(voice_data);
+          //  window.speechSynthesis.speak(voice_data);
+          responsiveVoice.speak(voice_data, "UK English Male");
          } else{
            console.log(result);
            console.log(result.data.result.metadata.intentName);
