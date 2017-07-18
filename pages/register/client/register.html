@@ -1,46 +1,40 @@
 <template name="register">
-
   <body class="subpage">
     <div id="page-wrapper">
-
       <!-- Content -->
-        <div id="content-wrapper">
-          <div id="content">
-            <div class="container">
-              <div class="row">
-                <div class="12u">
+      <div id="content-wrapper">
+        <div id="content">
+          <div class="container">
+            <div class="row">
+              <div class="12u">
+                <!-- Main Content -->
+                <section>
+                  <header>
+                    <h2>Register here</h2>
+                  </header>
+                    <Label>ZIP Code &nbsp;</Label><input id="zipcode" maxlength="5" required="'required'" type="number" pattern="[0-9]{5}" title="Five digit zip code">
+                    <button id=regisInfo>Find Registration Info</button>
+                    <br><br>
+                    {{> Template.dynamic template="eligibility" data=pageData}}
+                    <button id=online>Register Online</button><button id=person>Register in person</button><button id=mail>Register by mail</button>
+                    <br><br>
+                    {{> Template.dynamic template=regstyle data=pageData}}
+                    <div>
+                      {{#if ifInactive}}
+                      <button style="display:inline-block;" id="recordAudioButton"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>Speak</button><p> Have a question about one of the steps? Try asking me!</p>
 
-                  <!-- Main Content -->
-                    <section>
-                      <header>
-                        <h2>Register here</h2>
-                        <h3>Short description of this page.</h3>
-                      </header>
-                      <p>
-                        <Label>ZIP Code</Label><input id="zipcode" maxlength="5" required="'required'" type="number" pattern="[0-9]{5}" title="Five digit zip code" />
-                        <button id=regisInfo>Find Registration info</button>
-                        <button id=online>Register Online</button><button id=person>Register in person</button><button id=mail>Register by mail</button>
-                        {{> Template.dynamic template="eligibility" data=pageData}}
-                        {{> Template.dynamic template=regstyle data=pageData}}
-                          <div>
-                            {{#if ifInactive}}
-                            <button id="recordAudioButton"><span class="glyphicon glyphicon-play" aria-hidden="true"></span> Speak
-                            </button>
-                            {{/if}}
-                            {{#if ifSpeaking}}
-                            <button id="stopRecordAudioButton">
-                            <span class="glyphicon glyphicon-stop" aria-hidden="true"></span> Stop
-                          </button>
-                            {{/if}}
-                          </div>
-                      </p>
-                    </section>
-
-                </div>
+                      {{/if}}
+                      {{#if ifSpeaking}}
+                      <button style="display:inline-block;" id="stopRecordAudioButton">
+                      <span class="glyphicon glyphicon-stop" aria-hidden="true"></span> Stop</button>
+                      {{/if}}
+                    </div>
+                  </section>
               </div>
             </div>
           </div>
         </div>
+      </div>
     </div>
   </body>
 
@@ -48,45 +42,44 @@
 
 
 <template name="eligibility">
-  <h3 class="page-header" style="text-transform: capitalize;">Eligibility to register in {{this.items.stateName}}</h3>
   <table class="table table-striped table-bordered">
     <tbody>
     <tr>
-      <td>Eligibility to register</td><td>{{{this.items.eligibility.toString}}}</td>
+      <td>Eligibility to Register</td><td>{{{this.items.eligibility.toString}}}</td>
     </tr>
   </tbody>
   </table>
 </template>
 
 <template name="online">
-  <h3 class="page-header" style="text-transform: capitalize;">{{this.items.stateName}}</h3>
-  <table class="table table-striped table-bordered">
-    <tbody>
-    <tr>
-      <td>To register online</td><td>{{{this.items.online.toString}}}</td>
-    </tr>
-  </tbody>
-  </table>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">{{this.items.stateName}}</h3>
+    </div>
+    <div class="panel-body">
+      {{{this.items.online.toString}}}
+    </div>
+  </div>
 </template>
 
 <template name="person">
-  <h3 class="page-header" style="text-transform: capitalize;">{{this.items.stateName}}</h3>
-  <table class="table table-striped table-bordered">
-    <tbody>
-    <tr>
-      <td>To register in person</td><td>{{{this.items.inPerson.toString}}}</td>
-    </tr>
-  </tbody>
-  </table>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">{{this.items.stateName}}</h3>
+    </div>
+    <div class="panel-body">
+      {{{this.items.inPerson.toString}}}
+    </div>
+  </div>
 </template>
 
 <template name="mail">
-  <h3 class="page-header" style="text-transform: capitalize;">{{this.items.stateName}}</h3>
-  <table class="table table-striped table-bordered">
-    <tbody>
-    <tr>
-      <td>To register by mail</td><td>{{{this.items.mail.toString}}}</td>
-    </tr>
-  </tbody>
-  </table>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">{{this.items.stateName}}</h3>
+    </div>
+    <div class="panel-body">
+      {{{this.items.mail.toString}}}
+    </div>
+  </div>
 </template>
