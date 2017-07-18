@@ -13,7 +13,9 @@
             <a href="{{pathFor 'election'}}">Election</a>
             <a href="{{pathFor 'informMe'}}">Inform Me</a>
             <a href="{{pathFor 'profile'}}">Profile</a>
-            {{>loginButtons}}
+            {{#if currentUser}}
+              {{>loginButtons}}
+            {{/if}}
           </nav>
 
       </div>
