@@ -1,25 +1,13 @@
 import { ReactiveVar } from 'meteor/reactive-var';
 
 Template.register.onCreated(function registerOnCreated() {
-  //set loading status to be true
   Meteor.subscribe("Statereginfo");
-  //Meteor.subscribe("Statereginfo", abbr,  function(err, result){
-  //  if(err){
-  //    return;
-  //  }
-
-    //set loading status to be false
-
-  //});
   Meteor.subscribe("profiles");
-  // this.statepage= new ReactiveVar("");
-  Session.set("statepage","");
   this.howtoreg= new ReactiveVar("");
   // console.log(Profiles.findOne({owner:Meteor.userId()}));
-  if(Profiles.findOne({owner:Meteor.userId()}) != null){
-    // this.statepage = Profiles.findOne({owner:Meteor.userId()}).state;
+  if((Profiles.findOne({owner:Meteor.userId()}) != null) && (Session.get("statepage") == undefined)){
     Session.set("statepage",Profiles.findOne({owner:Meteor.userId()}).state);
-    //   Meteor.subscribe("Statereginfo", Template.instance().statepage);
+    Meteor.subscribe("Statereginfo",{abbr:Session.get("statepage")});
     // console.log("Statepage = "+this.statepage);
   }
   this.recognition= new ReactiveVar("");
@@ -29,7 +17,7 @@ Template.register.onCreated(function registerOnCreated() {
   //speaking - user is speaking
   //waiting - wait for the result from Google Speech API
   this.voiceDict.set("recording_status", "inactive");
-  Meteor.subscribe("Statereginfo");
+  // Meteor.subscribe("Statereginfo");
   Meteor.subscribe("regis_voice_info");
 })
 
@@ -37,25 +25,19 @@ Template.register.helpers({
   //this function's purpose is to allow the dynamic template to grab the right template name.
   page: function() {
     return Session.get("statepage");
-
     // return Template.instance().statepage;
-
   },
 
   regstyle: function() {
       return Template.instance().howtoreg.get();
       // return Template.instance().howtoreg;
-
     },
+
   // This fuction is what is used to populate the static-template with dynamic data.
   // For now it's using an array but we late we can pull the array from collections.
   pageData: function() {
-    // var page = Template.instance().statepage.get();
-    // var page = Template.instance().statepage;
     var page = Session.get("statepage")
     console.log(page+" is where we are getting data for");
-
-    // var page = Template.instance().statepage;
     //When we get the collection and agree on a format we we swap out the manual data array for a collection grab
     var data = Statereginfo.findOne({abbr:page});
     console.log("Page data is pulled from "+data.toString());
@@ -88,9 +70,9 @@ Template.register.events({
           if (this.readyState == 4 && this.status == 200) {
               var locinfo = JSON.parse(this.responseText);
               var state = locinfo.state.toString();
-              var city = locinfo.city.toString();
+              // var city = locinfo.city.toString();
               console.log("Zipcode is from this state: "+state);
-              console.log("Zipcode is from this city: "+city);
+              // console.log("Zipcode is from this city: "+city);
               callback(state);
           }
       };
@@ -107,11 +89,12 @@ Template.register.events({
     This allows blaze to populate the dynamic template with the correct info */
     console.log("active variable: "+Session.get("statepage"));
   },
+
   'click #recordAudioButton'(elt,instance){
     var recognition = new webkitSpeechRecognition();
     var page = Session.get("statepage");
-    var voice_data = new SpeechSynthesisUtterance(Regis_voice_info.findOne({abbr:page}).online);
-    // var voice_data = Regis_voice_info.findOne({abbr:page}).online;
+    // var voice_data = new SpeechSynthesisUtterance(Regis_voice_info.findOne({abbr:page}).online);
+    var voice_data = Regis_voice_info.findOne({abbr:page}).online;
     console.log(voice_data);
      recognition.onresult = function(event){
        const text = event.results[0][0].transcript;
@@ -122,8 +105,8 @@ Template.register.events({
          }
          console.log(result.data.result.metadata.intentName);
          if(result.data.result.metadata.intentName == "register_online"){
-           window.speechSynthesis.speak(voice_data);
-          //  responsiveVoice.speak(voice_data);
+          //  window.speechSynthesis.speak(voice_data);
+          responsiveVoice.speak(voice_data, "UK English Male");
          } else{
            console.log(result);
            console.log(result.data.result.metadata.intentName);

@@ -28,7 +28,11 @@
                   <li><a href="{{pathFor 'election'}}">Election</a></li>
                   <li><a href="{{pathFor 'informMe'}}">Inform Me</a></li>
                   <li><a href="{{pathFor 'profile'}}">Profile</a></li>
-                  <li><a href="#">{{>loginButtons align="right"}}</a></li>
+                  <li><a href="#">
+                    {{#if currentUser}}
+                      {{>loginButtons align="right"}}
+                    {{/if}}
+                  </a></li>
                 </ul>
               </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
@@ -39,8 +43,10 @@
             <a href="{{pathFor 'election'}}">Election</a>
             <a href="{{pathFor 'informMe'}}">Inform Me</a>
             <a href="{{pathFor 'profile'}}">Profile</a>
-            {{>loginButtons}}
-          </nav> -->
+            {{#if currentUser}}
+              {{>loginButtons}}
+            {{/if}}
+          </nav>
 
       </div>
     </div>

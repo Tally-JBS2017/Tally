@@ -57,12 +57,23 @@ Template.informMe.events({
           }
         }
 
+
       }
     };
     console.log(id + " hello");
     xmlhttp.open("GET", url, true);
     xmlhttp.setRequestHeader("X-API-Key", "oxGeSNpCtE6M2IH11GwHh5xrvWiDiqSp6L9a3IWw ");
     xmlhttp.send();
+
+    setTimeout(nothing,2000);
+    function nothing(){
+      if(Politicians.find().count() == 0){
+        document.getElementById("noPolitician").innerHTML = "Sorry,their is no politician by that name";
+      }else{
+        document.getElementById("ifnothing").innerHTML = " ";
+      }
+    }
+
 
     function getBills(id){//this is for getting the bills the politician supports
       console.log(id);
@@ -86,6 +97,9 @@ Template.informMe.events({
       http.open("GET", api, true);
       http.setRequestHeader("X-API-Key", "oxGeSNpCtE6M2IH11GwHh5xrvWiDiqSp6L9a3IWw ");
       http.send();
+      //if(Bills.find().count() == 0){
+        //document.getElementById("noBills").innerHTML = "Sorry,their are no Bills currently cosponsored by this person"
+      //}
     }
 
   }

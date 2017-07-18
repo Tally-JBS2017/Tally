@@ -9,7 +9,8 @@
             <div class = "row">
               <div class="12u">
                 <section>
-                  <h2>Inform Me page</h2>
+                  <h2>Politician</h2>
+                  <p>Use this page to look up any politicians</p>
                   <div class = "form-group">
                     <div class = "wrapper">
                       <input type="text" name="search" placeholder="Search.." id = "search" class= "search form-control">
@@ -79,6 +80,7 @@
                       </select>
                     </div>
                   </div>
+                  <p id = "noPolitician"></p>
                   <br>
                   <br>
                   <div id="picture" class = "col-md-3 "></div>
@@ -99,6 +101,7 @@
                   <u>Bill Summary</u> <br> {{b.summary}} <br>
                   <hr>
                   {{/each}}
+                  <p id = "noBills"></p>
                 </section>
               </div>
             </div>
