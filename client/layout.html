@@ -5,10 +5,40 @@
       <div class="12u">
 
         <!-- Logo -->
-          <h1><a href="{{pathFor 'home'}}" id="logo">Tally</a></h1>
+          <!-- <h1><a href="{{pathFor 'home'}}" id="logo">Tally</a></h1> -->
 
+          <nav class="navbar navbar-default">
+            <div class="container-fluid">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <h1><a class="navbar-brand" href="{{pathFor 'home'}}">Tally</a></h1>
+              </div>
+
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                <ul class="nav navbar-nav navbar-right navbar-text">
+                  <li><a href="{{pathFor 'register'}}">Register</a></li>
+                  <li><a href="{{pathFor 'election'}}">Election</a></li>
+                  <li><a href="{{pathFor 'informMe'}}">Inform Me</a></li>
+                  <li><a href="{{pathFor 'profile'}}">Profile</a></li>
+                  <li><a href="#">
+                    {{#if currentUser}}
+                      {{>loginButtons align="right"}}
+                    {{/if}}
+                  </a></li>
+                </ul>
+              </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+          </nav>
         <!-- Nav -->
-          <nav id="nav">
+          <!-- <nav id="nav">
             <a href="{{pathFor 'register'}}">Register</a>
             <a href="{{pathFor 'election'}}">Election</a>
             <a href="{{pathFor 'informMe'}}">Inform Me</a>
@@ -16,11 +46,12 @@
             {{#if currentUser}}
               {{>loginButtons}}
             {{/if}}
-          </nav>
+          </nav>-->
 
       </div>
     </div>
   </header>
 </div>
   {{> yield}}
+
 </template>
