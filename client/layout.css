@@ -1,3 +1,15 @@
+@import url("https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,300,200");
+body, ul{
+	font-family: 'Yanone Kaffeesatz';
+	font-size: 13.5pt;
+	line-height: 1.85em;
+	font-weight: 300;
+	margin: 0;
+	padding: 0;
+	border: 0;
+
+}
+
 .navbar-default{
 	background: #3B4346 url("images/bg01.jpg");
 	padding-top: 5%;
@@ -121,9 +133,11 @@ li{
 	list-style-type: none;
 }
 .check-list li {
-	padding: 0.7em 40px 0.7em 40px;
+	padding: 0.7em 0 0.7em 40px;
 	font-size: 1.2em;
 	background: url("images/icon-checkmark.png") 0px 1.05em no-repeat;
+	margin-left: 0;
+	list-style: none;
 }
 .check-list li:first-child {
 	padding-top: 0 !important;
