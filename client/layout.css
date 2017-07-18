@@ -8,6 +8,12 @@ body, ul{
 	padding: 0;
 	border: 0;
 }
+#header h1 {
+	position: relative;
+	left: 0;
+	bottom: 10px;
+	font-size: 3em;
+}
 
 .navbar-default{
 	background: #3B4346 url("images/bg01.jpg");
@@ -57,7 +63,7 @@ body, ul{
 }*/
 .bordered-feature-image img {
 		display: inline-block;
-		width: 40%;
+		width: 35%;
 		border: 8px solid white;
 		float: right;
 		margin-bottom: 0;
@@ -72,13 +78,18 @@ body, ul{
 }
 
 #banner p {
-					font-size: 2em;
-					font-weight: 200;
-					line-height: 1.25em;
-					padding-right: 1em;
-					margin: 0 0 1em 0;
-					padding-top: 2%;
-				}
+	font-size: 2em;
+	font-weight: 200;
+	line-height: 1.25em;
+	padding-right: 1em;
+	margin: 0 0 1em 0;
+	padding-top: 2%;
+}
+
+.bannerStart{
+	float:left;
+  display:block;
+}
 
 .btn-danger a{
 	text-decoration: none;
