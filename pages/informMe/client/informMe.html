@@ -91,6 +91,13 @@
                     Role: {{t.role}}<br>
                     Party: {{t.party}}<br>
                     Next Election Year: {{t.nextElection}}<br>
+                    <p style = "display:inline" id = "url"></p> <br>
+                    Committees they are in:
+                      {{#each n in additionalInfo}}
+                      <ul>
+                        <li>{{n.committee}}</li>
+                      </ul>
+                      {{/each}}
                     {{/each}}
                   </h2>
                   </div>
