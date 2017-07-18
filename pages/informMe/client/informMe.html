@@ -7,7 +7,7 @@
         <div id = "content">
           <div class ="container">
             <div class = "row">
-              <div class="12u">
+
                 <section>
                   <h2>Politician</h2>
                   <p>Use this page to look up any politicians</p>
@@ -83,7 +83,8 @@
                   <p id = "noPolitician"></p>
                   <br>
                   <br>
-                  <div id="picture" class = "col-md-3 "></div>
+                  <div id="picture"></div>
+                  <div class="polInfo">
                   <h2>
                     {{#each t in informed}}
                     Name: {{t.name}}<br>
@@ -92,7 +93,8 @@
                     Next Election Year: {{t.nextElection}}<br>
                     {{/each}}
                   </h2>
-                  <div class="col-md-10">
+                  </div>
+                  <div class="newBill">
                     <hr>
                     <h3>Bills they support</h3>
                     <hr>
@@ -103,8 +105,9 @@
                     {{/each}}
                     <p id = "noBills"></p>
                   </div>
+
                 </section>
-              </div>
+
             </div>
           </div>
         </div>
