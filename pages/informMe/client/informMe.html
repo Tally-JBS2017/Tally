@@ -92,16 +92,17 @@
                     Next Election Year: {{t.nextElection}}<br>
                     {{/each}}
                   </h2>
-                  <hr>
-                  <h3>Bills they support</h3>
-                  <hr>
-                  {{#each b in cosponsor}}
-                  {{b.title}} <br>
-                  <br>
-                  <u>Bill Summary</u> <br> {{b.summary}} <br>
-                  <hr>
-                  {{/each}}
-                  <p id = "noBills"></p>
+                  <div class="col-md-10">
+                    <hr>
+                    <h3>Bills they support</h3>
+                    <hr>
+                    {{#each b in cosponsor}}
+                    <u>{{b.title}}</u><br>
+                    <br> {{b.summary}} <br>
+                    <hr>
+                    {{/each}}
+                    <p id = "noBills"></p>
+                  </div>
                 </section>
               </div>
             </div>

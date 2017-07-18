@@ -14,4 +14,9 @@ input[type=text] {
 
 #picture{
   float:left;
+  display:block;
+}
+
+.newBill{
+  display: block;
 }

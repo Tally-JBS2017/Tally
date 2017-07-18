@@ -16,7 +16,8 @@ Template.informMe.helpers({
 
 Template.informMe.events({
   "click .searchbar": function(event,instance){
-
+    Meteor.call('politicians.clear');
+    Meteor.call('bills.clear');
     var xmlhttp = new XMLHttpRequest();
     const input = $(".search").val();
     const state = instance.$('#state').val();
@@ -65,12 +66,12 @@ Template.informMe.events({
     xmlhttp.setRequestHeader("X-API-Key", "oxGeSNpCtE6M2IH11GwHh5xrvWiDiqSp6L9a3IWw ");
     xmlhttp.send();
 
-    setTimeout(nothing,2000);
-    function nothing(){
+    setTimeout(find,2000);
+    function find(){
       if(Politicians.find().count() == 0){
         document.getElementById("noPolitician").innerHTML = "Sorry,their is no politician by that name";
       }else{
-        document.getElementById("ifnothing").innerHTML = " ";
+        document.getElementById("noPolitician").innerHTML = " ";
       }
     }
 
