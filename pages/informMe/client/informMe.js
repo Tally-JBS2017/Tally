@@ -1,8 +1,10 @@
 Template.informMe.onCreated(function(){
   Meteor.subscribe('politicians');
   Meteor.subscribe('bills');
+  Meteor.subscribe('poliinfo');
   Meteor.call('politicians.clear');
   Meteor.call('bills.clear');
+  Meteor.call('poliinfo.clear');
 })
 
 Template.informMe.helpers({
@@ -16,6 +18,7 @@ Template.informMe.helpers({
 
 Template.informMe.events({
   "click .searchbar": function(event,instance){
+    Meteor.call('poliinfo.clear')
     Meteor.call('politicians.clear');
     Meteor.call('bills.clear');
     var xmlhttp = new XMLHttpRequest();
@@ -101,6 +104,33 @@ Template.informMe.events({
       //if(Bills.find().count() == 0){
         //document.getElementById("noBills").innerHTML = "Sorry,their are no Bills currently cosponsored by this person"
       //}
+    }
+
+    function getPolInfo(id){
+      console.log(id);
+      var htp = new XMLHttpRequest();
+      var httpApi ='https://api.propublica.org/congress/v1/members/'+ id +'.json';
+
+      htp.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+          var electionInfo = JSON.parse(this.responseText);
+
+          console.log(electionInfo);
+          var url = electionInfo.results.url.toString();
+          console.log(url);
+          var committees = [];
+          for(i=0; i<electionInfo.results.roles[0].committees.length; i++){
+            committees[i]=electionInfo.results.roles[0].committees[i].toString();
+          }
+          var information = {url,committees};
+          Meteor.call('poliinfo.insert',information);
+
+        }
+      };
+      htp.open("GET", httpApi, true);
+      htp.setRequestHeader("X-API-Key", "oxGeSNpCtE6M2IH11GwHh5xrvWiDiqSp6L9a3IWw ");
+      htp.send();
+
     }
 
   }

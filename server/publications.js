@@ -23,6 +23,10 @@ Meteor.publish('bills',function(){
   return Bills.find();
 })
 
+Meteor.publish('poliinfo',function(){
+  return PoliInfo.find();
+})
+
 Meteor.publish('regis_voice_info',function(){
   return Regis_voice_info.find();
 })
