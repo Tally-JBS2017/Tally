@@ -16,13 +16,11 @@
                       </header>
                       <p>
                         {{#if currentUser}}
-
-                          <div class = "start"> 
+                          <div class = "start">
                             <h2>Click here to begin your profile creation or start over!</h2>
                             <button class="btn btn-default btn-large js-chatsubmit" id = "new">Let's Begin!</button>
                             <p></p>
                           </div>
-
                           <div class = "name"><!-- shows your profile name here -->
                             <h1>Your Name: </h1>
                             {{#each member in current_profile}}
