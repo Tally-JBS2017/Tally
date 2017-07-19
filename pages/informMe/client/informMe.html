@@ -7,9 +7,10 @@
         <div id = "content">
           <div class ="container">
             <div class = "row">
-              <div class="12u">
+
                 <section>
-                  <h2>Inform Me page</h2>
+                  <h2>Politician</h2>
+                  <p>Use this page to look up any politicians</p>
                   <div class = "form-group">
                     <div class = "wrapper">
                       <input type="text" name="search" placeholder="Search.." id = "search" class= "search form-control">
@@ -74,33 +75,46 @@
                       </select>
                       <br>
                       <select id = "position">
-                        <option value = "house"> House of Representitives </option>
+                        <option value = "house"> House of Representatives </option>
                         <option value = "senate">Senate</option>
                       </select>
                     </div>
                   </div>
+                  <p id = "noPolitician"></p>
                   <br>
                   <br>
-                  <div id="picture" class = "col-md-3 "></div>
+                  <div id="picture"></div>
+                  <div class="polInfo">
                   <h2>
                     {{#each t in informed}}
                     Name: {{t.name}}<br>
                     Role: {{t.role}}<br>
                     Party: {{t.party}}<br>
                     Next Election Year: {{t.nextElection}}<br>
+                    <p style = "display:inline" id = "url"></p> <br>
+                    Committees they are in:
+                      {{#each n in additionalInfo}}
+                      <ul>
+                        <li>{{n.committee}}</li>
+                      </ul>
+                      {{/each}}
                     {{/each}}
                   </h2>
-                  <hr>
-                  <h3>Bills they support</h3>
-                  <hr>
-                  {{#each b in cosponsor}}
-                  {{b.title}} <br>
-                  <br>
-                  <u>Bill Summary</u> <br> {{b.summary}} <br>
-                  <hr>
-                  {{/each}}
+                  </div>
+                  <div class="newBill">
+                    <hr>
+                    <h3>Bills they support</h3>
+                    <hr>
+                    {{#each b in cosponsor}}
+                    <u>{{b.title}}</u><br>
+                    <br> {{b.summary}} <br>
+                    <hr>
+                    {{/each}}
+                    <p id = "noBills"></p>
+                  </div>
+
                 </section>
-              </div>
+
             </div>
           </div>
         </div>

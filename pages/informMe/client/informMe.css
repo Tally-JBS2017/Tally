@@ -13,5 +13,17 @@ input[type=text] {
 }
 
 #picture{
-  float:left;
+  float:left !important;
+  display:block;
+  padding-right: 30px;
+  padding-left: 20px;
+}
+
+.newBill{
+  display: inline-block;
+}
+
+.polInfo{
+  display: flow-root  ;
+
 }

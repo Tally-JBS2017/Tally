@@ -1,23 +1,10 @@
 Template.election.onCreated(function() {
   Meteor.subscribe('election');
-  // this.state = new ReactiveDict();
-  // this.state.setDefault({
-  //   contest:[], //this will hold all the elections
-  //   t:{},//this would hold each seperate election
-  //
-  // });
-  //
-  // console.log("creating the template");
-  // console.dir(this.state);
+
 });
 
 Template.election.helpers({
-/*
-  contest: function(){
-    const instance = Template.instance();
-    return instance.state.get("contest");
-  },
-*/
+
   contest() {
     return Election.find()
   },
@@ -34,7 +21,161 @@ Template.election.events({
     const day = d.getDay()+1;
     const fullDate = month + " " + day + " " + year;
     //this is for the user inputs
-    const state = $(".state").val();
+    const initialState = $(".state").val();
+    var state = initialState.toUpperCase();
+    switch(state){
+      case "ALABAMA":
+        state = "AL";
+        break;
+      case "ALASKA":
+        state = "AK";
+        break;
+      case "ARIZONA":
+        state = "AZ";
+        break;
+      case "ARKANSAS":
+        state = "AR";
+        break;
+      case "CALIFORNIA":
+        state = "CA";
+        break;
+      case "COLORADO":
+        state = "CO";
+        break;
+      case "CONNECTICUT":
+        state = "CT";
+        break;
+      case "DELAWARE":
+        state = "DE";
+        break;
+      case "FLORIDA":
+        state = "FL";
+        break;
+      case "GEORGIA":
+        state = "GA";
+        break;
+      case "HAWAII":
+        state = "HI";
+        break;
+      case "IDAHO":
+        state = "ID";
+        break;
+      case "ILLINOIS":
+        state = "IL";
+        break;
+      case "INDIANA":
+        state = "IN";
+        break;
+      case "IOWA":
+        state = "IA";
+        break;
+      case "KANSAS":
+        state = "KS";
+        break;
+      case "KENTUCKY":
+        state = "KY";
+        break;
+      case "LOUISIANA":
+        state = "LA";
+        break;
+      case "MAINE":
+        state = "ME";
+        break;
+      case "MARYLAND":
+        state = "MD";
+        break;
+      case "MASSACHUSETTS":
+        state = "MA";
+        break;
+      case "MICHIGAN":
+        state = "MI";
+        break;
+      case "MINNESOTA":
+        state = "MN";
+        break;
+      case "MISSISSIPPI":
+        state = "MS";
+        break;
+      case "MISSOURI":
+        state = "MO";
+        break;
+      case "MONTANA":
+        state = "MT";
+        break;
+      case "NEBRASKA":
+        state = "NE";
+        break;
+      case "NEVADA":
+        state = "NV";
+        break;
+      case "NEW HAMPSHIRE":
+        state = "NH";
+        break;
+      case "NEW JERSEY":
+        state = "NJ";
+        break;
+      case "NEW MEXICO":
+        state = "NM";
+        break;
+      case "NEW YORK":
+        state = "NY";
+        break;
+      case "NORTH CAROLINA":
+        state = "NC";
+        break;
+      case "NORTH DAKOTA":
+        state = "ND";
+        break;
+      case "OHIO":
+        state = "OH";
+        break;
+      case "OKLAHOMA":
+        state = "OK";
+        break;
+      case "OREGON":
+        state = "OR";
+        break;
+      case "PENNSYLVANIA":
+        state = "PA";
+        break;
+      case "RHODE ISLAND":
+        state = "RI";
+        break;
+      case "SOUTH CAROLINA":
+        state = "SC";
+        break;
+      case "SOUTH DAKOTA":
+        state = "SD";
+        break;
+      case "TENNESSEE":
+        state = "TN";
+        break;
+      case "TEXAS":
+        state = "TX";
+        break;
+      case "UTAH":
+        state = "UT";
+        break;
+      case "VERMONT":
+        state = "VT";
+        break;
+      case "VIRGINIA":
+        state = "VA";
+        break;
+      case "WASHINGTON":
+        state = "WA";
+        break;
+      case "WEST VIRGINIA":
+        state = "WV";
+        break;
+      case "WISCONSIN":
+        state = "WI";
+        break;
+      case "WYOMING":
+        state = "WY";
+
+    }
+
 
 
     const ElectionAPIkey = "aINkNgEHYqnSUX9TT7TEuSQus167GNvHRAdSjLpx";
@@ -45,7 +186,7 @@ Template.election.events({
       if(this.readyState == 4 && this.status == 200){
         var electionInfo = JSON.parse(this.responseText);
         //var theState = electionInfo.contest[1].district.name.toString();
-        for(i=1; i<electionInfo.results.length; i++){
+        for(i=0; i<electionInfo.results.length; i++){
           var seat= electionInfo.results[i].election_notes.toString();
           var date= electionInfo.results[i].election_date.toString();
           var apistate= electionInfo.results[i].election_state.toString();
@@ -55,6 +196,7 @@ Template.election.events({
         var information = {seat,date,apistate,type}
         Meteor.call('election.insert',information);
         }
+
       }
     };
 
@@ -77,10 +219,17 @@ Template.election.events({
       }
     };
     */
-    xmlhttp.open("GET", url, false);//i set it to false so it has to wait for a reply
+    xmlhttp.open("GET", url, true);//i set it to false so it has to wait for a reply
+    //xmlhttp.timeout = 2000;
     xmlhttp.send();
-    if( Election.find().count() == 0){ //this tells the user if their are elections in their state.
-      document.getElementById("ifnothing").innerHTML = "Sorry, their are no elections at this state";
+
+    setTimeout(nothing,1000);
+    function nothing(){
+      if( Election.find().count() == 0){ //this tells the user if their are elections in their state.
+        document.getElementById("ifnothing").innerHTML = "Sorry, their are no elections at this state";
+      }else{
+        document.getElementById("ifnothing").innerHTML = " ";
+      }
     }
   },
 })

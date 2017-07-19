@@ -54,6 +54,14 @@ Meteor.methods({
     Bills.remove({});
   },
 
+  'poliinfo.insert'(information){
+    PoliInfo.insert(information);
+  },
+
+  'poliinfo.clear'(){
+    PoliInfo.remove({});
+  },
+
   "sendJSONtoAPI_ai": function(text){
       //validation for the option
 
