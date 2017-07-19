@@ -13,7 +13,11 @@ Template.informMe.helpers({
   },
   cosponsor(){
     return Bills.find();
+  },
+  additionalInfo(){
+    return PoliInfo.find();
   }
+
 })
 
 Template.informMe.events({
@@ -58,6 +62,7 @@ Template.informMe.events({
             Meteor.call('politicians.insert',information);
             i = electionInfo.results.length;
             getBills(id);
+            getPoliInfo(id);
           }
         }
 
@@ -88,11 +93,11 @@ Template.informMe.events({
         if(this.readyState == 4 && this.status == 200){
           var electionInfo = JSON.parse(this.responseText);
           for(i=0; i<electionInfo.results[0].bills.length; i++){
-            console.log(electionInfo);
+
             var title = electionInfo.results[0].bills[i].title.toString(); //this gets name of politician
-            console.log(title);
+
             var summary = electionInfo.results[0].bills[i].summary.toString();
-            console.log(summary);
+
             var information = {title,summary};
             Meteor.call('bills.insert',information);
           }
@@ -106,7 +111,7 @@ Template.informMe.events({
       //}
     }
 
-    function getPolInfo(id){
+    function getPoliInfo(id){
       console.log(id);
       var htp = new XMLHttpRequest();
       var httpApi ='https://api.propublica.org/congress/v1/members/'+ id +'.json';
@@ -116,15 +121,15 @@ Template.informMe.events({
           var electionInfo = JSON.parse(this.responseText);
 
           console.log(electionInfo);
-          var url = electionInfo.results.url.toString();
+          var url = electionInfo.results[0].url.toString();
           console.log(url);
-          var committees = [];
-          for(i=0; i<electionInfo.results.roles[0].committees.length; i++){
-            committees[i]=electionInfo.results.roles[0].committees[i].toString();
-          }
-          var information = {url,committees};
-          Meteor.call('poliinfo.insert',information);
+          document.getElementById("url").innerHTML = url;
+          for(i=0; i<electionInfo.results[0].roles[0].committees.length; i++){
+            var committee =electionInfo.results[0].roles[0].committees[i].name.toString();
 
+            var information = {committee};
+            Meteor.call('poliinfo.insert',information);
+          }
         }
       };
       htp.open("GET", httpApi, true);
