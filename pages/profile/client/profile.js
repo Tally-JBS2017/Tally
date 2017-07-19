@@ -79,26 +79,22 @@ Template.profile.events({
       alert("This zip code is not a valid input. ")
     }
   },
-  'click #submit_all' : function (e, instance) {//this updates every field
+  'click #submit_all' : function (e, instance) {//this created a profile the first time and then updates every field
     check(update);
-    console.log(Profiles.findOne({owner: Meteor.userId()}));
-    function check(callback){
+    function check(callback){//we use a callback function to make sure that the profile is added before it is updated.
       if(Profiles.findOne({owner:Meteor.userId()}) == null){
         var to_be_inserted = {name:'Default', owner: Meteor.userId()};
         Meteor.call('profiles.insert', to_be_inserted);
-        console.log("made a new profile");
       }
       callback();
     }
-    function update(){
-      console.log(Profiles.findOne({owner: Meteor.userId()}));
-      if(!(instance.$('#name').val() == "")){
-        const name = instance.$('#name').val();
+    function update(){//this is where everything is updated
+      if(!(instance.$('#name').val() == "")){//if the field is not empty
+        const name = instance.$('#name').val();//save the value and call the meteor update function
         Meteor.call('profiles.name.update', name)
-        instance.$('#name').val("");
+        instance.$('#name').val("");//reset the input area
       }
       if(!(instance.$('#age').val() == "")){
-
         const age = instance.$('#age').val();
         Meteor.call('profiles.age.update', age)
         instance.$('#age').val("");
@@ -123,9 +119,9 @@ Template.profile.events({
             alert("This zip code is not a valid input. ");
           }
         }
-        Meteor.call('election.clear');
+        Meteor.call('election.clear'); //Steven's Code
         var xmlhttp = new XMLHttpRequest();
-        //setting up the date for today so the api knows what date to start from
+        //setting up the date for today so the api on the elections page knows what date to start from
         const d = new Date();
         const month = d.getMonth()+1;
         const year = d.getFullYear();
