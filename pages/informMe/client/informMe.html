@@ -92,7 +92,7 @@
                     Party: {{t.party}}<br>
                     Next Election Year: {{t.nextElection}}<br>
                     <p style = "display:inline" id = "url"></p> <br>
-                    Committees he/she is in:
+                    Committees:
                       {{#each n in additionalInfo}}
                       <ul>
                         <li>{{n.committee}}</li>
@@ -103,7 +103,7 @@
                   </div>
                   <div class="newBill">
                     <hr>
-                    <h3>Bills he/she supports</h3>
+                    <h3>Bills supported</h3>
                     <hr>
                     {{#each b in cosponsor}}
                     <u>{{b.title}}</u><br>
