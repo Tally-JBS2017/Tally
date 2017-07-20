@@ -5,7 +5,7 @@ body, ul{
 	line-height: 1.85em;
 	font-weight: 300;
 	margin: 0;
-	padding: 0;
+	padding: 2;
 	border: 0;
 }
 #header h1 {
@@ -139,9 +139,9 @@ body, ul{
 	width: 100%;
 
 }
-li{
+/*li{
 	list-style-type: none;
-}
+}*/
 .check-list li {
 	padding: 0.7em 0 0.7em 40px;
 	font-size: 1.2em;
