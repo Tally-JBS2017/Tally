@@ -1,4 +1,5 @@
 <template name="register">
+  {{#if profileloaded}}
   <body class="subpage">
     <div id="page-wrapper">
       <!-- Content -->
@@ -13,16 +14,15 @@
                     <h2>Register here</h2>
                   </header>
                     <Label>ZIP Code &nbsp;</Label><input id="zipcode" maxlength="5" required="'required'" type="number" pattern="[0-9]{5}" title="Five digit zip code">
-                    <button id=regisInfo>Find Registration Info</button>
+                    <button class="btn btn-default" id=regisInfo>Find Registration Info</button>
                     <br><br>
                     {{> Template.dynamic template="eligibility" data=pageData}}
-                    <button id=online>Register Online</button><button id=person>Register in person</button><button id=mail>Register by mail</button>
+                    <button class="btn btn-default" id=online>Register Online&nbsp;</button><button class="btn btn-default" id=person>Register in person&nbsp;</button><button class="btn btn-default" id=mail>Register by mail</button>
                     <br><br>
                     {{> Template.dynamic template=regstyle data=pageData}}
                     <div>
                       {{#if ifInactive}}
-                      <button style="display:inline-block;" id="recordAudioButton"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>Speak</button><p> Have a question about one of the steps? Try asking me!</p>
-
+                      <button class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Have a question about one of the steps? Try asking me!" id="recordAudioButton"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>Speak</button>
                       {{/if}}
                       {{#if ifSpeaking}}
                       <button style="display:inline-block;" id="stopRecordAudioButton">
@@ -36,8 +36,14 @@
         </div>
       </div>
     </div>
+    <script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip('show');
+        $('[data-toggle="tooltip"]').tooltip('hide');
+    });
+    </script>
   </body>
-
+  {{/if}}
 </template>
 
 

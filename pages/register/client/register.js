@@ -5,11 +5,6 @@ Template.register.onCreated(function registerOnCreated() {
   Meteor.subscribe("profiles");
   this.howtoreg= new ReactiveVar("");
   // console.log(Profiles.findOne({owner:Meteor.userId()}));
-  if((Profiles.findOne({owner:Meteor.userId()}) != null) && (Session.get("statepage") == undefined)){
-    Session.set("statepage",Profiles.findOne({owner:Meteor.userId()}).state);
-    Meteor.subscribe("Statereginfo",{abbr:Session.get("statepage")});
-    // console.log("Statepage = "+this.statepage);
-  }
   this.recognition= new ReactiveVar("");
   this.voiceDict = new ReactiveDict();
   //set the status of the recording
@@ -20,6 +15,7 @@ Template.register.onCreated(function registerOnCreated() {
   // Meteor.subscribe("Statereginfo");
   Meteor.subscribe("regis_voice_info");
 })
+
 
 Template.register.helpers({
   //this function's purpose is to allow the dynamic template to grab the right template name.
@@ -53,8 +49,16 @@ Template.register.helpers({
     const voiceDict = Template.instance().voiceDict
     return voiceDict.get("recording_status") == "speaking";
   },
-})
 
+  profileloaded: function(){
+    if((Profiles.findOne({owner:Meteor.userId()}) != null) && (Session.get("statepage") == undefined)){
+      Session.set("statepage",Profiles.findOne({owner:Meteor.userId()}).state);
+      Meteor.subscribe("Statereginfo",{abbr:Session.get("statepage")});
+      // console.log("Statepage = "+this.statepage);
+    }
+    return true;
+  }
+})
 Template.register.events({
 
   'click #regisInfo'(elt,instance){
