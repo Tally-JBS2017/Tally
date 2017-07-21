@@ -25,3 +25,7 @@ reactive-dict@1.1.9
 http@1.2.12
 session
 aldeed:collection2
+accounts-google
+accounts-facebook
+google-config-ui
+facebook-config-ui
