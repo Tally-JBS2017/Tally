@@ -5,6 +5,23 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0;
 }
 
+.reg_mic{
+  display: block;
+}
+.reg_header{
+  display: inline-block;
+}
+
+.mic_icon{
+  float: right;
+}
+
+#reg_info_div{
+  padding-top: 90px;
+  padding-bottom: 10px;
+
+}
+
 /*h2, h3, .table-striped>tbody>tr>td,
 .table-striped>tbody>tr>th, Label{
   color: #ECEFF1;
