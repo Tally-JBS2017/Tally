@@ -79,21 +79,8 @@
                   <div id="picture"></div>
                   <div class="polInfo">
                     {{#each t in informed}}
-                    <div class = "well">
-                      <img src = {{t.src}} id = "picture" class = "col-md-4">
+                      {{> trow t=t}}
 
-                      <div class = "col-md-4">
-                        <h2>Name: {{t.name}}</h2><br>
-                        <h3>Role: {{t.role}}<br>
-                        Party: {{t.party}}<br>
-                        Next Election Year: {{t.nextElection}}<br>
-                        </h3>
-                      </div>
-                      <div class = "col-md-4">
-                        <button class ="moreInfo btn btn-default" value = {{t.name}} id = "name">More Information</button>
-                      </div>
-
-                    </div>
                     {{/each}}
                   </div>
                 </section>
@@ -104,4 +91,22 @@
       </div>
     </div>
   </body>
+</template>
+
+<template name = "trow">
+
+  <div class = "well">
+    <img src = {{t.src}} id = "picture" class = "col-md-4">
+    <div class = "col-md-4">
+      <h2>Name: {{t.name}}</h2><br>
+      <h3>Role: {{t.role}}<br>
+      Party: {{t.party}}<br>
+      Next Election Year: {{t.nextElection}}<br>
+      </h3>
+    </div>
+    <div class = "col-md-4">
+      <button class ="moreInfo btn btn-default" id = "name">More Information</button>
+    </div>
+
+  </div>
 </template>

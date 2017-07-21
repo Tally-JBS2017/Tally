@@ -67,14 +67,17 @@ Template.informMe.events({
     xmlhttp.send();
   },
 
+}),
+
+Template.trow.events({
   "click .moreInfo": function(event,instance){
     Meteor.call('poliinfo.clear')
     Meteor.call('politicians.clear');
     Meteor.call('bills.clear');
     var xmlhttp = new XMLHttpRequest();
-    var input = instance.$('#name').val();
-    const state = instance.$('#state').val();
-    const position = instance.$('#position').val();
+    var input = this.t.name;
+    const state = $('#state').val();
+    const position = $('#position').val();
 
 
     var id;
@@ -86,7 +89,7 @@ Template.informMe.events({
         var electionInfo = JSON.parse(this.responseText);
         for(i=0; i<electionInfo.results.length; i++){
           name = electionInfo.results[i].name.toString(); //this gets name of politician
-          console.log(name);
+          console.log("this is input" +input);
           if(input.toUpperCase()==name.toUpperCase()){
             id = electionInfo.results[i].id.toString(); //this is getting the politican id
             console.log(electionInfo);
@@ -112,15 +115,6 @@ Template.informMe.events({
     xmlhttp.open("GET", url, true);
     xmlhttp.setRequestHeader("X-API-Key", "oxGeSNpCtE6M2IH11GwHh5xrvWiDiqSp6L9a3IWw ");
     xmlhttp.send();
-
-    setTimeout(find,2000);
-    function find(){
-      if(Politicians.find().count() == 0){
-        document.getElementById("noPolitician").innerHTML = "Sorry,their is no politician by that name";
-      }else{
-        document.getElementById("noPolitician").innerHTML = " ";
-      }
-    }
 
 
     function getBills(id){//this is for getting the bills the politician supports
@@ -178,5 +172,5 @@ Template.informMe.events({
 
     }
     Router.go('/politician');
-  }
+  },
 })

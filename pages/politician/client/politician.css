@@ -15,7 +15,7 @@ input[type=text] {
   margin:10px;
 }
 
-#picture{
+.picture{
   float:left ;
   display:block;
   padding-right: 30px;

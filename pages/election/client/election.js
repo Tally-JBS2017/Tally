@@ -1,6 +1,6 @@
 Template.election.onCreated(function() {
   Meteor.subscribe('election');
-
+  
 });
 
 Template.election.helpers({
@@ -11,7 +11,10 @@ Template.election.helpers({
 });
 
 Template.election.events({
-  "click .getElection": function(event,instance){
+
+
+
+  "click .getElection": function clicked(event,instance){
     Meteor.call('election.clear');
     var xmlhttp = new XMLHttpRequest();
     //setting up the date
