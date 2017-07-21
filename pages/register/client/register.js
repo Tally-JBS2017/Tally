@@ -63,7 +63,12 @@ Template.register.events({
 
   'click #regisInfo'(elt,instance){
     const zip =instance.$("#zipcode").val();
-    getState(zip, returnState);
+    const dropstate =instance.$("#state").val();
+    if(dropstate ==""){
+      getState(zip, returnState);
+    }else{
+      returnState(dropstate);
+    }
     //This is the code to grab the city and state from the users zipcode. Would love to store the info somehow.
     function getState(zip, callback){
       var state = ""
