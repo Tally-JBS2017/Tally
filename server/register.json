@@ -170,7 +170,7 @@
 			"absentee":"<h4>Items required</h4><hr><ul><li>Item</li></ul><h4>Steps</h4><hr><ol><li>step1</li></ol> "
 		},
 		{
-			"stateName":"louisiana",
+			"stateName":"Louisiana",
 			"abbr":"LA",
 			"eligibility":"<ul><li>Be a U.S. citizen.</li><li>You're a Louisiana resident in the parish in which you want to vote.</li><li>You're at least 17 years old, and will be 18 years old in time for the election</li><li>NOT deemed mentally incompetent or otherwise had your voting rights suspended under judgment.</li><li>NOT ot currently incarcerated, on parole, or on probation for a felony conviction.</li></ul> ",
 			"online":"<h4>Items required</h4><hr><ul><li>Driver's license number or special identification card number</li><li>Audit code</li><li>Social Security number</li></ul><h4>Steps</h4><hr><ol><li>Visit <a href='https://voterportal.sos.la.gov/VoterRegistrationx'>this website</a></li><li>Fillout the online registration form.</li></ol> ",
@@ -391,7 +391,7 @@
 		},
 		{
 			"stateName":"South Carolina",
-			"abbr":"RI",
+			"abbr":"SC",
 			"eligibility":"<ul><li>Be a U.S. citizen.</li><li>Be an South Carolina resident.</li><li>Be at least 18 years old on election day).</li><li>NOT been convicted of a disqualifying felony.</li><li>Not deemed mentally incompetent by the court</li></ul> ",
 			"online":"<h4>Items required</h4><hr><ul><li>Requires South Carolina License or DMV ID</li><li> if you have moved, you must first update your residence address with DMV</li></ul><h4>Steps</h4><hr><ol><li>visit this <a href='https://info.scvotes.sc.gov/eng/ovr/start.aspx'>page</a> to get registered.</li></ol> ",
 			"inPerson":"<h4>Items required</h4><hr><ul><li>Requires South Carolina License or DMV ID</li><li> if you have moved, you must first update your residence address with DMV</li></ul><h4>Steps</h4><hr><ol><li>Register in person at your <a href='https://www.scvotes.org/how-register-absentee-voting'>county board of voter registration</a></li></ol> ",
