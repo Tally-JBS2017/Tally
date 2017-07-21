@@ -36,12 +36,18 @@
                     {{> Template.dynamic template=regstyle data=pageData}}
                     <div>
                       {{#if ifInactive}}
-                      <button class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Have a question about one of the steps? Try asking me!" id="recordAudioButton"><span class="glyphicon glyphicon-play" aria-hidden="true"></span>Speak</button>
-                      {{/if}}
-                      {{#if ifSpeaking}}
-                      <button style="display:inline-block;" id="stopRecordAudioButton">
-                      <span class="glyphicon glyphicon-stop" aria-hidden="true"></span> Stop</button>
-                      {{/if}}
+                        <button class="btn btn-info btn-md" style="display:inline-block;" id="recordAudioButton">
+                          Have a question about one of the steps? Click here to ask me!
+                        </button>
+                       {{/if}}
+                       {{#if ifSpeaking}}
+                        <button class="btn btn-info btn-md" style="display:inline-block;">
+                          <i class="fa fa-spinner fa-spin"></i>Listening. Say stop to end conversation.</button>
+                        {{/if}}
+                        {{#if isProcessing}}
+                        <button class="btn btn-info btn-md" style="display:inline-block;">
+                          <i class="fa fa-spinner fa-spin"></i>Listening. Say stop to end conversation.</button>
+                        {{/if}}
                     </div>
                   </section>
               </div>
