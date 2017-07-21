@@ -4,26 +4,24 @@ input[type=text] {
 
 /* When the input field gets focus, change its width to 100% */
 
+.basicInfo{
+  float: left;
+}
 
-.moreInfo{
-  float:right;
+.wrapper{
+  width: 80%;
+  display:inline-flex;
+  padding:5px;
+  margin:10px;
 }
 
 #picture{
-  float:left;
+  float:left ;
   display:block;
   padding-right: 30px;
   padding-left: 20px;
-  width: 200px;
+  width: 300px;
   height:auto;
-}
-
-.committeeInfo{
-  display:none;
-}
-
-a:hover + div.committeeInfo{
-  display:flow-root;
 }
 
 .newBill{
@@ -32,8 +30,5 @@ a:hover + div.committeeInfo{
 
 .polInfo{
   display: flow-root  ;
-}
 
-.well{
-  overflow:hidden;
 }

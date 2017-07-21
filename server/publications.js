@@ -30,3 +30,7 @@ Meteor.publish('poliinfo',function(){
 Meteor.publish('regis_voice_info',function(){
   return Regis_voice_info.find();
 })
+
+Meteor.publish('pollingloc',function(){
+  return Pollingloc.find();
+})
