@@ -5,7 +5,7 @@ Template.profile.onCreated(function(){
   //  Meteor.call('profiles.insert', to_be_inserted);
   //}
 this.updateProfile= new ReactiveDict();
-this.updateProfile.set("update_status", "on");
+this.updateProfile.set("update_status", "off");
 });
 Template.profile.helpers({
   current_profile: function(){

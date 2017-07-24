@@ -5,3 +5,13 @@
 #userInput{
   color: #F44336;
 }*/
+.profileHeader{
+  display: block;
+  float: left;
+
+}
+
+#update{
+  float: right;
+  display: block;
+}

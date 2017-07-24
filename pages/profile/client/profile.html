@@ -10,54 +10,34 @@
 
                   <!-- Main Content -->
                     <section>
-                      <header>
-                        <h2>Your Profile</h2>
-                      </header>
+                      <div class="profileHeader">
+                        <h2>PROFILE INFORMATION</h2>
+                      </div>
                       {{#if ifUpdateOff}}
-                      <p>
-                        {{#if currentUser}}
-                          <!-- <div class = "start">
-                            <h2>Click here to begin your profile creation or start over!</h2>
-                            <button class="btn btn-default btn-large js-chatsubmit" id = "new">Let's Begin!</button>
-                            <p></p>
-                          </div> -->
-                          <div class = "name"><!-- shows your profile name here -->
-                            <h1>Your Name: </h1>
-                            {{#each member in current_profile}}
-                              <h2 id="userInput">{{member.name}}</h2>
-                            {{/each}}
-                            <br>
-                            <!--
-                            <br>
-                            <button class="btn btn-default btn-large js-chatsubmit" id = "name_add">Submit</button>
-                            <br>
-                            -->
-                          </div>
-                          <div class = "address"><!-- shows your profile name here -->
+                      {{#if currentUser}}
+                      <div class="updateButton">
+                        <button class="btn btn-primary btn-lg js-chatsubmit" id = "update">Update Information</button>
+                      </div>
+                      <br><br>
+                      <div class="row">
+                        <div class="col-md-2 col-md-offset-2">
+                          {{#each member in current_profile}}
+                            <h2 id="userInput">{{member.name}}</h2>
+                          {{/each}}
+                        </div>
+                        <div class="col-md-7 col-md-offset-1">
+                          <div class="address">
                             <h1>Your Address: </h1>
                             {{#each member in current_profile}}
                               <h2 id="userInput">{{member.address}}</h2>
                             {{/each}}
                             <br>
-                            <!--
-                            <br>
-                            <button class="btn btn-default btn-large js-chatsubmit" id = "address_add">Submit</button>
-                            <br>
-                            -->
                           </div>
                           <div class = "state"><!-- shows your profile name here -->
                             <h1>Your State: </h1>
                             {{#each member in current_profile}}
                               <h2 id="userInput">{{member.state}}</h2>
                             {{/each}}
-                            <!--
-                            <p>Change your state here:</p>
-                            <input type="text"  class="js-chatinput" id = "state">
-                            <br>
-                            <br>-->
-                            <!--
-                            <button class="btn btn-default btn-large js-chatsubmit" id = "state_add">Submit</button>
-                            -->
                             <br>
                           </div>
                           <div class = "zip"><!-- shows your profile name here -->
@@ -66,20 +46,15 @@
                               <h2 id="userInput">{{member.zip}}</h2>
                             {{/each}}
                             <br>
-                            <!--
-                            <br>
-                            <button class="btn btn-default btn-large js-chatsubmit" id = "zip_add">Submit</button>
-                            <br>
-                            -->
                           </div>
-                          <br>
-                          <button class="btn btn-primary btn-large js-chatsubmit" id = "update">Update Information</button>
-                          <p></p>
-                        {{else}}
-                          {{>loginButtons}}
-                        {{/if}}
-                      </p>
+
+                        </div>
+                      </div>
+                      {{else}}
+                        {{>loginButtons}}
                       {{/if}}
+                      {{/if}}
+
                       {{#if ifUpdateOn}}
                       <p>
                         {{#if currentUser}}
@@ -88,6 +63,7 @@
                             <button class="btn btn-default btn-large js-chatsubmit" id = "new">Let's Begin!</button>
                             <p></p>
                           </div> -->
+                          <br><br>
                           <div class = "name"><!-- shows your profile name here -->
                             <h1>Your Name: </h1>
                             {{#each member in current_profile}}
