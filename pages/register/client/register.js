@@ -47,8 +47,8 @@ Template.register.helpers({
   },
 
   ifInactive: function(){
-  const voiceDict = Template.instance().voiceDict
-  return voiceDict.get("recording_status") == "inactive";
+    const voiceDict = Template.instance().voiceDict
+    return voiceDict.get("recording_status") == "inactive";
   },
 
   ifSpeaking: function(){

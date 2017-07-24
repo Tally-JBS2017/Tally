@@ -4,9 +4,21 @@ Template.profile.onCreated(function(){
   //  var to_be_inserted = {name:'Default', owner: Meteor.userId()};
   //  Meteor.call('profiles.insert', to_be_inserted);
   //}
+this.updateProfile= new ReactiveDict();
+this.updateProfile.set("update_status", "on");
 });
 Template.profile.helpers({
-  current_profile() {return Profiles.find({owner: Meteor.userId()})},
+  current_profile: function(){
+    return Profiles.find({owner: Meteor.userId()})
+  },
+  ifUpdateOff: function(){
+    const updateProfile = Template.instance().updateProfile;
+    return updateProfile.get("update_status") == "off";
+  },
+  ifUpdateOn: function(){
+    const updateProfile = Template.instance().updateProfile;
+    return updateProfile.get("update_status") == "on";
+  },
 })
 
 Template.profile.events({
@@ -80,6 +92,7 @@ Template.profile.events({
     }
   },
   'click #submit_all' : function (e, instance) {//this created a profile the first time and then updates every field
+    Template.instance().updateProfile.set("update_status", "off");
     check(update);
     function check(callback){//we use a callback function to make sure that the profile is added before it is updated.
       if(Profiles.findOne({owner:Meteor.userId()}) == null){
@@ -150,4 +163,9 @@ Template.profile.events({
     xmlhttp.send();
   }
   },
+
+  'click #update' : function (e, instance) {//this created a profile the first time and then updates every field
+    Template.instance().updateProfile.set("update_status", "on");
+  },
+
 })
