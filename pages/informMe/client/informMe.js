@@ -89,7 +89,6 @@ Template.trow.events({
         var electionInfo = JSON.parse(this.responseText);
         for(i=0; i<electionInfo.results.length; i++){
           name = electionInfo.results[i].name.toString(); //this gets name of politician
-          console.log("this is input" +input);
           if(input.toUpperCase()==name.toUpperCase()){
             id = electionInfo.results[i].id.toString(); //this is getting the politican id
             console.log(electionInfo);
@@ -131,7 +130,9 @@ Template.trow.events({
             var title = electionInfo.results[0].bills[i].title.toString(); //this gets name of politician
 
             var summary = electionInfo.results[0].bills[i].summary.toString();
-
+            if(!summary){
+              summary = "Summary Unavaliable";
+            }
             var information = {title,summary};
             Meteor.call('bills.insert',information);
           }

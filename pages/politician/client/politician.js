@@ -98,10 +98,7 @@ Template.politician.events({
             var title = electionInfo.results[0].bills[i].title.toString(); //this gets name of politician
 
             var summary = electionInfo.results[0].bills[i].summary.toString();
-            if(!summary){
-              summary = "summary unavaliable";
-            }
-            console.log(summary + "this is the summary");
+            
             var information = {title,summary};
             Meteor.call('bills.insert',information);
           }
