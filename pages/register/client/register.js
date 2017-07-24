@@ -10,7 +10,7 @@ Template.register.onCreated(function registerOnCreated() {
   Meteor.subscribe("Statereginfo",{abbr:Session.get("statepage")});
   // console.log("Statepage = "+this.statepage);
 }
-  this.recognition= new ReactiveVar("");
+  //this.recognition= new ReactiveVar("");
   this.voiceDict = new ReactiveDict();
   this.recognition_engine = new webkitSpeechRecognition();
   //set the status of the recording
@@ -143,7 +143,8 @@ Template.register.events({
         if(result.data.result.metadata.intentName == "register_online"){
          //  window.speechSynthesis.speak(voice_data);
          responsiveVoice.speak(voice_data, "UK English Male");
-       } else if(text == "stop"){
+         //if text=="stop"
+       } else if(result.data.result.metadata.intentName == "stop"){
          voiceDict.set("recording_status", "inactive");
          recognition_engine.stop();
          return;
