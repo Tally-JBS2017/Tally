@@ -1,19 +1,31 @@
 Template.election.onCreated(function() {
   Meteor.subscribe('election');
-  
+  this.voiceDict = new ReactiveDict();
+  this.recognition_engine = new webkitSpeechRecognition();
+  this.voiceDict.set("recording_status", "inactive");
 });
 
 Template.election.helpers({
-
-  contest() {
+  contest: function() {
     return Election.find()
+  },
+
+  ifInactive: function(){
+  const voiceDict = Template.instance().voiceDict
+  return voiceDict.get("recording_status") == "inactive";
+  },
+
+  ifSpeaking: function(){
+    const voiceDict = Template.instance().voiceDict
+    return voiceDict.get("recording_status") == "speaking";
+  },
+
+  isProcessing: function(){
+    return Template.instance().voiceDict.get("recording_status") === "processing";
   },
 });
 
 Template.election.events({
-
-
-
   "click .getElection": function clicked(event,instance){
     Meteor.call('election.clear');
     var xmlhttp = new XMLHttpRequest();
@@ -176,10 +188,7 @@ Template.election.events({
         break;
       case "WYOMING":
         state = "WY";
-
     }
-
-
 
     const ElectionAPIkey = "aINkNgEHYqnSUX9TT7TEuSQus167GNvHRAdSjLpx";
 
@@ -234,5 +243,56 @@ Template.election.events({
         document.getElementById("ifnothing").innerHTML = " ";
       }
     }
+  },
+  'click #recordAudioButton'(elt,instance){
+    const voiceDict = Template.instance().voiceDict;
+    var recognition_engine = Template.instance().recognition_engine;
+    Template.instance().voiceDict.set("recording_status", "speaking");
+    // var voice_data = new SpeechSynthesisUtterance(Regis_voice_info.findOne({abbr:page}).online);
+    // var interim_result, final_result, stop_word;
+    // stop_word="stop";
+    recognition_engine.continuous = true;
+    recognition_engine.lang = 'en-US';
+    recognition_engine.on
+    recognition_engine.onend = function(){
+      console.log("ended");
+    }
+    recognition_engine.onstart = function(){
+      console.log("started");
+    }
+    recognition_engine.onresult = function(event) {
+      const text = event.results[0][0].transcript;
+      console.log(text);
+      //set voiceDict = processing
+      if(voiceDict.get("processing_status") === "processing") return;
+      voiceDict.set("processing_status", "processing");
+      Meteor.call("sendJSONtoAPI_ai", text, { returnStubValue: true }, function(err, result){
+        if(err){
+          window.alert(err);
+          return;
+        }
+        console.log(result.data.result.metadata.intentName);
+        if(result.data.result.metadata.intentName == "stop"){
+          voiceDict.set("recording_status", "inactive");
+          recognition_engine.stop();
+          return;
+       } else{
+          console.log(result);
+          console.log(result.data.result.metadata.intentName);
+          responsiveVoice.speak(result.data.result.speech, "UK English Male");
+         }
+        recognition_engine.stop();
+        setTimeout(function(){
+          voiceDict.set("processing_status", "not_processing");
+          recognition_engine.start();
+        }, 2000)
+      })
+    };
+    recognition_engine.start();
+  },
+  'click #stopRecordAudioButton'(elt,instance){
+    var recognition_engine = Template.instance().recognition_engine;
+    Template.instance().recognition_engine.stop();
+    Template.instance().voiceDict.set("recording_status", "inactive");
   },
 })

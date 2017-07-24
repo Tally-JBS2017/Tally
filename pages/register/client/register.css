@@ -5,10 +5,10 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0;
 }
 
-.reg_mic{
+.page_mic{
   display: block;
 }
-.reg_header{
+.page_header{
   display: inline-block;
 }
 
@@ -16,7 +16,7 @@ input[type=number]::-webkit-outer-spin-button {
   float: right;
 }
 
-#reg_info_div{
+#page_info_div{
   padding-top: 90px;
   padding-bottom: 10px;
 

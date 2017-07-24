@@ -11,11 +11,31 @@
 
                   <!-- Main Content -->
                     <section>
-                      <header>
-                        <h2>Find Upcoming Elections Here</h2>
-                        <h3>Short description of this page.</h3>
-                      </header>
-                      <p>
+                      <div class="page_mic">
+                        <header class="page_header">
+                          <h2>Find Upcoming Elections Here</h2>
+                          <h3>Short description of this page.</h3>
+                        </header>
+                        <div class="mic_icon">
+                          {{#if ifInactive}}
+                          <img width="150" id="recordAudioButton"  src="images/mic_icon.svg"/>
+                            <!-- <button class="btn btn-info btn-md" style="display:inline-block;" id="recordAudioButton">
+                              Have a question about one of the steps? Click here to ask me!
+                            </button> -->
+                           {{/if}}
+                           {{#if ifSpeaking}}
+                           <img width="150" id="recordAudioButton"  src="images/speaking_icon.svg" />
+                            <!-- <button class="btn btn-info btn-md" style="display:inline-block;">
+                              <i class="fa fa-spinner fa-spin"></i>Listening. Say stop to end conversation.</button> -->
+                            {{/if}}
+                            {{#if isProcessing}}
+                            <img width="150" id="recordAudioButton" class="voiceDemoIcon" src="images/mic_icon.svg" />
+                            <!-- <button class="btn btn-info btn-md" style="display:inline-block;">
+                              <i class="fa fa-spinner fa-spin"></i>Listening. Say stop to end conversation.</button> -->
+                            {{/if}}
+                        </div>
+                      </div>
+                      <p id="page_info_div">
                         <!-- <div class = " col-md-offset 1 col-md-5  bg-info" id = content> -->
 
                           State: <input type="text" class="state form-control" placeholder = "Example: NY"><br>
