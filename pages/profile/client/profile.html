@@ -20,10 +20,15 @@
                       </div>
                       <br><br>
                       <div class="row">
-                        <div class="col-md-3 col-md-offset-1" id="userName">
-                          {{#each member in current_profile}}
-                            <h2 class="name" id="userInput">{{member.name}}</h2>
-                          {{/each}}
+                        <div class="col-md-3 col-md-offset-1">
+                          <div id="userName">
+                            {{#each member in current_profile}}
+                              <h2 class="name" id="userInput">{{member.name}}</h2>
+                            {{/each}}
+                          </div>
+                          <div id="vote_pic">
+                            <img src="images/vote.jpg">
+                          </div>
                         </div>
 
                         <div class="col-md-5 col-md-offset-1" id="userInfo">
@@ -58,15 +63,15 @@
                       {{#if ifUpdateOn}}
                       <p>
                           <br><br>
-                          <div class = "name"><!-- shows your profile name here -->
+                          <div class = "name_update" id="update_div"><!-- shows your profile name here -->
                             <h1>Your Name: </h1>
                             {{#each member in current_profile}}
                               <h2 id="userInput">{{member.name}}</h2>
                             {{/each}}
-                            <input type="text"  class="js-chatinput" id = "name" placeholder="Change your name here">
+                            <input type="text" class="js-chatinput" id = "name" placeholder="Change your name here">
                             <br>
                           </div>
-                          <div class = "address"><!-- shows your profile name here -->
+                          <div class = "address" id="update_div"><!-- shows your profile name here -->
                             <h1>Your Address: </h1>
                             {{#each member in current_profile}}
                                 <h2 id="userInput">{{member.address}}</h2>
@@ -74,7 +79,7 @@
                             <input type="text"  class="js-chatinput" id = "address" placeholder = "Put your address street and number">
                             <br>
                           </div>
-                          <div class = "state"><!-- shows your profile name here -->
+                          <div class = "state" id="update_div"><!-- shows your profile name here -->
                             <h1>Your State: </h1>
                             {{#each member in current_profile}}
                               <h2 id="userInput">{{member.state}}</h2>
@@ -135,7 +140,7 @@
                             </select>
                             <br>
                           </div>
-                          <div class = "zip"><!-- shows your profile name here -->
+                          <div class = "zip" id="update_div"><!-- shows your profile name here -->
                             <h1>Your Zip Code: </h1>
                             {{#each member in current_profile}}
                               <h2 id="userInput">{{member.zip}}</h2>
@@ -149,7 +154,9 @@
                       </p>
                       {{/if}}
                       {{else}}
-                        {{>loginButtons}}
+                        <div class="login">
+                          {{>loginButtons}}
+                        </div>
                       {{/if}}
                     </section>
                 </div>
