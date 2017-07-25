@@ -23,6 +23,7 @@ Template.election.helpers({
   isProcessing: function(){
     return Template.instance().voiceDict.get("recording_status") === "processing";
   },
+
 });
 
 Template.election.events({
@@ -36,7 +37,7 @@ Template.election.events({
     const day = d.getDay()+1;
     const fullDate = month + " " + day + " " + year;
     //this is for the user inputs
-    const initialState = $(".state").val();
+    const initialState = $("#state").val();
     var state = initialState.toUpperCase();
     switch(state){
       case "ALABAMA":
@@ -243,6 +244,42 @@ Template.election.events({
         document.getElementById("ifnothing").innerHTML = " ";
       }
     }
+    const zip =instance.$("#zipcode").val();
+    const dropstate =instance.$("#state").val();
+    const address =instance.$("#address").val();
+    const city =instance.$("#city").val();
+    load(address,city,dropstate,zip);
+
+    function load(address,city,dropstate,zip) {
+      gapi.client.setApiKey('AIzaSyDYoZw_sdVIOmvB1yxnFvdBwNxf9hB7T1M');
+      lookup(address+' '+city+' '+dropstate+' '+zip, renderResults);
+    };
+
+    function lookup(address, callback) {
+     var electionId = 2000;
+     var req = gapi.client.request({
+         'path' : '/civicinfo/v2/voterinfo',
+         'params' : {'electionId' : electionId, 'address' : address}
+     });
+    req.execute(callback);
+    };
+
+   function renderResults(response, rawResponse) {
+     if (!response || response.error) {
+       return;
+     }
+     var normalizedAddress = response.normalizedInput.line1 + ' ' + response.normalizedInput.city + ', ' + response.normalizedInput.state + ' ' + response.normalizedInput.zip;
+     if(response.pollingLocations == null){
+       var pollingreturn = 'Could not find polling place for ' + normalizedAddress
+     }else if (response.pollingLocations.length > 0) {
+       var pollingLocation = response.pollingLocations[0].address;
+       var pollingAddress = pollingLocation.locationName + ', ' + pollingLocation.line1 + ' ' + pollingLocation.city + ', ' + pollingLocation.state + ' ' + pollingLocation.zip;
+       var pollingreturn='<p> '+pollingAddress;
+     }else{
+       var pollingreturn = 'Could not find polling place for ' + normalizedAddress
+     }
+       Session.set("pollingloc", pollingreturn);
+   };
   },
   'click #recordAudioButton'(elt,instance){
     const voiceDict = Template.instance().voiceDict;
@@ -295,4 +332,40 @@ Template.election.events({
     Template.instance().recognition_engine.stop();
     Template.instance().voiceDict.set("recording_status", "inactive");
   },
+  // 'click #readytovote'(elt,instance){
+  //   const zip =instance.$("#zipcode").val();
+  //   const dropstate =instance.$("#state").val();
+  //   const address =instance.$("#address").val();
+  //   const city =instance.$("#city").val();
+  //   load();
+  //
+  //   function load() {
+  //     gapi.client.setApiKey('YOUR API KEY GOES HERE');
+  //     lookup(address+' '+city+' '+dropstate+' '+zip, renderResults);
+  //   };
+  //
+  //   function lookup(address, callback) {
+  //    var electionId = 2000;
+  //    var req = gapi.client.request({
+  //        'path' : '/civicinfo/v2/voterinfo',
+  //        'params' : {'electionId' : electionId, 'address' : address}
+  //    });
+  //   req.execute(callback);
+  //   };
+  //
+  //  function renderResults(response, rawResponse) {
+  //    if (!response || response.error) {
+  //      return;
+  //    }
+  //    var normalizedAddress = response.normalizedInput.line1 + ' ' + response.normalizedInput.city + ', ' + response.normalizedInput.state + ' ' + response.normalizedInput.zip;
+  //    if (response.pollingLocations.length > 0) {
+  //      var pollingLocation = response.pollingLocations[0].address;
+  //      var pollingAddress = pollingLocation.locationName + ', ' + pollingLocation.line1 + ' ' + pollingLocation.city + ', ' + pollingLocation.state + ' ' + pollingLocation.zip;
+  //      var pollingreturn='<p>Polling place for ' + normalizedAddress + ': '+pollingAddress;
+  //    }else{
+  //      var pollingreturn = 'Could not find polling place for ' + normalizedAddress
+  //    }
+  //      Session.set("pollingloc", pollingreturn);
+  //  };
+  // }
 })
