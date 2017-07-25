@@ -10,68 +10,79 @@
 
                   <!-- Main Content -->
                     <section>
-                      <div class="profileHeader">
-                        <h2>PROFILE INFORMATION</h2>
-                      </div>
                       {{#if currentUser}}
+                        <div class="profileHeader">
+                          <h2>PROFILE INFORMATION</h2>
+                        </div>
                       {{#if ifUpdateOff}}
                       <div class="updateButton">
-                        <button class="btn btn-primary btn-lg js-chatsubmit" id = "update">Update Information</button>
+                        <button class="btn btn-primary btn-lg js-chatsubmit" id = "update">Add/Update Information</button>
                       </div>
                       <br><br>
                       <div class="row">
-                        <div class="col-md-3 col-md-offset-1" id="userName">
-                          {{#each member in current_profile}}
-                            <h2 class="name" id="userInput">{{member.name}}</h2>
-                          {{/each}}
+                        {{#if nameCheck}}
+                        <div class="col-md-3 col-md-offset-1">
+                          <div id="userName">
+                            {{#each member in current_profile}}
+                              <h2 class="name" id="userInput">{{member.name}}</h2>
+                            {{/each}}
+                          </div>
+                          <div id="vote_pic">
+                            <img src="images/vote.jpg">
+                          </div>
                         </div>
+                        {{/if}}
+                        {{#if userCheck}}
+                          <div class="col-md-5 col-md-offset-1" id="userInfo">
+                            <div class="address">
+                              {{#if addressCheck}}
+                                <h3 class="prof_field">Your Address: </h3>
+                                {{#each member in current_profile}}
+                                  <h2 id="userInput">{{member.address}}</h2>
+                                {{/each}}
+                              {{/if}}
+                            </div>
+                            <div class = "state"><!-- shows your state here -->
+                              {{#if stateCheck}}
+                                <h3 class="prof_field">Your State: </h3>
+                                {{#each member in current_profile}}
+                                  <h2 id="userInput">{{member.state}}</h2>
+                                {{/each}}
+                              {{/if}}
+                            </div>
+                            <div class = "zip"><!-- shows your zip code here -->
+                              {{#if zipCheck}}
+                                <h3 class="prof_field">Your Zip Code: </h3>
+                                {{#each member in current_profile}}
+                                  <h2 id="userInput">{{member.zip}}</h2>
+                                {{/each}}
+                              {{/if}}
+                            </div>
 
-                        <div class="col-md-5 col-md-offset-1" id="userInfo">
-                          <div class="address">
-                            <h3 class="prof_field">Your Address: </h3>
-                            {{#each member in current_profile}}
-                              <h2 id="userInput">{{member.address}}</h2>
-                            {{/each}}
-                            <br>
                           </div>
-                          <div class = "state"><!-- shows your profile name here -->
-                            <h3 class="prof_field">Your State: </h3>
-                            {{#each member in current_profile}}
-                              <h2 id="userInput">{{member.state}}</h2>
-                            {{/each}}
-                            <br>
-                          </div>
-                          <div class = "zip"><!-- shows your profile name here -->
-                            <h3 class="prof_field">Your Zip Code: </h3>
-                            {{#each member in current_profile}}
-                              <h2 id="userInput">{{member.zip}}</h2>
-                            {{/each}}
-                            <br>
-                          </div>
-
-                        </div>
+                        {{/if}}
                       </div>
                       {{/if}}
                       {{#if ifUpdateOn}}
                       <p>
                           <br><br>
-                          <div class = "name"><!-- shows your profile name here -->
+                          <div class = "name_update" id="update_div"><!-- shows your profile name here -->
                             <h1>Your Name: </h1>
                             {{#each member in current_profile}}
                               <h2 id="userInput">{{member.name}}</h2>
                             {{/each}}
-                            <input type="text"  class="js-chatinput" id = "name" placeholder="Change your name here">
+                            <input type="text" class="js-chatinput" id = "name" placeholder="Change your name here">
                             <br>
                           </div>
-                          <div class = "address"><!-- shows your profile name here -->
+                          <div class = "address" id="update_div"><!-- shows your profile name here -->
                             <h1>Your Address: </h1>
                             {{#each member in current_profile}}
-                              <h2 id="userInput">{{member.address}}</h2>
+                                <h2 id="userInput">{{member.address}}</h2>
                             {{/each}}
                             <input type="text"  class="js-chatinput" id = "address" placeholder = "Put your address street and number">
                             <br>
                           </div>
-                          <div class = "state"><!-- shows your profile name here -->
+                          <div class = "state" id="update_div"><!-- shows your profile name here -->
                             <h1>Your State: </h1>
                             {{#each member in current_profile}}
                               <h2 id="userInput">{{member.state}}</h2>
@@ -132,7 +143,7 @@
                             </select>
                             <br>
                           </div>
-                          <div class = "zip"><!-- shows your profile name here -->
+                          <div class = "zip" id="update_div"><!-- shows your profile name here -->
                             <h1>Your Zip Code: </h1>
                             {{#each member in current_profile}}
                               <h2 id="userInput">{{member.zip}}</h2>
@@ -146,7 +157,9 @@
                       </p>
                       {{/if}}
                       {{else}}
-                        {{>loginButtons}}
+                        <div class="login">
+                          {{>loginButtons}}
+                        </div>
                       {{/if}}
                     </section>
                 </div>

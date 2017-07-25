@@ -21,6 +21,12 @@ body, ul{
 	font-size: 3em;
 }
 
+.navbar-brand{
+	position: absolute;
+	margin-left: 0;
+	padding-left: 0;
+}
+
 .navbar-default{
 	background: #3B4346 url("images/bg01.jpg");
 	padding-top: 0%;
@@ -148,6 +154,11 @@ body, ul{
 /*li{
 	list-style-type: none;
 }*/
+
+.check-list{
+	padding: 0;
+}
+
 .check-list li {
 	padding: 0.7em 0 0.7em 40px;
 	font-size: 1.2em;
