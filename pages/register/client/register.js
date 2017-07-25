@@ -6,8 +6,8 @@ Template.register.onCreated(function registerOnCreated() {
   this.howtoreg= new ReactiveVar("");
   // console.log(Profiles.findOne({owner:Meteor.userId()}));
   if((Profiles.findOne({owner:Meteor.userId()}) != null) && (Session.get("statepage") == undefined)){
-  Session.set("statepage",Profiles.findOne({owner:Meteor.userId()}).state);
-  Meteor.subscribe("Statereginfo",{abbr:Session.get("statepage")});
+  Session.set("statepage", Profiles.findOne({owner:Meteor.userId()}).state);
+  Meteor.subscribe("Statereginfo", {abbr:Session.get("statepage")});
   // console.log("Statepage = "+this.statepage);
 }
   //this.recognition= new ReactiveVar("");
@@ -68,6 +68,9 @@ Template.register.helpers({
     }
     return true;
   }
+
+
+
 })
 Template.register.events({
 
@@ -108,7 +111,6 @@ Template.register.events({
     This allows blaze to populate the dynamic template with the correct info */
     console.log("active variable: "+Session.get("statepage"));
   },
-
   'click #recordAudioButton'(elt,instance){
     const voiceDict = Template.instance().voiceDict;
     var recognition_engine = Template.instance().recognition_engine;
@@ -170,7 +172,6 @@ Template.register.events({
     Template.instance().recognition_engine.stop();
     Template.instance().voiceDict.set("recording_status", "inactive");
   },
-
   'click #online'(elt,instance){
     Template.instance().howtoreg.set("online");
   },
@@ -179,7 +180,42 @@ Template.register.events({
   },
   'click #mail'(elt,instance){
     Template.instance().howtoreg.set("mail");
+  },
+
+  'click #readytovote'(elt,instance){
+    const zip =instance.$("#zipcode").val();
+    const dropstate =instance.$("#state").val();
+    const address =instance.$("#address").val();
+    const city =instance.$("#city").val();
+    load();
+
+    function load() {
+      gapi.client.setApiKey('YOUR API KEY GOES HERE');
+      lookup(address+' '+city+' '+dropstate+' '+zip, renderResults);
+    };
+
+    function lookup(address, callback) {
+     var electionId = 2000;
+     var req = gapi.client.request({
+         'path' : '/civicinfo/v2/voterinfo',
+         'params' : {'electionId' : electionId, 'address' : address}
+     });
+    req.execute(callback);
+  };
+
+   function renderResults(response, rawResponse) {
+     if (!response || response.error) {
+       return;
+     }
+     var normalizedAddress = response.normalizedInput.line1 + ' ' + response.normalizedInput.city + ', ' + response.normalizedInput.state + ' ' + response.normalizedInput.zip;
+     if (response.pollingLocations.length > 0) {
+       var pollingLocation = response.pollingLocations[0].address;
+       var pollingAddress = pollingLocation.locationName + ', ' + pollingLocation.line1 + ' ' + pollingLocation.city + ', ' + pollingLocation.state + ' ' + pollingLocation.zip;
+       var pollingreturn='<p>Polling place for ' + normalizedAddress + ': '+pollingAddress;
+     }else{
+       var pollingreturn = 'Could not find polling place for ' + normalizedAddress
+     }
+       Session.set("pollingloc", pollingreturn);
+   };
   }
-
-
 })
