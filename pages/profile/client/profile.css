@@ -8,10 +8,32 @@
 .profileHeader{
   display: block;
   float: left;
-
 }
 
 #update{
   float: right;
   display: block;
+}
+
+#userName{
+  background: url("images/bg03.jpg");
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+#userInfo{
+  background: url("images/bg03.jpg");
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+}
+
+.prof_field{
+  color: #006064 !important;
+}
+
+.name{
+  font-size: 250% !important;
 }
