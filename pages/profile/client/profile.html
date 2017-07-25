@@ -13,8 +13,8 @@
                       <div class="profileHeader">
                         <h2>PROFILE INFORMATION</h2>
                       </div>
-                      {{#if ifUpdateOff}}
                       {{#if currentUser}}
+                      {{#if ifUpdateOff}}
                       <div class="updateButton">
                         <button class="btn btn-primary btn-lg js-chatsubmit" id = "update">Update Information</button>
                       </div>
@@ -51,19 +51,9 @@
 
                         </div>
                       </div>
-                      {{else}}
-                        {{>loginButtons}}
                       {{/if}}
-                      {{/if}}
-
                       {{#if ifUpdateOn}}
                       <p>
-                        {{#if currentUser}}
-                          <!-- <div class = "start">
-                            <h2>Click here to begin your profile creation or start over!</h2>
-                            <button class="btn btn-default btn-large js-chatsubmit" id = "new">Let's Begin!</button>
-                            <p></p>
-                          </div> -->
                           <br><br>
                           <div class = "name"><!-- shows your profile name here -->
                             <h1>Your Name: </h1>
@@ -72,11 +62,6 @@
                             {{/each}}
                             <input type="text"  class="js-chatinput" id = "name" placeholder="Change your name here">
                             <br>
-                            <!--
-                            <br>
-                            <button class="btn btn-default btn-large js-chatsubmit" id = "name_add">Submit</button>
-                            <br>
-                            -->
                           </div>
                           <div class = "address"><!-- shows your profile name here -->
                             <h1>Your Address: </h1>
@@ -85,22 +70,12 @@
                             {{/each}}
                             <input type="text"  class="js-chatinput" id = "address" placeholder = "Put your address street and number">
                             <br>
-                            <!--
-                            <br>
-                            <button class="btn btn-default btn-large js-chatsubmit" id = "address_add">Submit</button>
-                            <br>
-                            -->
                           </div>
                           <div class = "state"><!-- shows your profile name here -->
                             <h1>Your State: </h1>
                             {{#each member in current_profile}}
                               <h2 id="userInput">{{member.state}}</h2>
                             {{/each}}
-                            <!--
-                            <p>Change your state here:</p>
-                            <input type="text"  class="js-chatinput" id = "state">
-                            <br>
-                            <br>-->
 
                             <select id = "state">
                               <option value = ""> -- select an option -- </option>
@@ -155,9 +130,6 @@
                               <option value="WI">Wisconsin</option>
                               <option value="WY">Wyoming</option>
                             </select>
-                            <!--
-                            <button class="btn btn-default btn-large js-chatsubmit" id = "state_add">Submit</button>
-                            -->
                             <br>
                           </div>
                           <div class = "zip"><!-- shows your profile name here -->
@@ -167,19 +139,14 @@
                             {{/each}}
                             <input type="text"  class="js-chatinput" id = "zip" placeholder="Change your zip code">
                             <br>
-                            <!--
-                            <br>
-                            <button class="btn btn-default btn-large js-chatsubmit" id = "zip_add">Submit</button>
-                            <br>
-                            -->
                           </div>
                           <br>
                           <button class="btn btn-primary btn-large js-chatsubmit" id = "submit_all">Submit All</button>
                           <p></p>
-                        {{else}}
-                          {{>loginButtons}}
-                        {{/if}}
                       </p>
+                      {{/if}}
+                      {{else}}
+                        {{>loginButtons}}
                       {{/if}}
                     </section>
                 </div>
