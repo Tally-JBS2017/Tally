@@ -37,3 +37,25 @@
 .name{
   font-size: 250% !important;
 }
+
+#vote_pic img{
+  width: 100%;
+}
+
+.login{
+  text-align: center;
+  font-size: 200%;
+}
+
+#update_div{
+  text-align: center;
+}
+
+#update_div input{
+  text-align: center;
+}
+
+#update_div h1{
+  font-size: 120%;
+  color: #006064 !important;
+}

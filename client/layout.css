@@ -15,9 +15,15 @@ body, ul{
 	font-size: 3em;
 }
 
+.navbar-brand{
+	position: absolute;
+	margin-left: 0;
+	padding-left: 0;
+}
+
 .navbar-default{
 	background: #3B4346 url("images/bg01.jpg");
-	padding-top: 5%;
+	padding-top: 1%;
 	padding-bottom: 0;
 	display: block;
 	border:none;
