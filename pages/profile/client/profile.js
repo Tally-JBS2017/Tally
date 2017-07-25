@@ -1,11 +1,7 @@
 Template.profile.onCreated(function(){
   Meteor.subscribe('profiles');
-  //if(Profiles.findOne({owner:Meteor.userId()}) == null){
-  //  var to_be_inserted = {name:'Default', owner: Meteor.userId()};
-  //  Meteor.call('profiles.insert', to_be_inserted);
-  //}
-this.updateProfile= new ReactiveDict();
-this.updateProfile.set("update_status", "off");
+  this.updateProfile= new ReactiveDict();
+  this.updateProfile.set("update_status", "off");
 });
 Template.profile.helpers({
   current_profile: function(){
@@ -18,6 +14,33 @@ Template.profile.helpers({
   ifUpdateOn: function(){
     const updateProfile = Template.instance().updateProfile;
     return updateProfile.get("update_status") == "on";
+  },
+  addressCheck: function(){
+    if(typeof Profiles.findOne({owner:Meteor.userId(),address:{"$exists":true}}) == 'undefined'){
+      return false;
+    }
+    else if (typeof Profiles.findOne({owner:Meteor.userId(),address:{$ne:""}}) == "undefined"){
+      return false;
+    }
+    return true;
+  },
+  zipCheck: function(){
+    if(typeof Profiles.findOne({owner:Meteor.userId(),zip:{"$exists":true}}) == 'undefined'){
+      return false;
+    }
+    else if (typeof Profiles.findOne({owner:Meteor.userId(),zip:{$ne:""}}) == "undefined"){
+      return false;
+    }
+    return true;
+  },
+  stateCheck: function(){
+    if(typeof Profiles.findOne({owner:Meteor.userId(),state:{"$exists":true}}) == 'undefined'){
+      return false;
+    }
+    else if (typeof Profiles.findOne({owner:Meteor.userId(),state:{$ne:""}}) == "undefined"){
+      return false;
+    }
+    return true;
   },
 })
 
