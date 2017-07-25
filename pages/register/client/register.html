@@ -12,7 +12,7 @@
                 <section>
                   <div class="page_mic">
                     <header class="page_header">
-                      <h2>Register here</h2>
+                      <h2>Learn to Register to Vote</h2>
                     </header>
                     <div class="mic_icon">
                       {{#if ifInactive}}
@@ -33,87 +33,87 @@
                         {{/if}}
                     </div>
                   </div>
-                  <div class="row" id="page_info_div">
-                    <div class="col-md-1">
-                      <Label>Address </Label>
+                    <div class="row" id="page_info_div">
+                      <div class="col-md-1">
+                        <Label>Address</Label>
+                      </div>
+                      <div class="col-md-2">
+                        <input type="text" class="form-control" id="address" placeholder="123 Street Road">
+                      </div>
+                      <div class="col-md-1">
+                        <Label>City</Label>
+                      </div>
+                      <div class="col-md-2">
+                        <input type="text" class="form-control" id="city" placeholder="Cityburg">
+                      </div>
+                      <div class="col-md-1">
+                        <Label>State</Label>
+                      </div>
+                      <div class="col-md-2">
+                        <select class="form-control" id = "state">
+                          <option value = ""> -- select an option -- </option>
+                          <option value="AL">Alabama</option>
+                          <option value="AK">Alaska</option>
+                          <option value="AZ">Arizona</option>
+                          <option value="AR">Arkansas</option>
+                          <option value="CA">California</option>
+                          <option value="CO">Colorado</option>
+                          <option value="CT">Connecticut</option>
+                          <option value="DE">Delaware</option>
+                          <option value="FL">Florida</option>
+                          <option value="GA">Georgia</option>
+                          <option value="HI">Hawaii</option>
+                          <option value="ID">Idaho</option>
+                          <option value="IL">Illinois</option>
+                          <option value="IN">Indiana</option>
+                          <option value="IA">Iowa</option>
+                          <option value="KS">Kansas</option>
+                          <option value="KY">Kentucky</option>
+                          <option value="LA">Louisiana</option>
+                          <option value="ME">Maine</option>
+                          <option value="MD">Maryland</option>
+                          <option value="MA">Massachusetts</option>
+                          <option value="MI">Michigan</option>
+                          <option value="MN">Minnesota</option>
+                          <option value="MS">Mississippi</option>
+                          <option value="MO">Missouri</option>
+                          <option value="MT">Montana</option>
+                          <option value="NE">Nebraska</option>
+                          <option value="NV">Nevada</option>
+                          <option value="NH">New Hampshire</option>
+                          <option value="NJ">New Jersey</option>
+                          <option value="NM">New Mexico</option>
+                          <option value="NY">New York</option>
+                          <option value="NC">North Carolina</option>
+                          <option value="ND">North Dakota</option>
+                          <option value="OH">Ohio</option>
+                          <option value="OK">Oklahoma</option>
+                          <option value="OR">Oregon</option>
+                          <option value="PA">Pennsylvania</option>
+                          <option value="RI">Rhode Island</option>
+                          <option value="SC">South Carolina</option>
+                          <option value="SD">South Dakota</option>
+                          <option value="TN">Tennessee</option>
+                          <option value="TX">Texas</option>
+                          <option value="UT">Utah</option>
+                          <option value="VT">Vermont</option>
+                          <option value="VA">Virginia</option>
+                          <option value="WA">Washington</option>
+                          <option value="WV">West Virginia</option>
+                          <option value="WI">Wisconsin</option>
+                          <option value="WY">Wyoming</option>
+                        </select>
+                      </div>
+                      <div class="col-md-1">
+                        <Label>ZIP Code</Label>
+                      </div>
+                      <div class="col-md-1">
+                        <input id="zipcode" class="form-control" maxlength="5" required="'required'" type="number" pattern="[0-9]{5}" title="Five digit zip code">
+                      </div>
+                      <div class="col-md-1">
+                        <button class="btn btn-default" id=regisInfo>Find Info</button>
+                      </div>
                     </div>
-                    <div class="col-md-2">
-                      <input type="text" class="form-control" id="address" placeholder="123 Street Road">
-                    </div>
-                    <div class="col-md-1">
-                      <Label>City</Label>
-                    </div>
-                    <div class="col-md-2">
-                      <input type="text" class="form-control" id="city" placeholder="Cityburg">
-                    </div>
-                    <div class="col-md-1">
-                      <Label>State </Label>
-                    </div>
-                    <div class="col-md-2">
-                      <select class="form-control" id = "state">
-                        <option value = ""> -- select an option -- </option>
-                        <option value="AL">Alabama</option>
-                        <option value="AK">Alaska</option>
-                        <option value="AZ">Arizona</option>
-                        <option value="AR">Arkansas</option>
-                        <option value="CA">California</option>
-                        <option value="CO">Colorado</option>
-                        <option value="CT">Connecticut</option>
-                        <option value="DE">Delaware</option>
-                        <option value="FL">Florida</option>
-                        <option value="GA">Georgia</option>
-                        <option value="HI">Hawaii</option>
-                        <option value="ID">Idaho</option>
-                        <option value="IL">Illinois</option>
-                        <option value="IN">Indiana</option>
-                        <option value="IA">Iowa</option>
-                        <option value="KS">Kansas</option>
-                        <option value="KY">Kentucky</option>
-                        <option value="LA">Louisiana</option>
-                        <option value="ME">Maine</option>
-                        <option value="MD">Maryland</option>
-                        <option value="MA">Massachusetts</option>
-                        <option value="MI">Michigan</option>
-                        <option value="MN">Minnesota</option>
-                        <option value="MS">Mississippi</option>
-                        <option value="MO">Missouri</option>
-                        <option value="MT">Montana</option>
-                        <option value="NE">Nebraska</option>
-                        <option value="NV">Nevada</option>
-                        <option value="NH">New Hampshire</option>
-                        <option value="NJ">New Jersey</option>
-                        <option value="NM">New Mexico</option>
-                        <option value="NY">New York</option>
-                        <option value="NC">North Carolina</option>
-                        <option value="ND">North Dakota</option>
-                        <option value="OH">Ohio</option>
-                        <option value="OK">Oklahoma</option>
-                        <option value="OR">Oregon</option>
-                        <option value="PA">Pennsylvania</option>
-                        <option value="RI">Rhode Island</option>
-                        <option value="SC">South Carolina</option>
-                        <option value="SD">South Dakota</option>
-                        <option value="TN">Tennessee</option>
-                        <option value="TX">Texas</option>
-                        <option value="UT">Utah</option>
-                        <option value="VT">Vermont</option>
-                        <option value="VA">Virginia</option>
-                        <option value="WA">Washington</option>
-                        <option value="WV">West Virginia</option>
-                        <option value="WI">Wisconsin</option>
-                        <option value="WY">Wyoming</option>
-                      </select>
-                    </div>
-                    <div class="col-md-1">
-                      <Label>ZIP Code </Label>
-                    </div>
-                    <div class="col-md-1">
-                      <input id="zipcode" class="form-control" maxlength="5" required="'required'" type="number" pattern="[0-9]{5}" title="Five digit zip code">
-                    </div>
-                    <div class="col-md-1">
-                      <button class="btn btn-default" id=regisInfo>Find Registration Info</button>
-                    </div>
-                  </div>
                     {{> Template.dynamic template="eligibility" data=pageData}}
                     <button class="btn btn-default" id=online><span class="glyphicon glyphicon-globe" aria-hidden="true"></span>&nbsp;Register Online&nbsp;</button><button class="btn btn-default" id=person><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Register in person&nbsp;</button><button class="btn btn-default" id=mail><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp;Register by mail</button>
                     <br><br>
