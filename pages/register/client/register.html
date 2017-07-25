@@ -35,16 +35,21 @@
                   </div>
                   <div class="row" id="page_info_div">
                     <div class="col-md-1">
-                      <Label>ZIP Code &nbsp;</Label>
+                      <Label>Address </Label>
                     </div>
-                    <div class="col-md-4">
-                      <input id="zipcode" class="form-control" maxlength="5" required="'required'" type="number" pattern="[0-9]{5}" title="Five digit zip code">
+                    <div class="col-md-2">
+                      <input type="text" class="form-control" id="address" placeholder="123 Street Road">
                     </div>
                     <div class="col-md-1">
-
-                      <Label>State &nbsp;</Label>
+                      <Label>City</Label>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-2">
+                      <input type="text" class="form-control" id="city" placeholder="Cityburg">
+                    </div>
+                    <div class="col-md-1">
+                      <Label>State </Label>
+                    </div>
+                    <div class="col-md-2">
                       <select class="form-control" id = "state">
                         <option value = ""> -- select an option -- </option>
                         <option value="AL">Alabama</option>
@@ -98,6 +103,12 @@
                         <option value="WI">Wisconsin</option>
                         <option value="WY">Wyoming</option>
                       </select>
+                    </div>
+                    <div class="col-md-1">
+                      <Label>ZIP Code </Label>
+                    </div>
+                    <div class="col-md-1">
+                      <input id="zipcode" class="form-control" maxlength="5" required="'required'" type="number" pattern="[0-9]{5}" title="Five digit zip code">
                     </div>
                     <div class="col-md-1">
                       <button class="btn btn-default" id=regisInfo>Find Registration Info</button>
