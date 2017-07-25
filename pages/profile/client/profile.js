@@ -50,6 +50,7 @@ Template.profile.events({
       }
       if(!(instance.$('#state').val() == "")){
         const state = instance.$('#state').val();
+
         Meteor.call('profiles.state.update', state)
         instance.$('#state').val("");
         Meteor.call('election.clear'); //Steven's Code
@@ -67,6 +68,7 @@ Template.profile.events({
         xmlhttp.onreadystatechange = function(){
           if(this.readyState == 4 && this.status == 200){
             var electionInfo = JSON.parse(this.responseText);
+            console.log("this is the electionInfo: " + electionInfo);
             //var theState = electionInfo.contest[1].district.name.toString();
             for(i=1; i<electionInfo.results.length; i++){
               var seat= electionInfo.results[i].election_notes.toString();
