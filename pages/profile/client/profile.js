@@ -1,12 +1,5 @@
 Template.profile.onCreated(function(){
   Meteor.subscribe('profiles');
-<<<<<<< HEAD
-=======
-  //if(Profiles.findOne({owner:Meteor.userId()}) == null){
-  //  var to_be_inserted = {name:'Default', owner: Meteor.userId()};
-  //  Meteor.call('profiles.insert', to_be_inserted);
-  //}
->>>>>>> bb6ad8c03c5ce37da73886bdc48f3716794c536d
   this.updateProfile= new ReactiveDict();
   this.updateProfile.set("update_status", "off");
 });
