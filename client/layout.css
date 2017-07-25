@@ -8,6 +8,12 @@ body, ul{
 	padding: 2;
 	border: 0;
 }
+.navbar-brand	{
+	padding-top: 0;
+	height:auto;
+	width:auto;
+	padding:0;
+}
 #header h1 {
 	position: relative;
 	left: 0;
@@ -17,7 +23,7 @@ body, ul{
 
 .navbar-default{
 	background: #3B4346 url("images/bg01.jpg");
-	padding-top: 5%;
+	padding-top: 0%;
 	padding-bottom: 0;
 	display: block;
 	border:none;
