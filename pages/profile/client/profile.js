@@ -15,29 +15,32 @@ Template.profile.helpers({
     const updateProfile = Template.instance().updateProfile;
     return updateProfile.get("update_status") == "on";
   },
-  addressCheck: function(){
-    if(typeof Profiles.findOne({owner:Meteor.userId(),address:{"$exists":true}}) == 'undefined'){
+  userCheck: function(){
+    if(typeof Profiles.findOne({owner:Meteor.userId()}) == 'undefined' || typeof Profiles.findOne({owner:Meteor.userId(),address:{$ne:""},zip:{$ne:""}, state:{$ne:""}}) == "undefined"){
       return false;
     }
-    else if (typeof Profiles.findOne({owner:Meteor.userId(),address:{$ne:""}}) == "undefined"){
+    return true;
+  },
+  nameCheck: function(){
+    if(typeof Profiles.findOne({owner:Meteor.userId(),name:{"$exists":true}}) == 'undefined' || typeof Profiles.findOne({owner:Meteor.userId(),name:{$ne:""}}) == "undefined"){
+      return false;
+    }
+    return true;
+  },
+  addressCheck: function(){
+    if(typeof Profiles.findOne({owner:Meteor.userId(),address:{"$exists":true}}) == 'undefined' || typeof Profiles.findOne({owner:Meteor.userId(),address:{$ne:""}}) == "undefined"){
       return false;
     }
     return true;
   },
   zipCheck: function(){
-    if(typeof Profiles.findOne({owner:Meteor.userId(),zip:{"$exists":true}}) == 'undefined'){
-      return false;
-    }
-    else if (typeof Profiles.findOne({owner:Meteor.userId(),zip:{$ne:""}}) == "undefined"){
+    if(typeof Profiles.findOne({owner:Meteor.userId(),zip:{"$exists":true}}) == 'undefined' || typeof Profiles.findOne({owner:Meteor.userId(),zip:{$ne:""}}) == "undefined"){
       return false;
     }
     return true;
   },
   stateCheck: function(){
-    if(typeof Profiles.findOne({owner:Meteor.userId(),state:{"$exists":true}}) == 'undefined'){
-      return false;
-    }
-    else if (typeof Profiles.findOne({owner:Meteor.userId(),state:{$ne:""}}) == "undefined"){
+    if(typeof Profiles.findOne({owner:Meteor.userId(),state:{"$exists":true}}) == 'undefined' || typeof Profiles.findOne({owner:Meteor.userId(),state:{$ne:""}}) == "undefined"){
       return false;
     }
     return true;
@@ -50,7 +53,7 @@ Template.profile.events({
     check(update);
     function check(callback){//we use a callback function to make sure that the profile is added before it is updated.
       if(Profiles.findOne({owner:Meteor.userId()}) == null){
-        var to_be_inserted = {name:'Default', owner: Meteor.userId()};
+        var to_be_inserted = {name:'', owner: Meteor.userId(), address:'', state:'', zip:''};
         Meteor.call('profiles.insert', to_be_inserted);
       }
       callback();
