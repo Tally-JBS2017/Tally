@@ -7,7 +7,6 @@
             <div class="container">
               <div class="row">
                 <div class="12u">
-
                   <!-- Main Content -->
                     <section>
                       {{#if currentUser}}
@@ -21,14 +20,13 @@
                       <br><br>
                       <div class="row">
                         {{#if nameCheck}}
-                        <div class="col-md-3 col-md-offset-1">
+                        <div class="col-md-6">
                           <div id="userName">
                             {{#each member in current_profile}}
                               <h2 class="name" id="userInput">{{member.name}}</h2>
                             {{/each}}
-                          </div>
-                          <div id="vote_pic">
-                            <img src="images/vote.jpg">
+                            <h3>How to vote in your state:</h3>
+                            {{{getyoutubevideo}}}
                           </div>
                         </div>
                         {{/if}}
