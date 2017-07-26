@@ -14,6 +14,9 @@ body, ul{
 	width:auto;
 	padding:0;
 }
+#logo{
+	max-height:100px;
+}
 #header h1 {
 	position: relative;
 	left: 0;
