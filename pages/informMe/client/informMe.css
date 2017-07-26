@@ -30,7 +30,7 @@ a:hover + div.committeeInfo{
   display: inline-block;
 }
 
-#polInfo{
+.polInfo{
   display: flow-root  ;
 }
 
@@ -38,6 +38,10 @@ a:hover + div.committeeInfo{
   overflow:hidden;
 }
 
-#moreInfoButton{
+#polInfoButton{
   float: right;
+}
+
+#pol_info_div{
+  padding-top: 5px;
 }
