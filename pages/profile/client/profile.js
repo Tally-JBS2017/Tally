@@ -33,6 +33,12 @@ Template.profile.helpers({
     }
     return true;
   },
+  cityCheck: function(){
+    if(typeof Profiles.findOne({owner:Meteor.userId(),city:{"$exists":true}}) == 'undefined' || typeof Profiles.findOne({owner:Meteor.userId(),city:{$ne:""}}) == "undefined"){
+      return false;
+    }
+    return true;
+  },
   zipCheck: function(){
     if(typeof Profiles.findOne({owner:Meteor.userId(),zip:{"$exists":true}}) == 'undefined' || typeof Profiles.findOne({owner:Meteor.userId(),zip:{$ne:""}}) == "undefined"){
       return false;
@@ -53,7 +59,7 @@ Template.profile.events({
     check(update);
     function check(callback){//we use a callback function to make sure that the profile is added before it is updated.
       if(Profiles.findOne({owner:Meteor.userId()}) == null){
-        var to_be_inserted = {name:'', owner: Meteor.userId(), address:'', state:'', zip:''};
+        var to_be_inserted = {name:'', owner: Meteor.userId(), address:'', state:'', zip:'', city:''};
         Meteor.call('profiles.insert', to_be_inserted);
       }
       callback();
@@ -63,6 +69,11 @@ Template.profile.events({
         const name = instance.$('#name').val();//save the value and call the meteor update function
         Meteor.call('profiles.name.update', name)
         instance.$('#name').val("");//reset the input area
+      }
+      if(!(instance.$('#city').val() == "")){//if the field is not empty
+        const city = instance.$('#city').val();//save the value and call the meteor update function
+        Meteor.call('profiles.city.update', city)
+        instance.$('#city').val("");//reset the input area
       }
       if(!(instance.$('#age').val() == "")){
         const age = instance.$('#age').val();

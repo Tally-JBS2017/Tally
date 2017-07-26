@@ -14,6 +14,10 @@ Meteor.methods({
     var current_profile = Profiles.findOne({owner: Meteor.userId()});
     Profiles.update(current_profile,{$set: {age: new_age}});
   },
+  'profiles.city.update'(new_city){//updating the name
+    var current_profile = Profiles.findOne({owner: Meteor.userId()});
+    Profiles.update(current_profile,{$set: {city: new_city}});
+  },
   'profiles.address.update'(new_address){//updating the name
     var current_profile = Profiles.findOne({owner: Meteor.userId()});
     Profiles.update(current_profile,{$set: {address: new_address}});

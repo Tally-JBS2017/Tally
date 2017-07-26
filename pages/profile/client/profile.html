@@ -50,6 +50,14 @@
                                 {{/each}}
                               {{/if}}
                             </div>
+                            <div class = "city"><!-- shows your zip code here -->
+                              {{#if cityCheck}}
+                                <h3 class="prof_field">Your City: </h3>
+                                {{#each member in current_profile}}
+                                  <h2 id="userInput">{{member.city}}</h2>
+                                {{/each}}
+                              {{/if}}
+                            </div>
                             <div class = "zip"><!-- shows your zip code here -->
                               {{#if zipCheck}}
                                 <h3 class="prof_field">Your Zip Code: </h3>
@@ -87,7 +95,6 @@
                             {{#each member in current_profile}}
                               <h2 id="userInput">{{member.state}}</h2>
                             {{/each}}
-
                             <select id = "state">
                               <option value = ""> -- select an option -- </option>
                               <option value="AL">Alabama</option>
@@ -141,6 +148,14 @@
                               <option value="WI">Wisconsin</option>
                               <option value="WY">Wyoming</option>
                             </select>
+                            <br>
+                          </div>
+                          <div class = "city" id="update_div"><!-- shows your profile name here -->
+                            <h1>Your City: </h1>
+                            {{#each member in current_profile}}
+                                <h2 id="userInput">{{member.city}}</h2>
+                            {{/each}}
+                            <input type="text"  class="js-chatinput" id = "city" placeholder = "Put your city's name">
                             <br>
                           </div>
                           <div class = "zip" id="update_div"><!-- shows your profile name here -->
