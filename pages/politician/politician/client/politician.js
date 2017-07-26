@@ -14,6 +14,9 @@ Template.politician.helpers({
   },
   additionalInfo(){
     return PoliInfo.find();
+  },
+  district(){
+    return PoliInfo.find();
   }
 
 })
@@ -98,7 +101,7 @@ Template.politician.events({
             var title = electionInfo.results[0].bills[i].title.toString(); //this gets name of politician
 
             var summary = electionInfo.results[0].bills[i].summary.toString();
-            
+
             var information = {title,summary};
             Meteor.call('bills.insert',information);
           }
