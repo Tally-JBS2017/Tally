@@ -2,7 +2,7 @@ import { ReactiveVar } from 'meteor/reactive-var';
 
 Template.register.onCreated(function registerOnCreated() {
   Meteor.subscribe("Statereginfo");
-  Meteor.subscribe("profiles");
+  Meteor.subscribe("profiles", {owner:Meteor.userId()});
   this.howtoreg= new ReactiveVar("");
   // console.log(Profiles.findOne({owner:Meteor.userId()}));
   if((Profiles.findOne({owner:Meteor.userId()}) != null) && (Session.get("statepage") == undefined)){
