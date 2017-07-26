@@ -24,14 +24,12 @@
 
               <!-- Collect the nav links, forms, and other content for toggling -->
               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-center navbar-text">
+
+                <ul class="nav navbar-nav navbar-right navbar-text">
                   <li><a href="{{pathFor 'register'}}">Register</a></li>
                   <li><a href="{{pathFor 'election'}}">Upcoming Elections</a></li>
                   <li><a href="{{pathFor 'informMe'}}">Politician Lookup</a></li>
                   <li><a href="{{pathFor 'profile'}}">Profile</a></li>
-                  {{#if currentUser}}
-                    <li>{{>loginButtons}}</li>
-                  {{/if}}
                 </ul>
               </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
