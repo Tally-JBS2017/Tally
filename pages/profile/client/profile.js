@@ -91,7 +91,7 @@ Template.profile.events({
         alert("Please provide an input for all fields.");
         return
       }
-      else if(isNaN(instance.$('#zip').val()) || isNaN(instance.$('#age').val()) || instance.$('#zip').val().length != 5){
+      else if((isNaN(instance.$('#zip').val()) || instance.$('#zip').val().length != 5) && instance.$('#zip').val() != ''|| (isNaN(instance.$('#age').val()) && instance.$('#age').val() != '')){
         alert("You have an invalid input.");
         return
       }
