@@ -1,8 +1,14 @@
 Template.election.onCreated(function() {
   Meteor.subscribe('election');
+  Meteor.subscribe("profiles", {owner:Meteor.userId()});
   this.voiceDict = new ReactiveDict();
   this.recognition_engine = new webkitSpeechRecognition();
   this.voiceDict.set("recording_status", "inactive");
+  if(Profiles.findOne({owner:Meteor.userId()}) != null){
+    if((Profiles.findOne({owner:Meteor.userId()}).address != null) && (Profiles.findOne({owner:Meteor.userId()}).city != null) && (Profiles.findOne({owner:Meteor.userId()}).state != null) && (Profiles.findOne({owner:Meteor.userId()}).zip != null)){
+      findpollinglocation(Profiles.findOne({owner:Meteor.userId()}).address,Profiles.findOne({owner:Meteor.userId()}).city,Profiles.findOne({owner:Meteor.userId()}).state,Profiles.findOne({owner:Meteor.userId()}).zip);
+    }
+  }
 });
 
 Template.election.helpers({
@@ -212,26 +218,6 @@ Template.election.events({
 
       }
     };
-
-  /* this was from the old google api.
-    var url =  "https://www.googleapis.com/civicinfo/v2/voterinfo?key=" + ElectionAPIkey + "&address=" +address+"&electionId=" + electionId;
-    xmlhttp.onreadystatechange = function(){
-      if(this.readyState == 4 && this.status == 200){
-        //https://www.googleapis.com/civicinfo/v2/voterinfo?key=AIzaSyDYoZw_sdVIOmvB1yxnFvdBwNxf9hB7T1M&address=269%20South%20St.%20Waltham%20MA&electionId=2000
-        var electionInfo = JSON.parse(this.responseText);
-        //var theState = electionInfo.contest[1].district.name.toString();
-        console.log(electionInfo.contests.length);
-        for(i=1; i<electionInfo.contests.length; i++){
-          var type = electionInfo.contests[i].type.toString();
-          var office = electionInfo.contests[i].office.toString();
-        console.log(type);
-        console.log(office);
-        var information = {type:type, office:office}
-        Meteor.call('election.insert',information);
-        }
-      }
-    };
-    */
     xmlhttp.open("GET", url, true);//i set it to false so it has to wait for a reply
     //xmlhttp.timeout = 2000;
     xmlhttp.send();
@@ -244,42 +230,14 @@ Template.election.events({
         document.getElementById("ifnothing").innerHTML = " ";
       }
     }
+
+
+
     const zip =instance.$("#zipcode").val();
     const dropstate =instance.$("#state").val();
     const address =instance.$("#address").val();
     const city =instance.$("#city").val();
-    load(address,city,dropstate,zip);
-
-    function load(address,city,dropstate,zip) {
-      gapi.client.setApiKey('AIzaSyDYoZw_sdVIOmvB1yxnFvdBwNxf9hB7T1M');
-      lookup(address+' '+city+' '+dropstate+' '+zip, renderResults);
-    };
-
-    function lookup(address, callback) {
-     var electionId = 2000;
-     var req = gapi.client.request({
-         'path' : '/civicinfo/v2/voterinfo',
-         'params' : {'electionId' : electionId, 'address' : address}
-     });
-    req.execute(callback);
-    };
-
-   function renderResults(response, rawResponse) {
-     if (!response || response.error) {
-       return;
-     }
-     var normalizedAddress = response.normalizedInput.line1 + ' ' + response.normalizedInput.city + ', ' + response.normalizedInput.state + ' ' + response.normalizedInput.zip;
-     if(response.pollingLocations == null){
-       var pollingreturn = 'Could not find polling place for ' + normalizedAddress
-     }else if (response.pollingLocations.length > 0) {
-       var pollingLocation = response.pollingLocations[0].address;
-       var pollingAddress = pollingLocation.locationName + ', ' + pollingLocation.line1 + ' ' + pollingLocation.city + ', ' + pollingLocation.state + ' ' + pollingLocation.zip;
-       var pollingreturn='<p> '+pollingAddress;
-     }else{
-       var pollingreturn = 'Could not find polling place for ' + normalizedAddress
-     }
-       Session.set("pollingloc", pollingreturn);
-   };
+    findpollinglocation(address,city,dropstate,zip);
   },
   'click #recordAudioButton'(elt,instance){
     const voiceDict = Template.instance().voiceDict;
@@ -331,41 +289,40 @@ Template.election.events({
     var recognition_engine = Template.instance().recognition_engine;
     Template.instance().recognition_engine.stop();
     Template.instance().voiceDict.set("recording_status", "inactive");
-  },
-  // 'click #readytovote'(elt,instance){
-  //   const zip =instance.$("#zipcode").val();
-  //   const dropstate =instance.$("#state").val();
-  //   const address =instance.$("#address").val();
-  //   const city =instance.$("#city").val();
-  //   load();
-  //
-  //   function load() {
-  //     gapi.client.setApiKey('YOUR API KEY GOES HERE');
-  //     lookup(address+' '+city+' '+dropstate+' '+zip, renderResults);
-  //   };
-  //
-  //   function lookup(address, callback) {
-  //    var electionId = 2000;
-  //    var req = gapi.client.request({
-  //        'path' : '/civicinfo/v2/voterinfo',
-  //        'params' : {'electionId' : electionId, 'address' : address}
-  //    });
-  //   req.execute(callback);
-  //   };
-  //
-  //  function renderResults(response, rawResponse) {
-  //    if (!response || response.error) {
-  //      return;
-  //    }
-  //    var normalizedAddress = response.normalizedInput.line1 + ' ' + response.normalizedInput.city + ', ' + response.normalizedInput.state + ' ' + response.normalizedInput.zip;
-  //    if (response.pollingLocations.length > 0) {
-  //      var pollingLocation = response.pollingLocations[0].address;
-  //      var pollingAddress = pollingLocation.locationName + ', ' + pollingLocation.line1 + ' ' + pollingLocation.city + ', ' + pollingLocation.state + ' ' + pollingLocation.zip;
-  //      var pollingreturn='<p>Polling place for ' + normalizedAddress + ': '+pollingAddress;
-  //    }else{
-  //      var pollingreturn = 'Could not find polling place for ' + normalizedAddress
-  //    }
-  //      Session.set("pollingloc", pollingreturn);
-  //  };
-  // }
+  }
 })
+
+function findpollinglocation(address,city,dropstate,zip){
+  load(address,city,dropstate,zip);
+
+  function load(address,city,dropstate,zip) {
+    gapi.client.setApiKey('AIzaSyDYoZw_sdVIOmvB1yxnFvdBwNxf9hB7T1M');
+    lookup(address+' '+city+' '+dropstate+' '+zip, renderResults);
+  };
+
+  function lookup(address, callback) {
+   var electionId = 2000;
+   var req = gapi.client.request({
+       'path' : '/civicinfo/v2/voterinfo',
+       'params' : {'electionId' : electionId, 'address' : address}
+   });
+  req.execute(callback);
+  };
+
+  function renderResults(response, rawResponse) {
+   if (!response || response.error) {
+     return;
+   }
+   var normalizedAddress = response.normalizedInput.line1 + ' ' + response.normalizedInput.city + ', ' + response.normalizedInput.state + ' ' + response.normalizedInput.zip;
+   if(response.pollingLocations == null){
+     var pollingreturn = 'Could not find polling place for ' + normalizedAddress
+   }else if (response.pollingLocations.length > 0) {
+     var pollingLocation = response.pollingLocations[0].address;
+     var pollingAddress = pollingLocation.locationName + ', ' + pollingLocation.line1 + ' ' + pollingLocation.city + ', ' + pollingLocation.state + ' ' + pollingLocation.zip;
+     var pollingreturn='<p> '+pollingAddress+ ' </p>';
+   }else{
+     var pollingreturn = 'Could not find polling place for ' + normalizedAddress
+   }
+     Session.set("pollingloc", pollingreturn);
+  };
+};
