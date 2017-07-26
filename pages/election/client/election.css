@@ -18,3 +18,8 @@
  .table-striped>tbody>tr:nth-child(even)>th {
     background-color: #263238;
   }*/
+
+.table-bordered td{
+  font-size: 150%;
+  color: black;
+}

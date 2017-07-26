@@ -12,8 +12,10 @@
                   <div class="page_mic">
                     <header class="page_header">
                       <h2>Politician</h2>
+                      <p>Use this page to look up any politicians</p>
                     </header>
                     <div class="mic_icon">
+                      <p>Ask Me Questions!</p>
                       {{#if ifInactive}}
                       <img width="150" id="recordAudioButton"  src="images/mic_icon.svg"/>
                         <!-- <button class="btn btn-info btn-md" style="display:inline-block;" id="recordAudioButton">
@@ -32,9 +34,9 @@
                         {{/if}}
                     </div>
                   </div>
-                  <p>Use this page to look up any politicians</p>
+                  <!-- <p>Use this page to look up any politicians</p> -->
 
-                  <div class = "form-group">
+                  <div class = "form-group" id="pol_info_div">
                     <div class = "col-sm-12">
                       <select id = "state">
                         <option value="AL">Alabama</option>
@@ -127,8 +129,8 @@
       Next Election Year: {{t.nextElection}}<br>
       </h3>
     </div>
-    <div class = "col-md-4">
-      <button class ="moreInfo btn btn-default" id = "name">More Information</button>
+    <div>
+      <button class ="moreInfo btn btn-primary btn-lg" id = "polInfoButton">More Information</button>
     </div>
 
   </div>

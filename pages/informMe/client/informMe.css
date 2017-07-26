@@ -37,3 +37,11 @@ a:hover + div.committeeInfo{
 .well{
   overflow:hidden;
 }
+
+#polInfoButton{
+  float: right;
+}
+
+#pol_info_div{
+  padding-top: 5px;
+}
