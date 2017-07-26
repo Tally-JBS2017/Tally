@@ -33,6 +33,12 @@ Template.profile.helpers({
     }
     return true;
   },
+   ageCheck: function(){
+     if(typeof Profiles.findOne({owner:Meteor.userId(),age:{"$exists":true}}) == 'undefined' || typeof Profiles.findOne({owner:Meteor.userId(),age:{$ne:""}}) == "undefined"){
+       return false;
+     }
+     return true;
+  },
   cityCheck: function(){
     if(typeof Profiles.findOne({owner:Meteor.userId(),city:{"$exists":true}}) == 'undefined' || typeof Profiles.findOne({owner:Meteor.userId(),city:{$ne:""}}) == "undefined"){
       return false;
@@ -54,14 +60,42 @@ Template.profile.helpers({
 })
 
 Template.profile.events({
-  'click #submit_all' : function (e, instance) {//this created a profile the first time and then updates every field
-    Template.instance().updateProfile.set("update_status", "off");
+   'click #submit_all' : function (e, instance) {//this created a profile the first time and then updates every field
     check(update);
     function check(callback){//we use a callback function to make sure that the profile is added before it is updated.
       if(Profiles.findOne({owner:Meteor.userId()}) == null){
-        var to_be_inserted = {name:'', owner: Meteor.userId(), address:'', state:'', zip:'', city:''};
+        var to_be_inserted = {name:'', owner: Meteor.userId(), address:'', state:'', zip:'', city:'', age:''};
         Meteor.call('profiles.insert', to_be_inserted);
       }
+      if(instance.$('#name').val() == "" && typeof Profiles.findOne({owner:Meteor.userId(),name:{$ne:""}}) == "undefined"){
+        alert("Please provide an input for all fields.");
+        return
+      }
+      else if(instance.$('#age').val() == "" && typeof Profiles.findOne({owner:Meteor.userId(),age:{$ne:""}}) == "undefined"){
+        alert("Please provide an input for all fields.");
+        return
+      }
+      else if(instance.$('#state').val() == "" && typeof Profiles.findOne({owner:Meteor.userId(),state:{$ne:""}}) == "undefined"){
+        alert("Please provide an input for all fields.");
+        return
+      }
+      else if(instance.$('#address').val() == "" && typeof Profiles.findOne({owner:Meteor.userId(),address:{$ne:""}}) == "undefined"){
+        alert("Please provide an input for all fields.");
+        return
+      }
+      else if(instance.$('#city').val() == "" && typeof Profiles.findOne({owner:Meteor.userId(),city:{$ne:""}}) == "undefined"){
+        alert("Please provide an input for all fields.");
+        return
+      }
+      else if(instance.$('#zip').val() == "" && typeof Profiles.findOne({owner:Meteor.userId(),zip:{$ne:""}}) == "undefined"){
+        alert("Please provide an input for all fields.");
+        return
+      }
+      else if(isNaN(instance.$('#zip').val()) || isNaN(instance.$('#age').val()) || instance.$('#zip').val().length != 5){
+        alert("You have an invalid input.");
+        return
+      }
+      Template.instance().updateProfile.set("update_status", "off");
       callback();
     }
     function update(){//this is where everything is updated
@@ -77,8 +111,8 @@ Template.profile.events({
       }
       if(!(instance.$('#age').val() == "")){
         const age = instance.$('#age').val();
-        Meteor.call('profiles.age.update', age)
         instance.$('#age').val("");
+        Meteor.call('profiles.age.update', age)
       }
       if(!(instance.$('#address').val() == "")){
         const address = instance.$('#address').val();
@@ -124,12 +158,7 @@ Template.profile.events({
       if(!(instance.$('#zip').val() == "")){
         const zip = instance.$('#zip').val();
         instance.$('#zip').val("");
-        if(!isNaN(zip) & zip.length == 5){
-          Meteor.call('profiles.zip.update', zip)
-        }
-        else{
-          alert("This zip code is not a valid input. ");
-        }
+        Meteor.call('profiles.zip.update', zip)
       }
 
     }
