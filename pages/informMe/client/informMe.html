@@ -14,6 +14,7 @@
                       <h2>Politician</h2>
                     </header>
                     <div class="mic_icon">
+                      Ask Me Questions!<br>
                       {{#if ifInactive}}
                       <img width="150" id="recordAudioButton"  src="images/mic_icon.svg"/>
                         <!-- <button class="btn btn-info btn-md" style="display:inline-block;" id="recordAudioButton">
@@ -99,7 +100,7 @@
                   <p id = "noPolitician"></p>
                   <br>
                   <br>
-                  <!-- <div id="picture" ></div> -->
+                  <div id="picture"></div>
                   <div class = ".col-xs-12 .col-md-8" id="polInfo">
                     {{#each t in informed}}
                       {{> trow t=t}}
@@ -118,7 +119,7 @@
 <template name = "trow">
 
   <div class = "well">
-    <img src = {{t.src}} id = "picture" class = "col-xs-6 col-md-4">
+    <img src = {{t.src}} id = "picture" class = "col-xs-12 col-md-4">
     <div class = ".col-xs-12 .col-md-7">
       <h2>Name: {{t.name}}</h2><br>
       <h3>Role: {{t.role}}<br>
@@ -126,7 +127,7 @@
       Next Election Year: {{t.nextElection}}<br><br>
       </h3>
     </div>
-    <div> 
+    <div>
       <button class ="moreInfo btn btn-primary btn-lg" id = "moreInfoButton">More Information</button>
     </div>
   </div>

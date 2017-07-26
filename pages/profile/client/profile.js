@@ -1,5 +1,5 @@
 Template.profile.onCreated(function(){
-  Meteor.subscribe('profiles');
+  Meteor.subscribe('profiles', {owner:Meteor.userId()});
   this.updateProfile= new ReactiveDict();
   this.updateProfile.set("update_status", "off");
 });
@@ -169,3 +169,9 @@ Template.profile.events({
   },
 
 })
+
+Template.registerHelper('getyoutubevideo', function () {
+  Meteor.subscribe('profiles', {owner:Meteor.userId()});
+  Meteor.subscribe("Statereginfo", {abbr:Profiles.findOne({owner:Meteor.userId()}).state});
+  return Statereginfo.findOne({abbr:Profiles.findOne({owner:Meteor.userId()}).state}).youtube.toString();
+});
