@@ -144,7 +144,7 @@ Template.register.events({
         console.log(result.data.result.metadata.intentName);
         if(result.data.result.metadata.intentName == "register_online"){
          //  window.speechSynthesis.speak(voice_data);
-         responsiveVoice.speak(voice_data, "UK English Male");
+         responsiveVoice.speak(voice_data, "US English Male");
          //if text=="stop"
        } else if(result.data.result.metadata.intentName == "stop"){
          voiceDict.set("recording_status", "inactive");
@@ -156,7 +156,7 @@ Template.register.events({
           // console.log(result.data.result.speech);
           // var msg = new SpeechSynthesisUtterance(result.data.result.speech);
           // window.speechSynthesis.speak(msg);
-          responsiveVoice.speak(result.data.result.speech, "UK English Male", {rate: 1.05});
+          responsiveVoice.speak(result.data.result.speech, "US English Male", {rate: 1.05});
          }
         recognition_engine.stop();
         setTimeout(function(){
