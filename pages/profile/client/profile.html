@@ -42,6 +42,14 @@
                                 {{/each}}
                               {{/if}}
                             </div>
+                            <div class="age">
+                              {{#if ageCheck}}
+                                <h3 class="prof_field">Your Age: </h3>
+                                {{#each member in current_profile}}
+                                  <h2 id="userInput">{{member.age}}</h2>
+                                {{/each}}
+                              {{/if}}
+                            </div>
                             <div class = "state"><!-- shows your state here -->
                               {{#if stateCheck}}
                                 <h3 class="prof_field">Your State: </h3>
@@ -80,6 +88,14 @@
                               <h2 id="userInput">{{member.name}}</h2>
                             {{/each}}
                             <input type="text" class="js-chatinput" id = "name" placeholder="Change your name here">
+                            <br>
+                          </div>
+                          <div class = "age" id="update_div"> <!--shows your profile age here -->
+                            <h1>Your Age: </h1>
+                            {{#each member in current_profile}}
+                              <h2 id="userInput">{{member.age}}</h2>
+                            {{/each}}
+                            <input type="text"  class="js-chatinput" id = "age">
                             <br>
                           </div>
                           <div class = "address" id="update_div"><!-- shows your profile name here -->
