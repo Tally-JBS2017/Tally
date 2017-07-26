@@ -156,7 +156,7 @@ Template.register.events({
           // console.log(result.data.result.speech);
           // var msg = new SpeechSynthesisUtterance(result.data.result.speech);
           // window.speechSynthesis.speak(msg);
-          responsiveVoice.speak(result.data.result.speech, "UK English Male");
+          responsiveVoice.speak(result.data.result.speech, "UK English Male", {rate: 1.05});
          }
         recognition_engine.stop();
         setTimeout(function(){

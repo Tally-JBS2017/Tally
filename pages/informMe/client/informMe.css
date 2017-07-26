@@ -30,10 +30,14 @@ a:hover + div.committeeInfo{
   display: inline-block;
 }
 
-.polInfo{
+#polInfo{
   display: flow-root  ;
 }
 
 .well{
   overflow:hidden;
+}
+
+#moreInfoButton{
+  float: right;
 }
