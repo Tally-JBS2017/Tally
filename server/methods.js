@@ -34,36 +34,32 @@ Meteor.methods({
     Election.insert(information);
   },
 
-  'election.clear'(){
-    Election.remove({});
-  },
-
-  'election.count'(){
-    Election.find().count();
+  'election.clear'(id){
+    Election.remove({userId:id});
   },
 
   'politicians.insert'(information){
     Politicians.insert(information);
   },
 
-  'politicians.clear'(){
-    Politicians.remove({});
+  'politicians.clear'(id){
+    Politicians.remove({userId:id});
   },
 
   'bills.insert'(information){
     Bills.insert(information);
   },
 
-  'bills.clear'(){
-    Bills.remove({});
+  'bills.clear'(id){
+    Bills.remove({userId:id});
   },
 
   'poliinfo.insert'(information){
     PoliInfo.insert(information);
   },
 
-  'poliinfo.clear'(){
-    PoliInfo.remove({});
+  'poliinfo.clear'(id){
+    PoliInfo.remove({userId:id});
   },
 
   "sendJSONtoAPI_ai": function(text){

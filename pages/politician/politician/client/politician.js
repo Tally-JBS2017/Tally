@@ -15,17 +15,18 @@ Template.politician.helpers({
   additionalInfo(){
     return PoliInfo.find();
   },
-  district(){
-    return PoliInfo.find();
+  findDistrict(){
+    console.log("this is the district" + PoliInfo.find({district:true}).fetch()[0]);
+    return PoliInfo.find({district:true}).fetch()[0];
   }
 
 })
 
 Template.politician.events({
-  "click .searchbar": function(event,instance){
-    Meteor.call('poliinfo.clear')
-    Meteor.call('politicians.clear');
-    Meteor.call('bills.clear');
+  /*"click .searchbar": function(event,instance){
+    Meteor.call('poliinfo.clear',Meteor.userId())
+    Meteor.call('politicians.clear',Meteor.userId());
+    Meteor.call('bills.clear',Meteor.userId());
     var xmlhttp = new XMLHttpRequest();
      input = location.search.substring[6];
     input = input.replace(/\+/g, '%20'); // 'Friday%20September%2013th'
@@ -61,6 +62,7 @@ Template.politician.events({
             console.log(party);
             var nextElection = electionInfo.results[i].next_election.toString();
             console.log(nextElection);
+
             var information = {name,role,party,nextElection};
             Meteor.call('politicians.insert',information);
             i = electionInfo.results.length;
@@ -131,7 +133,9 @@ Template.politician.events({
           for(i=0; i<electionInfo.results[0].roles[0].committees.length; i++){
             var committee =electionInfo.results[0].roles[0].committees[i].name.toString();
 
-            var information = {committee};
+            var district =electionInfo.results[0].roles[0].district.toString();
+            console.log("this is inserting district" + district);
+            var information = {committee,district};
             Meteor.call('poliinfo.insert',information);
           }
         }
@@ -142,5 +146,5 @@ Template.politician.events({
 
     }
 
-  }
+  }*/
 })

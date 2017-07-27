@@ -2,9 +2,9 @@ Template.informMe.onCreated(function(){
   Meteor.subscribe('politicians');
   Meteor.subscribe('bills');
   Meteor.subscribe('poliinfo');
-  Meteor.call('politicians.clear');
-  Meteor.call('bills.clear');
-  Meteor.call('poliinfo.clear');
+  Meteor.call('politicians.clear',Meteor.userId());
+  Meteor.call('bills.clear',Meteor.userId());
+  Meteor.call('poliinfo.clear',Meteor.userId());
   this.voiceDict = new ReactiveDict();
   this.recognition_engine = new webkitSpeechRecognition();
   this.voiceDict.set("recording_status", "inactive");
@@ -12,13 +12,13 @@ Template.informMe.onCreated(function(){
 
 Template.informMe.helpers({
   informed: function(){
-    return Politicians.find();
+    return Politicians.find({userId:Meteor.userId()});
   },
   cosponsor: function(){
-    return Bills.find();
+    return Bills.find({userId:Meteor.userId()});
   },
   additionalInfo: function(){
-    return PoliInfo.find();
+    return PoliInfo.find({userId:Meteor.userId()});
   },
   ifInactive: function(){
   const voiceDict = Template.instance().voiceDict
@@ -38,9 +38,9 @@ Template.informMe.helpers({
 
 Template.informMe.events({
   "click .searchbar": function(event,instance){
-    Meteor.call('poliinfo.clear')
-    Meteor.call('politicians.clear');
-    Meteor.call('bills.clear');
+    Meteor.call('poliinfo.clear',Meteor.userId())
+    Meteor.call('politicians.clear',Meteor.userId());
+    Meteor.call('bills.clear',Meteor.userId());
     const input = $(".search").val();
     const state = instance.$('#state').val();
     const position = instance.$('#position').val();
@@ -66,8 +66,8 @@ Template.informMe.events({
             var party = electionInfo.results[i].party.toString();
 
             var nextElection = electionInfo.results[i].next_election.toString();
-
-            var information = {name,role,party,nextElection,src,url};
+            var userId = Meteor.userId();
+            var information = {name,role,party,nextElection,src,url,userId};
             Meteor.call('politicians.insert',information);
             //i = electionInfo.results.length;
             //getBills(id);
@@ -138,9 +138,9 @@ Template.informMe.events({
 
 Template.trow.events({
   "click .moreInfo": function(event,instance){
-    Meteor.call('poliinfo.clear')
-    Meteor.call('politicians.clear');
-    Meteor.call('bills.clear');
+    Meteor.call('poliinfo.clear',Meteor.userId());
+    Meteor.call('politicians.clear',Meteor.userId());
+    Meteor.call('bills.clear',Meteor.userId());
     var xmlhttp = new XMLHttpRequest();
     var input = this.t.name;
     const state = $('#state').val();
@@ -167,7 +167,8 @@ Template.trow.events({
             console.log(party);
             var nextElection = electionInfo.results[i].next_election.toString();
             console.log(nextElection);
-            var information = {name,role,party,nextElection,src};
+            var userId = Meteor.userId();
+            var information = {name,role,party,nextElection,src,userId};
             Meteor.call('politicians.insert',information);
             i = electionInfo.results.length;
             getBills(id);
@@ -200,7 +201,9 @@ Template.trow.events({
             if(!summary){
               summary = "Summary Unavaliable";
             }
-            var information = {title,summary};
+            var userId = Meteor.userId();
+            var information = {title,summary,userId};
+
             Meteor.call('bills.insert',information);
           }
         }
@@ -229,7 +232,8 @@ Template.trow.events({
           for(i=0; i<electionInfo.results[0].roles[0].committees.length; i++){
             var committee =electionInfo.results[0].roles[0].committees[i].name.toString();
             var district = electionInfo.results[0].roles[0].district.toString();
-            var information = {committee, district};
+            var userId = Meteor.userId();
+            var information = {committee, district,userId};
             Meteor.call('poliinfo.insert',information);
           }
         }
