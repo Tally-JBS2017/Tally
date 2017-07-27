@@ -167,6 +167,11 @@ body, ul{
 	padding-bottom: 0 !important;
 	border-bottom: 0 !important;
 }
+
+.creators img{
+	width: 100%;
+	padding-bottom: 15px;
+}
 .quote-list li {
 	padding: 1em 0 1em 0;
 	overflow: hidden;
@@ -188,14 +193,15 @@ body, ul{
 }
 
 .quote-list li p {
-	margin: 0 0 0 90px;
+	margin: 0 0 0 0;
 	font-size: 1.2em;
-	font-style: italic;
+
 }
 
 .quote-list li span {
 	display: block;
-	margin-left: 90px;
+	margin-left: 0 0 0 0;
 	font-size: 0.9em;
 	font-weight: 400;
+	font-style: italic;
 }
