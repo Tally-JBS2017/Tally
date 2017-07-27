@@ -15,7 +15,7 @@ body, ul{
 	padding:0;
 }
 #logo{
-	max-height:100px;
+	max-height:75px;
 }
 #header h1 {
 	position: relative;
@@ -26,7 +26,7 @@ body, ul{
 
 .navbar-default{
 	background: #3B4346 url("images/bg01.jpg");
-	padding-top: 0%;
+	padding-top: 1%;
 	padding-bottom: 0;
 	display: block;
 	border:none;
