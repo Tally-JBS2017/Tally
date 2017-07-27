@@ -26,6 +26,10 @@ input[type=number]::-webkit-outer-spin-button {
   padding-bottom: 10px;
 }
 
+.regLogin{
+  float:right;
+}
+
 /*h2, h3, .table-striped>tbody>tr>td,
 .table-striped>tbody>tr>th, Label{
   color: #ECEFF1;

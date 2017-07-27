@@ -14,6 +14,7 @@
                     <header class="page_header">
                       <h2>Learn to Register to Vote</h2>
                     </header>
+                    {{#if currentUser}}
                     <div class="mic_icon">
                       {{#if ifInactive}}
                       <p>Ask Me Questions!</p>
@@ -33,8 +34,13 @@
                         <!-- <button class="btn btn-info btn-md" style="display:inline-block;">
                           <i class="fa fa-spinner fa-spin"></i>Listening. Say stop to end conversation.</button> -->
                         {{/if}}
-
                     </div>
+                    {{else}}
+                    <div class="regLogin">
+                      <p>Please login to speak</p>
+                      {{>loginButtons}}
+                    </div>
+                    {{/if}}
                   </div>
                     <div class="row" id="page_info_div">
                       <div class="col-md-1">
