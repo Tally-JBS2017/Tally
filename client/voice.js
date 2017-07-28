@@ -5,11 +5,12 @@ Template.voice.onCreated(function voiceOnCreated(){
   // Session.set("onlinePage", .findOne({owner:Meteor.userId()}).state);
   Meteor.subscribe("profiles", {owner:Meteor.userId()});
   if((Profiles.findOne({owner:Meteor.userId()}) != null) && (Session.get("statepage") == undefined)){
+    Meteor.subscribe("Statereginfo", {abbr:Session.get("statepage")});
   Session.set("statepage", Profiles.findOne({owner:Meteor.userId()}).state);
-  Meteor.subscribe("Statereginfo", {abbr:Session.get("statepage")});
+
   // console.log("Statepage = "+this.statepage);
-}
-Meteor.subscribe("regis_voice_info");
+  }
+  Meteor.subscribe("regis_voice_info");
 })
 
 Template.voice.helpers({
@@ -36,11 +37,10 @@ Template.voice.events({
     var recognition_engine = Template.instance().recognition_engine;
     Template.instance().voiceDict.set("recording_status", "speaking");
     var page, voice_data;
-    // if(Router.current().url.match("register")){
+    if(Router.current().url.match("register")){
       page = Session.get("statepage");
-
       voice_data = Regis_voice_info.findOne({abbr:page}).online;
-    // }
+    }
     console.log(voice_data);
     recognition_engine.continuous = true;
     recognition_engine.lang = 'en-US';
@@ -65,6 +65,8 @@ Template.voice.events({
         console.log(result.data.result.metadata.intentName);
         if(result.data.result.metadata.intentName == "register_online" && Router.current().url.match("register")){
          responsiveVoice.speak(voice_data, "US English Male");
+       } else if(result.data.result.metadata.intentName == "register_online" && !Router.current().url.match("register")){
+         responsiveVoice.speak("Find more information about how to register online, in person, and by mail on our register page.", "US English Male");
        } else if(result.data.result.metadata.intentName == "stop"){
          voiceDict.set("recording_status", "inactive");
          recognition_engine.stop();
