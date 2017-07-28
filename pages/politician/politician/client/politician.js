@@ -18,7 +18,10 @@ Template.politician.helpers({
   findDistrict(){
     console.log("this is the district" + PoliInfo.find({district:true}).fetch()[0]);
     return PoliInfo.find({district:true}).fetch()[0];
-  }
+  },
+  url: function(){
+    return Session.get('url');
+  },
 
 })
 

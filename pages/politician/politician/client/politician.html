@@ -94,7 +94,7 @@
                     Role: {{t.role}}<br>
                     Party: {{t.party}}<br>
                     Next Election Year: {{t.nextElection}}<br>
-                    <p style = "display:inline" id = "url"></p> <br>
+                    <a href="{{url}}" style = "display:inline">{{url}}</a> <br>
                     District: {{findDistrict}}<br>
                     Committees:
                     {{#each n in additionalInfo}}
@@ -111,8 +111,8 @@
                   <h3>Bills supported</h3>
                   <hr>
                   {{#each b in cosponsor}}
-                  <u>{{b.title}}</u><br>
-                  <br> {{b.summary}} <br>
+                  <p class="bill_title">{{b.title}}</p>
+                  <p class="bill_summary"> {{b.summary}} </p>
                   <hr>
                   {{/each}}
                   <p id = "noBills"></p>
