@@ -124,7 +124,7 @@ Template.profile.events({
 
         Meteor.call('profiles.state.update', state)
         instance.$('#state').val("");
-        Meteor.call('election.clear'); //Steven's Code
+        Meteor.call('election.clear', Meteor.userId()); //Steven's Code
         var xmlhttp = new XMLHttpRequest();
         //setting up the date for today so the api on the elections page knows what date to start from
         const d = new Date();
@@ -146,8 +146,8 @@ Template.profile.events({
               var date= electionInfo.results[i].election_date.toString();
               var apistate= electionInfo.results[i].election_state.toString();
               var type= electionInfo.results[i].election_type_full.toString();
-
-              var information = {seat,date,apistate,type}
+              var userId = Meteor.userId();
+              var information = {seat,date,apistate,type,userId}
               Meteor.call('election.insert',information);
             }
           }

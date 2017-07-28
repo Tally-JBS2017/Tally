@@ -13,7 +13,7 @@ Template.election.onCreated(function() {
 
 Template.election.helpers({
   contest: function() {
-    return Election.find()
+    return Election.find({userId:Meteor.userId()})
   },
 
   ifInactive: function(){
@@ -34,7 +34,7 @@ Template.election.helpers({
 
 Template.election.events({
   "click .getElection": function clicked(event,instance){
-    Meteor.call('election.clear');
+    Meteor.call('election.clear',Meteor.userId());
     var xmlhttp = new XMLHttpRequest();
     //setting up the date
     const d = new Date();
@@ -200,7 +200,7 @@ Template.election.events({
     const ElectionAPIkey = "aINkNgEHYqnSUX9TT7TEuSQus167GNvHRAdSjLpx";
 
     var url = "https://api.open.fec.gov/v1/election-dates/?min_election_date=" + fullDate +"&election_state=" + state + "&sort=election_date&page=1&api_key=aINkNgEHYqnSUX9TT7TEuSQus167GNvHRAdSjLpx&per_page=20"
-
+    //this gets the election information
     xmlhttp.onreadystatechange = function(){
       if(this.readyState == 4 && this.status == 200){
         var electionInfo = JSON.parse(this.responseText);
@@ -210,9 +210,10 @@ Template.election.events({
           var date= electionInfo.results[i].election_date.toString();
           var apistate= electionInfo.results[i].election_state.toString();
           var type= electionInfo.results[i].election_type_full.toString();
+          var userId = Meteor.userId();
           console.log(type);
 
-        var information = {seat,date,apistate,type}
+        var information = {seat,date,apistate,type,userId}
         Meteor.call('election.insert',information);
         }
 
@@ -224,7 +225,7 @@ Template.election.events({
 
     setTimeout(nothing,1000);
     function nothing(){
-      if( Election.find().count() == 0){ //this tells the user if their are elections in their state.
+      if( Election.find({userId:Meteor.userId()}).count() == 0){ //this tells the user if their are elections in their state.
         document.getElementById("ifnothing").innerHTML = "Sorry, their are no elections at this state";
       }else{
         document.getElementById("ifnothing").innerHTML = " ";
