@@ -27,7 +27,6 @@ Template.register.helpers({
   //this function's purpose is to allow the dynamic template to grab the right template name.
   page: function() {
     return Session.get("statepage");
-    // return Template.instance().statepage;
   },
 
   regstyle: function() {
