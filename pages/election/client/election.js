@@ -359,6 +359,6 @@ function findrepbyaddress(address, city, dropstate, zip, includeOffices, levels,
    }else{
      var pollingreturn = 'Could not find polling place for ' + normalizedAddress
    }
-     Session.set("pollingloc", pollingreturn);
+     Session.set("myrepinfo", pollingreturn);
   };
 };
