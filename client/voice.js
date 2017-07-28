@@ -4,12 +4,12 @@ Template.voice.onCreated(function voiceOnCreated(){
   this.voiceDict.set("recording_status", "inactive");
   // Session.set("onlinePage", .findOne({owner:Meteor.userId()}).state);
   Meteor.subscribe("regis_voice_info");
-//   if((Profiles.findOne({owner:Meteor.userId()}) != null) && (Session.get("statepage") == undefined)){
-//   Meteor.subscribe("Statereginfo", {abbr:Session.get("statepage")});
-//   Session.set("statepage", Profiles.findOne({owner:Meteor.userId()}).state);
-//
-//   // console.log("Statepage = "+this.statepage);
-// }
+  if((Profiles.findOne({owner:Meteor.userId()}) != null) && (Session.get("statepage") == undefined)){
+  Meteor.subscribe("Statereginfo", {abbr:Session.get("statepage")});
+  Session.set("statepage", Profiles.findOne({owner:Meteor.userId()}).state);
+
+  // console.log("Statepage = "+this.statepage);
+}
 })
 
 Template.voice.helpers({
@@ -80,7 +80,7 @@ Template.voice.events({
         if(result.data.result.metadata.intentName == "register_online" && Router.current().url.match("register")){
          responsiveVoice.speak(voice_data, "US English Male");
        } else if(result.data.result.metadata.intentName == "register_online" && !Router.current().url.match("register")){
-         responsiveVoice.speak("Find more information about how to register online, in person, and by mail on our register page.", "US English Male");
+         responsiveVoice.speak("Find more information about how to register by visiting our register to vote page.", "US English Male");
        } else if(result.data.result.metadata.intentName == "stop"){
          voiceDict.set("recording_status", "inactive");
          recognition_engine.stop();
