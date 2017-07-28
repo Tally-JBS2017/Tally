@@ -2,9 +2,9 @@ Template.informMe.onCreated(function(){
   Meteor.subscribe('politicians');
   Meteor.subscribe('bills');
   Meteor.subscribe('poliinfo');
-  /*Meteor.call('politicians.clear',Meteor.userId());
+  Meteor.call('politicians.clear',Meteor.userId());
   Meteor.call('bills.clear',Meteor.userId());
-  Meteor.call('poliinfo.clear',Meteor.userId());*/
+  Meteor.call('poliinfo.clear',Meteor.userId());
   this.voiceDict = new ReactiveDict();
   this.recognition_engine = new webkitSpeechRecognition();
   this.voiceDict.set("recording_status", "inactive");

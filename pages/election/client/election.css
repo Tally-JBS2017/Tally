@@ -18,7 +18,9 @@
  .table-striped>tbody>tr:nth-child(even)>th {
     background-color: #263238;
   }*/
-
+.shows_elections{
+  margin-left: 30px;
+}
 .table-bordered td{
   font-size: 150%;
   color: black;
