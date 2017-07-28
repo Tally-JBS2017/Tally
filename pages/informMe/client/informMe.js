@@ -2,14 +2,36 @@ Template.informMe.onCreated(function(){
   Meteor.subscribe('politicians');
   Meteor.subscribe('bills');
   Meteor.subscribe('poliinfo');
-  /*Meteor.call('politicians.clear',Meteor.userId());
+  Meteor.call('politicians.clear',Meteor.userId());
   Meteor.call('bills.clear',Meteor.userId());
-  Meteor.call('poliinfo.clear',Meteor.userId());*/
+  Meteor.call('poliinfo.clear',Meteor.userId());
   this.voiceDict = new ReactiveDict();
   this.recognition_engine = new webkitSpeechRecognition();
   this.voiceDict.set("recording_status", "inactive");
 })
 
+Template.informMelayout.helpers({
+  page: function() {
+    return Session.get("mypoliornah");
+    // return Template.instance().statepage;
+  },
+
+  polistyle: function() {
+      return Template.instance().howtoreg.get();
+    },
+
+  // This fuction is what is used to populate the static-template with dynamic data.
+  // For now it's using an array but we late we can pull the array from collections.
+  pageData: function() {
+    var page = Session.get("mypoliornah");
+    console.log(page+" is where we are getting data for");
+    //When we get the collection and agree on a format we we swap out the manual data array for a collection grab
+    var data = Statereginfo.findOne({abbr:page});
+    console.log("Page data is pulled from "+data.toString());
+    return {contentType:page, items:data};
+  },
+
+})
 Template.informMe.helpers({
   informed: function(){
     return Politicians.find({userId:Meteor.userId()});
@@ -20,7 +42,6 @@ Template.informMe.helpers({
   additionalInfo: function(){
     return PoliInfo.find({userId:Meteor.userId()});
   },
-
   // ifInactive: function(){
   // const voiceDict = Template.instance().voiceDict
   // return voiceDict.get("recording_status") == "inactive";
@@ -229,7 +250,7 @@ Template.trow.events({
           console.log(electionInfo);
           var url = electionInfo.results[0].url.toString();
           console.log(url);
-          Session.set('url', url);
+          document.getElementById("url").innerHTML = url;
           for(i=0; i<electionInfo.results[0].roles[0].committees.length; i++){
             var committee =electionInfo.results[0].roles[0].committees[i].name.toString();
             var district = electionInfo.results[0].roles[0].district.toString();
