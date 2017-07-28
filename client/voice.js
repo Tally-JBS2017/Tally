@@ -3,14 +3,13 @@ Template.voice.onCreated(function voiceOnCreated(){
   this.recognition_engine = new webkitSpeechRecognition();
   this.voiceDict.set("recording_status", "inactive");
   // Session.set("onlinePage", .findOne({owner:Meteor.userId()}).state);
-  Meteor.subscribe("profiles", {owner:Meteor.userId()});
-  if((Profiles.findOne({owner:Meteor.userId()}) != null) && (Session.get("statepage") == undefined)){
-    Meteor.subscribe("Statereginfo", {abbr:Session.get("statepage")});
-  Session.set("statepage", Profiles.findOne({owner:Meteor.userId()}).state);
-
-  // console.log("Statepage = "+this.statepage);
-  }
   Meteor.subscribe("regis_voice_info");
+//   if((Profiles.findOne({owner:Meteor.userId()}) != null) && (Session.get("statepage") == undefined)){
+//   Meteor.subscribe("Statereginfo", {abbr:Session.get("statepage")});
+//   Session.set("statepage", Profiles.findOne({owner:Meteor.userId()}).state);
+//
+//   // console.log("Statepage = "+this.statepage);
+// }
 })
 
 Template.voice.helpers({
@@ -27,6 +26,21 @@ Template.voice.helpers({
   isProcessing: function(){
     return Template.instance().voiceDict.get("recording_status") === "processing";
   },
+  // page: function() {
+  //   return Session.get("statepage");
+  //   // return Template.instance().statepage;
+  // },
+  //
+  // // This fuction is what is used to populate the static-template with dynamic data.
+  // // For now it's using an array but we late we can pull the array from collections.
+  // pageData: function() {
+  //   var page = Session.get("statepage")
+  //   console.log(page+" is where we are getting data for");
+  //   //When we get the collection and agree on a format we we swap out the manual data array for a collection grab
+  //   var data = Statereginfo.findOne({abbr:page});
+  //   console.log("Page data is pulled from "+data.toString());
+  //   return {contentType:page, items:data};
+  // },
 
 })
 
