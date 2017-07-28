@@ -101,16 +101,13 @@
                         <!-- <div class = " col-md-offset 1 col-md-5  bg-info" id = content> -->
                           <hr>
                           <h3>Elections happening near you</h3>
-                          <table class="bg-warning table table-bordered table-striped">
+                          <hr>
                           <!--this shows the elections in your area -->
-                            <tbody>
-                              {{#each t in contest}}
-                                <tr>
-                                  <td>On {{t.date}}, there will be a {{t.type}} in the state of {{t.apistate}} for {{t.seat}}</td>
-                                </tr>
-                              {{/each}}
-                            </tbody>
-                          </table>
+                          <div class="shows_elections">
+                            {{#each t in contest}}
+                                <p>On {{t.date}}, there will be a {{t.type}} in the state of {{t.apistate}} for {{t.seat}}</p>
+                            {{/each}}
+                          </div>
                           <hr>
                           <p id="ifnothing"></p>
                           <h3>Your Polling Location</h3>
