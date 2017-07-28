@@ -1,4 +1,5 @@
-<template name="informMelayout">
+<template name="informMeLayout">
+  {{#if profileloaded}}
   <body class = "subpage">
     <div id = "page-wrapper">
 
@@ -7,16 +8,14 @@
         <div id = "content">
           <div class ="container">
             <div class = "row">
-              {{> Template.dynamic template=polistyle data=pageData}}
-
-
-
+              {{> Template.dynamic template=page data=pageData}}
             </div>
           </div>
         </div>
       </div>
     </div>
   </body>
+  {{/if}}
 </template>
 
 <template name = "trow">
@@ -70,12 +69,11 @@
     <div class="polInfo">
       {{#each t in informed}}
         {{> trow t=t}}
-
       {{/each}}
     </div>
   </section>
 </template>
 
 <template name="mypolis">
-
+    <!-- {{{findpollinglocation this.items.address this.items.city this.items.dropstate this.items.zip)}}} -->
 </template>

@@ -10,15 +10,11 @@ Template.informMe.onCreated(function(){
   this.voiceDict.set("recording_status", "inactive");
 })
 
-Template.informMelayout.helpers({
+Template.informMeLayout.helpers({
   page: function() {
     return Session.get("mypoliornah");
     // return Template.instance().statepage;
   },
-
-  polistyle: function() {
-      return Template.instance().howtoreg.get();
-    },
 
   // This fuction is what is used to populate the static-template with dynamic data.
   // For now it's using an array but we late we can pull the array from collections.
@@ -26,11 +22,19 @@ Template.informMelayout.helpers({
     var page = Session.get("mypoliornah");
     console.log(page+" is where we are getting data for");
     //When we get the collection and agree on a format we we swap out the manual data array for a collection grab
-    var data = Statereginfo.findOne({abbr:page});
+    var data = "nil";
+    //var data = {address: Profiles.findOne({owner:Meteor.userId()}).address,city: Profiles.findOne({owner:Meteor.userId()}).city ,dropstate: Profiles.findOne({owner:Meteor.userId()}).state, zip: Profiles.findOne({owner:Meteor.userId()}).zip}
     console.log("Page data is pulled from "+data.toString());
     return {contentType:page, items:data};
   },
 
+  profileloaded: function(){
+    if((Profiles.findOne({owner:Meteor.userId()}) != null)){
+      Meteor.subscribe("profiles", {owner:Meteor.userId()});
+    }
+    Session.set("mypoliornah","informMe");
+    return true;
+  }
 })
 Template.informMe.helpers({
   informed: function(){
