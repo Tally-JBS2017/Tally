@@ -250,7 +250,7 @@ Template.trow.events({
           console.log(electionInfo);
           var url = electionInfo.results[0].url.toString();
           console.log(url);
-          document.getElementById("url").innerHTML = url;
+          Session.set('url', url);
           for(i=0; i<electionInfo.results[0].roles[0].committees.length; i++){
             var committee =electionInfo.results[0].roles[0].committees[i].name.toString();
             var district = electionInfo.results[0].roles[0].district.toString();
