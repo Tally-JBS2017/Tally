@@ -49,18 +49,18 @@
                         <!-- <div class = " col-md-offset 1 col-md-5  bg-info" id = content> -->
                           <hr>
                           <h3>Elections happening near you</h3>
-                          <hr>
+
                           <!--this shows the elections in your area -->
                           <div class="shows_elections">
                             {{#each t in contest}}
                                 <p>On {{t.date}}, there will be a {{t.type}} in the state of {{t.apistate}} for {{t.seat}}</p>
                             {{/each}}
                           </div>
+
+                          <p class="shows_elections" id="ifnothing"></p>
                           <hr>
-                          <p id="ifnothing"></p>
-                          <h3>Your Polling Location</h3>
-                          <hr>
-                          {{{sessionget 'pollingloc'}}}
+                          <h3>Where you go to vote: </h3>
+                          <p class="voteLocation">{{{sessionget 'pollingloc'}}}</p>
                     </section>
 
                 </div>

@@ -38,13 +38,13 @@ Template.informMeLayout.helpers({
 })
 Template.informMe.helpers({
   informed: function(){
-    return Politicians.find({userId:Meteor.userId()});
+    return Politicians.find({userId:this.Meteor.userId()});
   },
   cosponsor: function(){
-    return Bills.find({userId:Meteor.userId()});
+    return Bills.find({userId:this.Meteor.userId()});
   },
   additionalInfo: function(){
-    return PoliInfo.find({userId:Meteor.userId()});
+    return PoliInfo.find({userId:this.Meteor.userId()});
   },
   // ifInactive: function(){
   // const voiceDict = Template.instance().voiceDict

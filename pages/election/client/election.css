@@ -20,8 +20,13 @@
   }*/
 .shows_elections{
   margin-left: 30px;
-}
-.table-bordered td{
+  padding-top: 5px;
   font-size: 150%;
   color: black;
+}
+
+.voteLocation{
+  font-size: 150%;
+  color: black;
+  margin-left: 30px;
 }
