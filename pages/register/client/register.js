@@ -1,13 +1,12 @@
 import { ReactiveVar } from 'meteor/reactive-var';
 
 Template.register.onCreated(function registerOnCreated() {
-  // Meteor.subscribe("Statereginfo");
   Meteor.subscribe("profiles", {owner:Meteor.userId()});
   this.howtoreg= new ReactiveVar("");
   // console.log(Profiles.findOne({owner:Meteor.userId()}));
   if((Profiles.findOne({owner:Meteor.userId()}) != null) && (Session.get("statepage") == undefined)){
-  Session.set("statepage", Profiles.findOne({owner:Meteor.userId()}).state);
-  Meteor.subscribe("Statereginfo", {abbr:Session.get("statepage")});
+    Session.set("statepage", Profiles.findOne({owner:Meteor.userId()}).state);
+    Meteor.subscribe("Statereginfo", {abbr:Session.get("statepage")});
   // console.log("Statepage = "+this.statepage);
 }
   //this.recognition= new ReactiveVar("");
@@ -18,7 +17,6 @@ Template.register.onCreated(function registerOnCreated() {
   // //speaking - user is speaking
   // //waiting - wait for the result from Google Speech API
   // this.voiceDict.set("recording_status", "inactive");
-  // Meteor.subscribe("Statereginfo");
   Meteor.subscribe("regis_voice_info");
 })
 
@@ -96,14 +94,8 @@ Template.register.events({
       xmlhttp.send();
     }
     function returnState(data){
-      // Meteor.subscribe("Statereginfo", reactvar);
-      Session.set("statepage",data);
+    Session.set("statepage",data);
     }
-    //this state variable is just so we don't spam the API
-    // var state= "MA";
-    // console.log(state);
-    /*sets the current instance's statepage reactive variable to users state.
-    This allows blaze to populate the dynamic template with the correct info */
     console.log("active variable: "+Session.get("statepage"));
   },
   // 'click #recordAudioButton'(elt,instance){
