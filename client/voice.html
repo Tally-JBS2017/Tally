@@ -2,20 +2,20 @@
   <!-- {{#if currentUser}} -->
   <div class="mic_icon">
     {{#if ifInactive}}
-    <p>Push to Ask Me Questions!</p>
-    <img width="100" id="recordAudioButton"  src="images/mic_icon.svg"/>
+    Push to Ask Me Questions!
+    <img width="80" id="recordAudioButton"  src="images/mic_icon.svg"/>
       <!-- <button class="btn btn-info btn-md" style="display:inline-block;" id="recordAudioButton">
         Have a question about one of the steps? Click here to ask me!
       </button> -->
      {{/if}}
      {{#if ifSpeaking}}
-     <p>Say "stop" to end listening.</p>
-     <img width="100" id="recordAudioButton"  src="images/speaking_icon.svg" />
+     Say "stop" to end listening.
+     <img width="80" id="recordAudioButton"  src="images/speaking_icon.svg" />
       <!-- <button class="btn btn-info btn-md" style="display:inline-block;">
         <i class="fa fa-spinner fa-spin"></i>Listening. Say stop to end conversation.</button> -->
       {{/if}}
       {{#if isProcessing}}
-      <img width="100" id="recordAudioButton" class="voiceDemoIcon" src="images/mic_icon.svg" />
+      <img width="80" id="recordAudioButton" class="voiceDemoIcon" src="images/mic_icon.svg" />
       <!-- <button class="btn btn-info btn-md" style="display:inline-block;">
         <i class="fa fa-spinner fa-spin"></i>Listening. Say stop to end conversation.</button> -->
       {{/if}}
