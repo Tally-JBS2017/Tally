@@ -96,8 +96,12 @@ Template.register.events({
       xmlhttp.send();
     }
     function returnState(data){
+      // Meteor.subscribe("Statereginfo", reactvar);
       Session.set("statepage",data);
     }
+    //this state variable is just so we don't spam the API
+    // var state= "MA";
+    // console.log(state);
     /*sets the current instance's statepage reactive variable to users state.
     This allows blaze to populate the dynamic template with the correct info */
     console.log("active variable: "+Session.get("statepage"));
