@@ -326,3 +326,38 @@ function findpollinglocation(address,city,dropstate,zip){
      Session.set("pollingloc", pollingreturn);
   };
 };
+
+function findrepbyaddress(address, city, dropstate, zip, includeOffices, levels, roles){
+  load(address, city, dropstate, zip, includeOffices, levels, roles);
+
+  function load(address, city, dropstate, zip, includeOffices, levels, roles) {
+    gapi.client.setApiKey('AIzaSyDYoZw_sdVIOmvB1yxnFvdBwNxf9hB7T1M');
+    lookup(address+' '+city+' '+dropstate+' '+zip, includeOffices, levels, roles, renderResults);
+  };
+
+  // Address: String, includeOfficees:Boolean, Levels:String, Roles:String
+  function lookup(address, includeOffices, levels, roles, callback) {
+   var req = gapi.client.request({
+       'path' : '/civicinfo/v2/representatives',
+       'params' : {'includeOffices' : includeOffices, 'address' : address, 'levels' : levels, 'roles' : roles }
+   });
+  req.execute(callback);
+  };
+
+  function renderResults(response, rawResponse) {
+   if (!response || response.error) {
+     return;
+   }
+   var normalizedAddress = response.normalizedInput.line1 + ' ' + response.normalizedInput.city + ', ' + response.normalizedInput.state + ' ' + response.normalizedInput.zip;
+   if(response.pollingLocations == null){
+     var pollingreturn = 'Could not find polling place for ' + normalizedAddress
+   }else if (response.pollingLocations.length > 0) {
+     var pollingLocation = response.pollingLocations[0].address;
+     var pollingAddress = pollingLocation.locationName + ', ' + pollingLocation.line1 + ' ' + pollingLocation.city + ', ' + pollingLocation.state + ' ' + pollingLocation.zip;
+     var pollingreturn='<p> '+pollingAddress+ ' </p>';
+   }else{
+     var pollingreturn = 'Could not find polling place for ' + normalizedAddress
+   }
+     Session.set("pollingloc", pollingreturn);
+  };
+};
