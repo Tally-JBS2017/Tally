@@ -24,12 +24,14 @@
                         {{{stateDropdownmenu}}}
                       </div>
                       <div class="col-md-3">
-                        <button class="btn btn-default" id=regisInfo>Find Info</button>
+                        <button class="btn btn-danger btn-lg" id=regisInfo>Find Info</button>
                       </div>
                     </div>
                     {{> Template.dynamic template="eligibility" data=pageData}}
-                    <button class="btn btn-default" id=online><span class="glyphicon glyphicon-globe" aria-hidden="true"></span>&nbsp;Register Online&nbsp;</button><button class="btn btn-default" id=person><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Register in person&nbsp;</button><button class="btn btn-default" id=mail><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp;Register by mail</button>
-                    <br><br>
+                    <div align="center">
+                    <button class="btn btn-danger btn-lg" id=online><span class="glyphicon glyphicon-globe" aria-hidden="true"></span>&nbsp;Register Online&nbsp;</button><button class="btn btn-danger btn-lg" id=person><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Register in person&nbsp;</button><button class="btn btn-danger btn-lg" id=mail><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp;Register by mail</button>
+                    </div>
+                    <br>
                     {{> Template.dynamic template=regstyle data=pageData}}
 
                   </section>

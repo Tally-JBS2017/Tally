@@ -31,12 +31,17 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 #page_info_div{
-  padding-top: 110px;
+  padding-top: 25px;
   padding-bottom: 10px;
 }
 
 .regLogin{
   float:right;
+}
+
+#regisInfo, #online, #person, #mail{
+  font-size: 100%;
+  margin: 2px;
 }
 
 /*h2, h3, .table-striped>tbody>tr>td,
