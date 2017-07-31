@@ -71,13 +71,21 @@ body, ul{
 	border:
 }*/
 .bordered-feature-image img {
-		display: inline-block;
+		display: relative;
 		width: 35%;
 		border: 8px solid white;
 		float: right;
 		margin-bottom: 0;
 		margin-top: 0;
 	}
+
+@media all and (max-width: 600px) {
+    .bordered-feature-image img{
+			display: none;
+
+    }
+
+}
 
 #banner {
 	border-top: solid 1px #222628;
