@@ -83,6 +83,9 @@ body, ul{
     .bordered-feature-image img{
 			display: none;
     }
+		.bannerStart p{
+			text-align: center;
+		}
 }
 
 #banner {
