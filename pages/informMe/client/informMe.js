@@ -1,4 +1,4 @@
-Template.informMe.onCreated(function(){
+Template.informMeLayout.onCreated(function(){
   Meteor.subscribe('politicians');
   Meteor.subscribe('bills');
   Meteor.subscribe('poliinfo');
@@ -22,8 +22,8 @@ Template.informMeLayout.helpers({
     var page = Session.get("mypoliornah");
     console.log(page+" is where we are getting data for");
     //When we get the collection and agree on a format we we swap out the manual data array for a collection grab
-    var data = "nil";
-    //var data = {address: Profiles.findOne({owner:Meteor.userId()}).address,city: Profiles.findOne({owner:Meteor.userId()}).city ,dropstate: Profiles.findOne({owner:Meteor.userId()}).state, zip: Profiles.findOne({owner:Meteor.userId()}).zip}
+    // var data = "nil";
+    var data = {address: Profiles.findOne({owner:Meteor.userId()}).address,city: Profiles.findOne({owner:Meteor.userId()}).city ,dropstate: Profiles.findOne({owner:Meteor.userId()}).state, zip: Profiles.findOne({owner:Meteor.userId()}).zip}
     console.log("Page data is pulled from "+data.toString());
     return {contentType:page, items:data};
   },
@@ -46,20 +46,6 @@ Template.informMe.helpers({
   additionalInfo: function(){
     return PoliInfo.find({userId:this.Meteor.userId()});
   },
-  // ifInactive: function(){
-  // const voiceDict = Template.instance().voiceDict
-  // return voiceDict.get("recording_status") == "inactive";
-  // },
-  //
-  // ifSpeaking: function(){
-  //   const voiceDict = Template.instance().voiceDict
-  //   return voiceDict.get("recording_status") == "speaking";
-  // },
-  //
-  // isProcessing: function(){
-  //   return Template.instance().voiceDict.get("recording_status") === "processing";
-  // },
-
 })
 
 Template.informMe.events({
@@ -108,57 +94,7 @@ Template.informMe.events({
     xmlhttp.setRequestHeader("X-API-Key", "oxGeSNpCtE6M2IH11GwHh5xrvWiDiqSp6L9a3IWw ");
     xmlhttp.send();
   },
-  // 'click #recordAudioButton'(elt,instance){
-  //   const voiceDict = Template.instance().voiceDict;
-  //   var recognition_engine = Template.instance().recognition_engine;
-  //   Template.instance().voiceDict.set("recording_status", "speaking");
-  //   // var voice_data = new SpeechSynthesisUtterance(Regis_voice_info.findOne({abbr:page}).online);
-  //   // var interim_result, final_result, stop_word;
-  //   // stop_word="stop";
-  //   recognition_engine.continuous = true;
-  //   recognition_engine.lang = 'en-US';
-  //   recognition_engine.on
-  //   recognition_engine.onend = function(){
-  //     console.log("ended");
-  //   }
-  //   recognition_engine.onstart = function(){
-  //     console.log("started");
-  //   }
-  //   recognition_engine.onresult = function(event) {
-  //     const text = event.results[0][0].transcript;
-  //     console.log(text);
-  //     //set voiceDict = processing
-  //     if(voiceDict.get("processing_status") === "processing") return;
-  //     voiceDict.set("processing_status", "processing");
-  //     Meteor.call("sendJSONtoAPI_ai", text, { returnStubValue: true }, function(err, result){
-  //       if(err){
-  //         window.alert(err);
-  //         return;
-  //       }
-  //       console.log(result.data.result.metadata.intentName);
-  //       if(result.data.result.metadata.intentName == "stop"){
-  //         voiceDict.set("recording_status", "inactive");
-  //         recognition_engine.stop();
-  //         return;
-  //      } else{
-  //         console.log(result);
-  //         console.log(result.data.result.metadata.intentName);
-  //         responsiveVoice.speak(result.data.result.speech, "UK English Male");
-  //        }
-  //       recognition_engine.stop();
-  //       setTimeout(function(){
-  //         voiceDict.set("processing_status", "not_processing");
-  //         recognition_engine.start();
-  //       }, 2000)
-  //     })
-  //   };
-  //   recognition_engine.start();
-  // },
-  // 'click #stopRecordAudioButton'(elt,instance){
-  //   var recognition_engine = Template.instance().recognition_engine;
-  //   Template.instance().recognition_engine.stop();
-  //   Template.instance().voiceDict.set("recording_status", "inactive");
-  // },
+
 
 }),
 
