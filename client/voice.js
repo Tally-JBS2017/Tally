@@ -82,6 +82,7 @@ Template.voice.events({
        } else if(result.data.result.metadata.intentName == "register_online" && !Router.current().url.match("register")){
          responsiveVoice.speak("Find more information about how to register by visiting our register to vote page.", "US English Male");
        } else if(result.data.result.metadata.intentName == "stop"){
+         responsiveVoice.speak("Thanks for using our voice system. Goodbye.", "US English Male");
          voiceDict.set("recording_status", "inactive");
          recognition_engine.stop();
          return;
