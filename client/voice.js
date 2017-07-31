@@ -1,6 +1,5 @@
 Template.voice.onCreated(function voiceOnCreated(){
   this.voiceDict = new ReactiveDict();
-  this.recognition_engine = new webkitSpeechRecognition();
   this.voiceDict.set("recording_status", "inactive");
   // Session.set("onlinePage", .findOne({owner:Meteor.userId()}).state);
   Meteor.subscribe("regis_voice_info");
@@ -26,21 +25,6 @@ Template.voice.helpers({
   isProcessing: function(){
     return Template.instance().voiceDict.get("recording_status") === "processing";
   },
-  // page: function() {
-  //   return Session.get("statepage");
-  //   // return Template.instance().statepage;
-  // },
-  //
-  // // This fuction is what is used to populate the static-template with dynamic data.
-  // // For now it's using an array but we late we can pull the array from collections.
-  // pageData: function() {
-  //   var page = Session.get("statepage")
-  //   console.log(page+" is where we are getting data for");
-  //   //When we get the collection and agree on a format we we swap out the manual data array for a collection grab
-  //   var data = Statereginfo.findOne({abbr:page});
-  //   console.log("Page data is pulled from "+data.toString());
-  //   return {contentType:page, items:data};
-  // },
 
 })
 
@@ -48,8 +32,8 @@ Template.voice.events({
   'click #recordAudioButton'(elt,instance){
     console.log(Session.get("statepage"));
     const voiceDict = Template.instance().voiceDict;
+    Template.instance().recognition_engine = new webkitSpeechRecognition();
     var recognition_engine = Template.instance().recognition_engine;
-    Template.instance().voiceDict.set("recording_status", "speaking");
     var page, voice_data;
     if(Router.current().url.match("register")){
       page = Session.get("statepage");
@@ -61,9 +45,13 @@ Template.voice.events({
     recognition_engine.on
     recognition_engine.onend = function(){
       console.log("ended");
+      voiceDict.set("recording_status", "inactive");
+      voiceDict.set("processing_status", "not_processing");
     }
     recognition_engine.onstart = function(){
       console.log("started");
+      voiceDict.set("recording_status", "speaking");
+
     }
     recognition_engine.onresult = function(event) {
       const text = event.results[0][0].transcript;
@@ -80,16 +68,16 @@ Template.voice.events({
         if(result.data.result.metadata.intentName == "register_online" && Router.current().url.match("register")){
          responsiveVoice.speak(voice_data, "US English Male");
        } else if(result.data.result.metadata.intentName == "register_online" && !Router.current().url.match("register")){
-         responsiveVoice.speak("Find more information about how to register by visiting our register to vote page.", "US English Male");
+         responsiveVoice.speak("Find more information about how to register by visiting our register to vote page.", "UK English Female.");
        } else if(result.data.result.metadata.intentName == "stop"){
-         responsiveVoice.speak("Thanks for using our voice system. Goodbye.", "US English Male");
+         responsiveVoice.speak("Thanks for using our voice system. Goodbye.", "UK English Male");
          voiceDict.set("recording_status", "inactive");
          recognition_engine.stop();
          return;
        } else{
           console.log(result);
           console.log(result.data.result.metadata.intentName);
-          responsiveVoice.speak(result.data.result.speech, "US English Male", {rate: 1.05});
+          responsiveVoice.speak(result.data.result.speech, "UK English Male", {rate: 1.05});
          }
         recognition_engine.stop();
         setTimeout(function(){
@@ -99,10 +87,5 @@ Template.voice.events({
       })
     };
     recognition_engine.start();
-  },
-  'click #stopRecordAudioButton'(elt,instance){
-    var recognition_engine = Template.instance().recognition_engine;
-    Template.instance().recognition_engine.stop();
-    Template.instance().voiceDict.set("recording_status", "inactive");
   },
 })
