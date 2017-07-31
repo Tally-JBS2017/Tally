@@ -82,9 +82,7 @@ body, ul{
 @media all and (max-width: 600px) {
     .bordered-feature-image img{
 			display: none;
-
     }
-
 }
 
 #banner {
