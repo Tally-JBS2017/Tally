@@ -2,9 +2,9 @@ Template.informMe.onCreated(function(){
   Meteor.subscribe('politicians');
   Meteor.subscribe('bills');
   Meteor.subscribe('poliinfo');
-  Meteor.call('politicians.clear');
-  Meteor.call('bills.clear');
-  Meteor.call('poliinfo.clear');
+  Meteor.call('politicians.clear',Meteor.userId());
+  Meteor.call('bills.clear',Meteor.userId());
+  Meteor.call('poliinfo.clear',Meteor.userId());
   this.voiceDict = new ReactiveDict();
   this.recognition_engine = new webkitSpeechRecognition();
   this.voiceDict.set("recording_status", "inactive");
@@ -12,13 +12,13 @@ Template.informMe.onCreated(function(){
 
 Template.informMe.helpers({
   informed: function(){
-    return Politicians.find();
+    return Politicians.find({userId:Meteor.userId()});
   },
   cosponsor: function(){
-    return Bills.find();
+    return Bills.find({userId:Meteor.userId()});
   },
   additionalInfo: function(){
-    return PoliInfo.find();
+    return PoliInfo.find({userId:Meteor.userId()});
   },
   ifInactive: function(){
     const voiceDict = Template.instance().voiceDict
@@ -37,9 +37,9 @@ Template.informMe.helpers({
 
 Template.informMe.events({
   "click .searchbar": function(event,instance){
-    Meteor.call('poliinfo.clear')
-    Meteor.call('politicians.clear');
-    Meteor.call('bills.clear');
+    Meteor.call('politicians.clear',Meteor.userId());
+    Meteor.call('bills.clear',Meteor.userId());
+    Meteor.call('poliinfo.clear',Meteor.userId());
     const input = $(".search").val();
     const state = instance.$('#state').val();
     const position = instance.$('#position').val();
@@ -50,12 +50,8 @@ Template.informMe.events({
         window.alert(err);
         return;
       }
-      console.log("hello");
-      console.log(result);
-
       for(i=0; i<result.data.results.length; i++){
         name = result.data.results[i].name.toString(); //this gets name of politician
-        console.log(name);
         //if(input.toUpperCase()==name.toUpperCase()){
         id = result.data.results[i].id.toString(); //this is getting the politican id
         var src = 'https://theunitedstates.io/images/congress/225x275/' + id + '.jpg';//we are getting pictures from this github page
@@ -65,10 +61,10 @@ Template.informMe.events({
         var role = result.data.results[i].role.toString();
 
         var party = result.data.results[i].party.toString();
-
+        var userId = Meteor.userId();
         var nextElection = result.data.results[i].next_election.toString();
 
-        var information = {name,role,party,nextElection,src};
+        var information = {name,role,party,nextElection,src,userId};
         Meteor.call('politicians.insert',information);
       }
     });
@@ -128,9 +124,9 @@ Template.informMe.events({
 
 Template.trow.events({
   "click .moreInfo": function(event,instance){
-    Meteor.call('poliinfo.clear')
-    Meteor.call('politicians.clear');
-    Meteor.call('bills.clear');
+    Meteor.call('politicians.clear',Meteor.userId());
+    Meteor.call('bills.clear',Meteor.userId());
+    Meteor.call('poliinfo.clear',Meteor.userId());
     var input = this.t.name;
     const state = $('#state').val();
     const position = $('#position').val();
@@ -141,20 +137,16 @@ Template.trow.events({
         return;
       }
       var id;
-      console.log(result);
       for(i=0; i<result.data.results.length; i++){
         name = result.data.results[i].name.toString(); //this gets name of politician
         if(input.toUpperCase()==name.toUpperCase()){
           id = result.data.results[i].id.toString(); //this is getting the politican id
           var src = 'https://theunitedstates.io/images/congress/225x275/' + id + '.jpg';//we are getting pictures from this github page
-          console.log(src);
           var role = result.data.results[i].role.toString();
-          console.log(role);
           var party = result.data.results[i].party.toString();
-          console.log(party);
           var nextElection = result.data.results[i].next_election.toString();
-          console.log(nextElection);
-          var information = {name,role,party,nextElection,src};
+          var userId = Meteor.userId();
+          var information = {name,role,party,nextElection,src,userId};
           Meteor.call('politicians.insert',information);
           i = result.data.results.length;
           getBills(id);
@@ -169,7 +161,6 @@ Template.trow.events({
           window.alert(err);
           return;
         }
-        console.log(result);
         for(i=0; i<result.data.results[0].bills.length; i++){
 
           var title = result.data.results[0].bills[i].title.toString(); //this gets name of politician
@@ -177,7 +168,8 @@ Template.trow.events({
           if(!summary){
             summary = "Summary Unavaliable";
           }
-          var information = {title,summary};
+          var userId = Meteor.userId();
+          var information = {title,summary,userId};
           Meteor.call('bills.insert',information);
         }
       });
@@ -189,14 +181,12 @@ Template.trow.events({
           window.alert(err);
           return;
         }
-        console.log(result);
-        var url = result.data.results[0].url.toString();
-        console.log(url);
-        Session.set('url', url);
         for(i=0; i<result.data.results[0].roles[0].committees.length; i++){
           var committee =result.data.results[0].roles[0].committees[i].name.toString();
-
-          var information = {committee};
+          var userId = Meteor.userId();
+          var url = result.data.results[0].url.toString();
+          var district =result.data.results[0].roles[0].district.toString();
+          var information = {committee, userId,url,district};
           Meteor.call('poliinfo.insert',information);
         }
       });

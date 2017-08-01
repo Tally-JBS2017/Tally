@@ -32,4 +32,8 @@ Meteor.startup(function(){
     }))};
     //callbacked function because there two different collections were interuptting eachother.
     htmlStates(nonhtmlStates);
+    PoliInfo.remove({});
+    Bills.remove({});
+    Politicians.remove({});
+    Election.remove({});
 });

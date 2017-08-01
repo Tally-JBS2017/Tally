@@ -7,20 +7,19 @@ Template.politician.onCreated(function(){
 
 Template.politician.helpers({
   informed(){
-    return Politicians.find();
+    return Politicians.find({userId:Meteor.userId()});
   },
   cosponsor(){
-    return Bills.find();
+    return Bills.find({userId:Meteor.userId()});
   },
   additionalInfo(){
-    return PoliInfo.find();
+    return PoliInfo.find({userId:Meteor.userId()});
   },
   findDistrict(){
-    console.log("this is the district" + PoliInfo.find({district:true}).fetch()[0]);
-    return PoliInfo.find({district:true}).fetch()[0];
+    return PoliInfo.findOne({userId:Meteor.userId()}).district;
   },
   url: function(){
-    return Session.get('url');
+    return PoliInfo.findOne({userId:Meteor.userId()}).url;
   },
 
 })
