@@ -1,4 +1,4 @@
-Template.informMeLayout.onCreated(function(){
+Template.informMe.onCreated(function(){
   Meteor.subscribe('politicians');
   Meteor.subscribe('bills');
   Meteor.subscribe('poliinfo');
