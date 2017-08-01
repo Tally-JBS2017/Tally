@@ -62,17 +62,13 @@ Meteor.methods({
     PoliInfo.remove({userId:id});
   },
   'informMeGeneral'(state, position){
-    console.log("before informMeGeneral");
     const url = 'https://api.propublica.org/congress/v1/members/'+position+'/'+state+'/current.json';
 
-    var z= HTTP.call("GET", url, {
+    return HTTP.call("GET", url, {
       headers: {
         "X-API-Key": "oxGeSNpCtE6M2IH11GwHh5xrvWiDiqSp6L9a3IWw"
       }
     });
-    console.log("inside informMeGeneral");
-    console.dir(z);
-    return z;
   },
   'informMeBills'(id){
     const http ='https://api.propublica.org/congress/v1/members/'+id+'/bills/cosponsored.json';
