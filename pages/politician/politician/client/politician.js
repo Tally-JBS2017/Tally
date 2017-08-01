@@ -21,6 +21,13 @@ Template.politician.helpers({
   url: function(){
     return PoliInfo.findOne({userId:Meteor.userId()}).url;
   },
+  senate(){
+    if(PoliInfo.find().fetch().length>0){
+      return true;
+    }else{
+      return false;
+    }
+  },
 
 })
 
