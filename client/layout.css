@@ -157,9 +157,7 @@ body, ul{
 	width: 100%;
 
 }
-/*li{
-	list-style-type: none;
-}*/
+
 .check-list li {
 	padding: 0.7em 0 0.7em 40px;
 	font-size: 1.2em;
@@ -180,6 +178,9 @@ body, ul{
 .creators img{
 	width: 100%;
 	padding-bottom: 15px;
+}
+.creators h3{
+	color: #373f42 !important;
 }
 .quote-list li {
 	padding: 1em 0 1em 0;
