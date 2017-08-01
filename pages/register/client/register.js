@@ -37,7 +37,9 @@ Template.register.helpers({
     var page = Session.get("statepage")
     console.log(page+" is where we are getting data for");
     //When we get the collection and agree on a format we we swap out the manual data array for a collection grab
+
     var data = Statereginfo.findOne({abbr:page});
+    if(!data) return;
     console.log("Page data is pulled from "+ data.toString());
     return {contentType:page, items:data};
   },

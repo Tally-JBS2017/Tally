@@ -1,4 +1,4 @@
-Template.informMe.onCreated(function(){
+Template.informMeLayout.onCreated(function(){
   Meteor.subscribe('politicians');
   Meteor.subscribe('bills');
   Meteor.subscribe('poliinfo');
@@ -33,7 +33,6 @@ Template.informMe.helpers({
   isProcessing: function(){
     return Template.instance().voiceDict.get("recording_status") === "processing";
   },
-
 })
 
 Template.informMe.events({
@@ -125,7 +124,6 @@ Template.informMe.events({
     Template.instance().recognition_engine.stop();
     Template.instance().voiceDict.set("recording_status", "inactive");
   },
-
 }),
 
 Template.trow.events({
