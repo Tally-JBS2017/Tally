@@ -61,6 +61,33 @@ Meteor.methods({
   'poliinfo.clear'(id){
     PoliInfo.remove({userId:id});
   },
+  'informMeGeneral'(state, position){
+    const url = 'https://api.propublica.org/congress/v1/members/'+position+'/'+state+'/current.json';
+
+    return HTTP.call("GET", url, {
+      headers: {
+        "X-API-Key": "oxGeSNpCtE6M2IH11GwHh5xrvWiDiqSp6L9a3IWw"
+      }
+    });
+  },
+  'informMeBills'(id){
+    const http ='https://api.propublica.org/congress/v1/members/'+id+'/bills/cosponsored.json';
+
+    return HTTP.call("GET", http, {
+      headers: {
+        "X-API-Key": "oxGeSNpCtE6M2IH11GwHh5xrvWiDiqSp6L9a3IWw"
+      }
+    });
+  },
+  'informMeMore'(id){
+    var call ='https://api.propublica.org/congress/v1/members/'+ id +'.json';
+
+    return HTTP.call("GET", call, {
+      headers: {
+        "X-API-Key": "oxGeSNpCtE6M2IH11GwHh5xrvWiDiqSp6L9a3IWw"
+      }
+    });
+  },
 
   "sendJSONtoAPI_ai": function(text){
       //validation for the option
