@@ -3,20 +3,6 @@ import { ReactiveVar } from 'meteor/reactive-var';
 Template.register.onCreated(function registerOnCreated() {
   Meteor.subscribe("profiles", {owner:Meteor.userId()});
   this.howtoreg= new ReactiveVar("");
-  // console.log(Profiles.findOne({owner:Meteor.userId()}));
-//   if((Profiles.findOne({owner:Meteor.userId()}) == null) && (Session.get("statepage") == undefined)){
-//     Session.set("statepage", Profiles.findOne({owner:Meteor.userId()}).state);
-//     Meteor.subscribe("Statereginfo", {abbr:Session.get("statepage")});
-//   console.log("Statepage = "+this.statepage);
-// }
-  //this.recognition= new ReactiveVar("");
-  // this.voiceDict = new ReactiveDict();
-  // this.recognition_engine = new webkitSpeechRecognition();
-  // //set the status of the recording
-  // //inactive - user is not speaking or the recognition has ended
-  // //speaking - user is speaking
-  // //waiting - wait for the result from Google Speech API
-  // this.voiceDict.set("recording_status", "inactive");
   Meteor.subscribe("regis_voice_info");
 })
 
@@ -44,20 +30,6 @@ Template.register.helpers({
     return {contentType:page, items:data};
   },
 
-  // ifInactive: function(){
-  //   const voiceDict = Template.instance().voiceDict
-  //   return voiceDict.get("recording_status") == "inactive";
-  // },
-  //
-  // ifSpeaking: function(){
-  //   const voiceDict = Template.instance().voiceDict
-  //   return voiceDict.get("recording_status") == "speaking";
-  // },
-  //
-  // isProcessing: function(){
-  //   return Template.instance().voiceDict.get("recording_status") === "processing";
-  // },
-
   profileloaded: function(){
     if((Profiles.findOne({owner:Meteor.userId()}) != null) && (Session.get("statepage") == undefined)){
       Session.set("statepage",Profiles.findOne({owner:Meteor.userId()}).state);
@@ -70,6 +42,7 @@ Template.register.helpers({
     return true;
   }
 })
+
 Template.register.events({
   'click #regisInfo'(elt,instance){
     const zip =instance.$("#zipcode").val();
@@ -102,67 +75,7 @@ Template.register.events({
     }
     console.log("active variable: "+Session.get("statepage"));
   },
-  // 'click #recordAudioButton'(elt,instance){
-  //   const voiceDict = Template.instance().voiceDict;
-  //   var recognition_engine = Template.instance().recognition_engine;
-  //   Template.instance().voiceDict.set("recording_status", "speaking");
-  //   var page = Session.get("statepage");
-  //   // var voice_data = new SpeechSynthesisUtterance(Regis_voice_info.findOne({abbr:page}).online);
-  //   var voice_data = Regis_voice_info.findOne({abbr:page}).online;
-  //   console.log(voice_data);
-  //   // var interim_result, final_result, stop_word;
-  //   // stop_word="stop";
-  //   recognition_engine.continuous = true;
-  //   recognition_engine.lang = 'en-US';
-  //   recognition_engine.on
-  //   recognition_engine.onend = function(){
-  //     console.log("ended");
-  //   }
-  //   recognition_engine.onstart = function(){
-  //     console.log("started");
-  //   }
-  //   recognition_engine.onresult = function(event) {
-  //     const text = event.results[0][0].transcript;
-  //     console.log(text);
-  //     //set voiceDict = processing
-  //     if(voiceDict.get("processing_status") === "processing") return;
-  //     voiceDict.set("processing_status", "processing");
-  //     Meteor.call("sendJSONtoAPI_ai", text, { returnStubValue: true }, function(err, result){
-  //       if(err){
-  //         window.alert(err);
-  //         return;
-  //       }
-  //       console.log(result.data.result.metadata.intentName);
-  //       if(result.data.result.metadata.intentName == "register_online"){
-  //        //  window.speechSynthesis.speak(voice_data);
-  //        responsiveVoice.speak(voice_data, "US English Male");
-  //        //if text=="stop"
-  //      } else if(result.data.result.metadata.intentName == "stop"){
-  //        voiceDict.set("recording_status", "inactive");
-  //        recognition_engine.stop();
-  //        return;
-  //      } else{
-  //         console.log(result);
-  //         console.log(result.data.result.metadata.intentName);
-  //         // console.log(result.data.result.speech);
-  //         // var msg = new SpeechSynthesisUtterance(result.data.result.speech);
-  //         // window.speechSynthesis.speak(msg);
-  //         responsiveVoice.speak(result.data.result.speech, "US English Male", {rate: 1.05});
-  //        }
-  //       recognition_engine.stop();
-  //       setTimeout(function(){
-  //         voiceDict.set("processing_status", "not_processing");
-  //         recognition_engine.start();
-  //       }, 2000)
-  //     })
-  //   };
-  //   recognition_engine.start();
-  // },
-  // 'click #stopRecordAudioButton'(elt,instance){
-  //   var recognition_engine = Template.instance().recognition_engine;
-  //   Template.instance().recognition_engine.stop();
-  //   Template.instance().voiceDict.set("recording_status", "inactive");
-  // },
+
   'click #online'(elt,instance){
     Template.instance().howtoreg.set("online");
   },

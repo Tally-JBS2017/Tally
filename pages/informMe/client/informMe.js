@@ -2,12 +2,15 @@ Template.informMe.onCreated(function(){
   Meteor.subscribe('politicians');
   Meteor.subscribe('bills');
   Meteor.subscribe('poliinfo');
+  Meteor.subscribe("profiles", {owner:Meteor.userId()});
+
   Meteor.call('politicians.clear');
   Meteor.call('bills.clear');
   Meteor.call('poliinfo.clear');
   this.voiceDict = new ReactiveDict();
   this.recognition_engine = new webkitSpeechRecognition();
   this.voiceDict.set("recording_status", "inactive");
+
 })
 
 Template.informMe.helpers({
@@ -33,7 +36,59 @@ Template.informMe.helpers({
   isProcessing: function(){
     return Template.instance().voiceDict.get("recording_status") === "processing";
   },
+
+  profileLoaded:function(){
+    if(Profiles.findOne({owner:Meteor.userId()}) != null){
+      if((Profiles.findOne({owner:Meteor.userId()}).address != null) && (Profiles.findOne({owner:Meteor.userId()}).city != null) && (Profiles.findOne({owner:Meteor.userId()}).state != null) && (Profiles.findOne({owner:Meteor.userId()}).zip != null)){
+          findrepbyaddress();
+        }
+    }
+    return true;
+  }
+
 })
+
+
+function findrepbyaddress(){
+  Session.set("ourreps", "");
+  load(Profiles.findOne({owner:Meteor.userId()}).address+" "+Profiles.findOne({owner:Meteor.userId()}).city+" "+Profiles.findOne({owner:Meteor.userId()}).state+" "+Profiles.findOne({owner:Meteor.userId()}).zip, "country", "legislatorUpperBody");
+  load(Profiles.findOne({owner:Meteor.userId()}).address+" "+Profiles.findOne({owner:Meteor.userId()}).city+" "+Profiles.findOne({owner:Meteor.userId()}).state+" "+Profiles.findOne({owner:Meteor.userId()}).zip, "country", "legislatorLowerBody");
+  return true;
+
+  function load(address, levels, roles) {
+    gapi.client.setApiKey('AIzaSyDYoZw_sdVIOmvB1yxnFvdBwNxf9hB7T1M');
+    lookup(address, levels, roles, renderResults);
+  };
+
+  // Address: String, includeOfficees:Boolean, Levels:String, Roles:String
+  function lookup(address, levels, roles, callback) {
+   var req = gapi.client.request({
+       'path' : '/civicinfo/v2/representatives',
+       'params' : {'address' : address, 'includeOffices' : true, 'levels' : levels, 'roles' : roles }
+   });
+  req.execute(callback);
+  };
+
+  function renderResults(response, rawResponse) {
+   if (!response || response.error) {
+     return;
+   }
+   var normalizedAddress = response.normalizedInput.line1 + ' ' + response.normalizedInput.city + ', ' + response.normalizedInput.state + ' ' + response.normalizedInput.zip;
+   if(response.offices == null){
+     var yourrep = 'Could not find representantives for ' + normalizedAddress
+   }else if (response.offices.length > 0) {
+     var yourrep = "<div class = 'well'><p><strong>Office: "+response.offices[0].name+"</strong><br>"
+     for(i=0; i<response.officials.length; i++){
+       yourrep= yourrep + "<img class='img-thumbnail' src='"+response.officials[i].photoUrl+"'><br>Name: "+response.officials[i].name+"<br>Party: "+response.officials[i].party+"<br>Website: <a href='"+response.officials[i].urls+"'> "+response.officials[i].urls+" </a><br><br>";
+     }
+     yourrep= yourrep+"</p></div>"
+   }else{
+     var yourrep = 'Could not find representantives for ' + normalizedAddress
+   }
+   Session.set("ourreps", Session.get("ourreps")+yourrep);
+    console.log("ourreps set too: "+Session.get("ourreps"));
+  };
+};
 
 Template.informMe.events({
   "click .searchbar": function(event,instance){
