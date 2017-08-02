@@ -62,14 +62,6 @@ body, ul{
 
 }
 
-/*#banner img{
-	width: 40%;
-	margin-bottom: 0;
-
-	margin: 0 0 1em 0;
-	border-image: url("images/bg03");
-	border:
-}*/
 .bordered-feature-image img {
 		display: relative;
 		width: 35%;
@@ -214,4 +206,26 @@ body, ul{
 	font-size: 0.9em;
 	font-weight: 400;
 	font-style: italic;
+}
+#footer-wrapper, #copyright{
+	background: url("images/bg03.jpg");
+	padding-top: 30px;
+}
+#footer {
+	color: #212f35;
+	text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.5);
+}
+
+#footer h2 {
+	font-size: 1.25em;
+	margin: 0;
+}
+
+#second_resources{
+	padding-top: 25px;
+	padding-left: 0;
+}
+
+#copyright{
+	text-align: center;
 }
