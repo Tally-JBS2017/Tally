@@ -7,32 +7,32 @@
             <div class="container">
               <div class="row">
                 <div class="12u">
-                  <!-- Main Content -->
+                  <!-- Main Content, after header/background stuff -->
                     <section>
-                      {{#if currentUser}}
+                      {{#if currentUser}} <!-- checks if you are logged in -->
                         <div class="profileHeader">
                           <h2>PROFILE INFORMATION</h2>
                         </div>
-                      {{#if ifUpdateOff}}
+                      {{#if ifUpdateOff}}<!--update on/off changes the page depending on whether or not you are changing your profile information -->
                       <div class="updateButton">
                         <button class="btn btn-primary btn-lg js-chatsubmit" id = "update">Add/Update Information</button>
                       </div>
                       <br><br><br>
-                      <div class="row">
+                      <div class="row"><!-- here we start to print out your current information-->
                         {{#if nameCheck}}
                         <div class="col-md-6">
                           <div id="userName">
                             {{#each member in current_profile}}
                               <h2 class="name" id="userInput">{{member.name}}</h2>
                             {{/each}}
-                            <h3>How to vote in your state:</h3>
+                            <h3>How to vote in your state:</h3> <!--here is a bonus video that varies depending on your state chosen-->
                             <div class="youtube">{{{getyoutubevideo}}}</div>
                           </div>
                         </div>
                         {{/if}}
                         {{#if userCheck}}
                           <div class="col-md-5 col-md-offset-1" id="userInfo">
-                            <div class="address">
+                            <div class="address"><!--address shown  here-->
                               {{#if addressCheck}}
                                 <h3 class="prof_field">Your Address: </h3>
                                 {{#each member in current_profile}}
@@ -56,7 +56,7 @@
                                 {{/each}}
                               {{/if}}
                             </div>
-                            <div class = "city"><!-- shows your zip code here -->
+                            <div class = "city"><!-- shows your city here -->
                               {{#if cityCheck}}
                                 <h3 class="prof_field">Your City: </h3>
                                 {{#each member in current_profile}}
@@ -77,10 +77,10 @@
                         {{/if}}
                       </div>
                       {{/if}}
-                      {{#if ifUpdateOn}}
+                      {{#if ifUpdateOn}} <!--this is now if you are changing your information -->
                       <p>
                           <br><br>
-                          <div class = "name_update" id="update_div"><!-- shows your profile name here -->
+                          <div class = "name_update" id="update_div"><!-- edit your profile name here -->
                             <h1>Your Name: </h1>
                             {{#each member in current_profile}}
                               <h2 id="userInput">{{member.name}}</h2>
@@ -88,7 +88,7 @@
                             <input type="text" class="js-chatinput" id = "name" placeholder="Change your name here">
                             <br>
                           </div>
-                          <div class = "age" id="update_div"> <!--shows your profile age here -->
+                          <div class = "age" id="update_div"> <!-- edit your profile age here -->
                             <h1>Your Age: </h1>
                             {{#each member in current_profile}}
                               <h2 id="userInput">{{member.age}}</h2>
@@ -96,7 +96,7 @@
                             <input type="text"  class="js-chatinput" id = "age">
                             <br>
                           </div>
-                          <div class = "address" id="update_div"><!-- shows your profile name here -->
+                          <div class = "address" id="update_div"><!-- edit your profile address here -->
                             <h1>Your Address: </h1>
                             {{#each member in current_profile}}
                                 <h2 id="userInput">{{member.address}}</h2>
@@ -104,7 +104,7 @@
                             <input type="text"  class="js-chatinput" id = "address" placeholder = "Put your address street and number">
                             <br>
                           </div>
-                          <div class = "state" id="update_div"><!-- shows your profile name here -->
+                          <div class = "state" id="update_div"><!-- edit your profile state here -->
                             <h1>Your State: </h1>
                             {{#each member in current_profile}}
                               <h2 id="userInput">{{member.state}}</h2>
@@ -112,7 +112,7 @@
                             {{{stateDropdownmenu}}}
                             <br>
                           </div>
-                          <div class = "city" id="update_div"><!-- shows your profile name here -->
+                          <div class = "city" id="update_div"><!-- edit your profile city here -->
                             <h1>Your City: </h1>
                             {{#each member in current_profile}}
                                 <h2 id="userInput">{{member.city}}</h2>
@@ -120,7 +120,7 @@
                             <input type="text"  class="js-chatinput" id = "city" placeholder = "Put your city's name">
                             <br>
                           </div>
-                          <div class = "zip" id="update_div"><!-- shows your profile name here -->
+                          <div class = "zip" id="update_div"><!-- edit your profile zip code here -->
                             <h1>Your Zip Code: </h1>
                             {{#each member in current_profile}}
                               <h2 id="userInput">{{member.zip}}</h2>
@@ -135,7 +135,7 @@
                       {{/if}}
                       {{else}}
                         <div class="login">
-                          {{>loginButtons}}
+                          {{>loginButtons}} <!-- if you are not logged in, instead you will be prompted with this -->
                         </div>
                       {{/if}}
                     </section>

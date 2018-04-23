@@ -1,13 +1,13 @@
 Template.profile.onCreated(function(){
-  Meteor.subscribe('profiles', {owner:Meteor.userId()});
+  Meteor.subscribe('profiles', {owner:Meteor.userId()});//grabs profile database
   this.updateProfile= new ReactiveDict();
   this.updateProfile.set("update_status", "off");
 });
 Template.profile.helpers({
   current_profile: function(){
-    return Profiles.find({owner: Meteor.userId()})
+    return Profiles.find({owner: Meteor.userId()})//this gets your current profile
   },
-  ifUpdateOff: function(){
+  ifUpdateOff: function(){//these next two functions are for checking if you are logged in or not
     const updateProfile = Template.instance().updateProfile;
     return updateProfile.get("update_status") == "off";
   },
@@ -15,13 +15,13 @@ Template.profile.helpers({
     const updateProfile = Template.instance().updateProfile;
     return updateProfile.get("update_status") == "on";
   },
-  userCheck: function(){
+  userCheck: function(){//check if you have a profile
     if(typeof Profiles.findOne({owner:Meteor.userId()}) == 'undefined' || typeof Profiles.findOne({owner:Meteor.userId(),address:{$ne:""},zip:{$ne:""}, state:{$ne:""}}) == "undefined"){
       return false;
     }
     return true;
   },
-  nameCheck: function(){
+  nameCheck: function(){//these next checks are the same but for individual fields (if you have them filled or not)
     if(typeof Profiles.findOne({owner:Meteor.userId(),name:{"$exists":true}}) == 'undefined' || typeof Profiles.findOne({owner:Meteor.userId(),name:{$ne:""}}) == "undefined"){
       return false;
     }
@@ -66,7 +66,7 @@ Template.profile.events({
       if(Profiles.findOne({owner:Meteor.userId()}) == null){
         var to_be_inserted = {name:'', owner: Meteor.userId(), address:'', state:'', zip:'', city:'', age:''};
         Meteor.call('profiles.insert', to_be_inserted);
-      }
+      }//these checks here are to make sure that the user puts in something for everything, can be turned off (in fact I think it is off)
       if(instance.$('#name').val() == "" && typeof Profiles.findOne({owner:Meteor.userId(),name:{$ne:""}}) == "undefined"){
         alert("Please provide an input for all fields.");
         return
@@ -98,7 +98,7 @@ Template.profile.events({
       Template.instance().updateProfile.set("update_status", "off");
       callback();
     }
-    function update(){//this is where everything is updated
+    function update(){//this is where every field is updated
       if(!(instance.$('#name').val() == "")){//if the field is not empty
         const name = instance.$('#name').val();//save the value and call the meteor update function
         Meteor.call('profiles.name.update', name)
@@ -124,7 +124,7 @@ Template.profile.events({
 
         Meteor.call('profiles.state.update', state)
         instance.$('#state').val("");
-        Meteor.call('election.clear', Meteor.userId()); //Steven's Code
+        Meteor.call('election.clear', Meteor.userId()); //Steven's Code, for importing stuff onto his page, he only needs state
         var xmlhttp = new XMLHttpRequest();
         //setting up the date for today so the api on the elections page knows what date to start from
         const d = new Date();
@@ -155,7 +155,7 @@ Template.profile.events({
         xmlhttp.open("GET", url, true);
         xmlhttp.send();
       }
-      if(!(instance.$('#zip').val() == "")){
+      if(!(instance.$('#zip').val() == "")){ //back to the other (last) field
         const zip = instance.$('#zip').val();
         instance.$('#zip').val("");
         Meteor.call('profiles.zip.update', zip)
@@ -170,7 +170,7 @@ Template.profile.events({
 
 })
 
-Template.registerHelper('getyoutubevideo', function () {
+Template.registerHelper('getyoutubevideo', function () {//this is the function that gets the youtube video referred to on the html
   Meteor.subscribe('profiles', {owner:Meteor.userId()});
   Meteor.subscribe("Statereginfo", {abbr:Profiles.findOne({owner:Meteor.userId()}).state});
   return Statereginfo.findOne({abbr:Profiles.findOne({owner:Meteor.userId()}).state}).youtube.toString();
